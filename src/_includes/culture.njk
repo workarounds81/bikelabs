@@ -1,0 +1,81 @@
+---
+layout: base.njk
+ogType: article
+---
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "datePublished": "{{ page.date | dateISO }}",
+  "author": { "@type": "Organization", "name": "BikeLabs Team" },
+  "publisher": { "@type": "Organization", "name": "BikeLabs", "url": "https://bikelabs.com" }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="culture-layout">
+
+  {% if image %}
+  <img class="article-hero" src="{{ image }}" alt="{{ title }}" fetchpriority="high" decoding="async" style="border-radius:4px;margin-bottom:2rem;">
+  {% endif %}
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span>&rsaquo;</span>
+    <a href="/culture/">Culture</a>
+    <span>&rsaquo;</span>
+    <span>{{ title }}</span>
+  </nav>
+
+  <header class="article-header">
+    <span class="article-category">{{ category or "Culture" }}</span>
+    <h1 class="article-title">{{ title }}</h1>
+    <div class="article-meta">
+      <span>{{ page.date | dateDisplay }}</span>
+      <span>By BikeLabs Team</span>
+      <span>{{ content | readingTime }}</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+    {{ content | safe }}
+  </div>
+
+  {% include "partials/ad-slot.njk" %}
+
+  {% set related = collections.culture | default([]) %}
+  {% if related | length > 1 %}
+  <aside class="related-articles">
+    <h2>More Culture</h2>
+    <div class="card-grid-2">
+      {% for article in related | slice(0, 2) %}
+        {% if article.url !== page.url %}
+        <article class="article-card">
+          <a href="{{ article.url }}">
+            {% if article.data.image %}
+            <div class="card-img-wrap">
+              <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+            </div>
+            {% else %}
+            <div class="card-img-placeholder"><span>Culture</span></div>
+            {% endif %}
+          </a>
+          <div class="card-body">
+            <span class="card-tag">Culture</span>
+            <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+            <p class="card-meta">{{ article.date | dateDisplay }}</p>
+          </div>
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </aside>
+  {% endif %}
+
+</div>
+{% endblock %}

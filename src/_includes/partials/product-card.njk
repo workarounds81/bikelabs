@@ -1,0 +1,13 @@
+<div class="product-card">
+  <img src="{{ product.image }}" alt="{{ product.name }}" loading="lazy" decoding="async">
+  <div class="product-info">
+    <span class="product-category">{{ product.category }}</span>
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-verdict">{{ product.verdict }}</p>
+    <div class="product-actions">
+      <a href="{{ product.affiliateLink }}" class="btn-buy" target="_blank" rel="noopener nofollow">
+        Check Price on Amazon &rarr;
+      </a>
+    </div>
+  </div>
+</div>

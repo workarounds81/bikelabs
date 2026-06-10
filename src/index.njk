@@ -1,0 +1,176 @@
+---
+layout: base.njk
+title: "Ride More. Know More."
+description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos and moto culture. Built for riders."
+---
+
+{% set featured = collections.allArticles | first %}
+
+<!-- Hero -->
+{% if featured %}
+<section class="hero">
+  {% if featured.data.image %}
+  <img class="hero-img" src="{{ featured.data.image }}" alt="{{ featured.data.title }}" fetchpriority="high" decoding="async">
+  {% else %}
+  <div style="background:#1e1e1e;aspect-ratio:16/9;width:100%;display:flex;align-items:center;justify-content:center;">
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:700;color:#FF6B00;opacity:0.2;text-transform:uppercase;">BikeLabs</span>
+  </div>
+  {% endif %}
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">{{ featured.data.section or "Latest" }}</span>
+    <h2 class="hero-title">{{ featured.data.title }}</h2>
+    <p class="hero-excerpt">{{ featured.data.description }}</p>
+    <a href="{{ featured.url }}" class="btn-primary">Read More &rarr;</a>
+  </div>
+</section>
+{% endif %}
+
+<!-- Tagline -->
+<div class="tagline-strip">
+  <p>Ride More. Know More.</p>
+</div>
+
+<!-- Latest Reviews -->
+{% if collections.reviews | length %}
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Latest Reviews</h2>
+    <a href="/reviews/" class="section-link">All Reviews &rarr;</a>
+  </div>
+  <div class="card-grid">
+    {% for article in collections.reviews | slice(0, 3) %}
+    <article class="article-card">
+      <a href="{{ article.url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>{{ article.data.category or "Review" }}</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">{{ article.data.category or article.data.section }}</span>
+        <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% include "partials/ad-slot.njk" %}
+
+<!-- Latest Bikes -->
+{% if collections.bikes | length %}
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <h2 class="section-title">Bikes</h2>
+    <a href="/bikes/" class="section-link">All Bikes &rarr;</a>
+  </div>
+  <div class="card-grid-2">
+    {% for article in collections.bikes | slice(0, 2) %}
+    <article class="article-card">
+      <a href="{{ article.url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>Bikes</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">Bikes</span>
+        <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- Culture & Routes -->
+{% if collections.culture | length %}
+<section class="section" style="padding-top:0;">
+  <div class="section-header">
+    <h2 class="section-title">Culture &amp; Routes</h2>
+    <a href="/culture/" class="section-link">All Culture &rarr;</a>
+  </div>
+  <div class="card-grid-2">
+    {% for article in collections.culture | slice(0, 2) %}
+    <article class="article-card">
+      <a href="{{ article.url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>Culture</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">Culture</span>
+        <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- Shop Picks -->
+<section class="section shop-picks">
+  <div style="max-width:var(--max-site);margin:0 auto;">
+    <div class="section-header">
+      <h2 class="section-title">Shop Picks</h2>
+      <a href="/shop/" class="section-link">Visit Shop &rarr;</a>
+    </div>
+    <div class="card-grid">
+
+      <div class="product-card">
+        <div class="card-img-placeholder" style="aspect-ratio:1/1;"><span>Helmet</span></div>
+        <div class="product-info">
+          <span class="product-category">Helmets</span>
+          <h3 class="product-name">Shoei RF-1400</h3>
+          <p class="product-verdict">The benchmark full-face helmet. Exceptional ventilation, quiet at speed, and a fit that actually works long-distance.</p>
+          <div class="product-actions">
+            <a href="/shop/" class="btn-buy">Check Price on Amazon &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img-placeholder" style="aspect-ratio:1/1;"><span>Jacket</span></div>
+        <div class="product-info">
+          <span class="product-category">Jackets</span>
+          <h3 class="product-name">Alpinestars T-GP Plus R v3</h3>
+          <p class="product-verdict">The best textile jacket for hot-weather riding. CE Level 2 armour, excellent airflow, built for actual riding conditions.</p>
+          <div class="product-actions">
+            <a href="/shop/" class="btn-buy">Check Price on Amazon &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img-placeholder" style="aspect-ratio:1/1;"><span>Gloves</span></div>
+        <div class="product-info">
+          <span class="product-category">Gloves</span>
+          <h3 class="product-name">Dainese Air Master Gloves</h3>
+          <p class="product-verdict">Full-knuckle protection with a mesh back that actually breathes. Our go-to for commuting in warm climates.</p>
+          <div class="product-actions">
+            <a href="/shop/" class="btn-buy">Check Price on Amazon &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

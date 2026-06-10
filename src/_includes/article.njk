@@ -1,0 +1,111 @@
+---
+layout: base.njk
+ogType: article
+---
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "datePublished": "{{ page.date | dateISO }}",
+  "author": { "@type": "Organization", "name": "BikeLabs Team" },
+  "publisher": { "@type": "Organization", "name": "BikeLabs", "url": "https://bikelabs.com" }
+}
+</script>
+{% if faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in faq %}
+    {
+      "@type": "Question",
+      "name": "{{ item.q }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ item.a }}" }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="article-layout">
+  <div class="article-main">
+
+    {% if image %}
+    <img class="article-hero" src="{{ image }}" alt="{{ title }}" fetchpriority="high" decoding="async">
+    {% endif %}
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>&rsaquo;</span>
+      <a href="/{{ section }}/">{{ section | capitalize }}</a>
+      <span>&rsaquo;</span>
+      <span>{{ title }}</span>
+    </nav>
+
+    <header class="article-header">
+      <span class="article-category">{{ category or section }}</span>
+      <h1 class="article-title">{{ title }}</h1>
+      <div class="article-meta">
+        <span>{{ page.date | dateDisplay }}</span>
+        <span>By BikeLabs Team</span>
+        <span>{{ content | readingTime }}</span>
+      </div>
+    </header>
+
+    {% if affiliate %}
+    <div class="affiliate-disclosure">
+      This article contains affiliate links. If you buy through our links, we may earn a small commission at no extra cost to you.
+    </div>
+    {% endif %}
+
+    <div class="article-body">
+      {{ content | safe }}
+    </div>
+
+    {% include "partials/ad-slot.njk" %}
+
+    <!-- Related articles -->
+    {% set related = collections[section] | default([]) %}
+    {% if related | length > 1 %}
+    <aside class="related-articles">
+      <h2>More {{ section | capitalize }}</h2>
+      <div class="card-grid">
+        {% for article in related | slice(0, 3) %}
+          {% if article.url !== page.url %}
+          <article class="article-card">
+            <a href="{{ article.url }}">
+              {% if article.data.image %}
+              <div class="card-img-wrap">
+                <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+              </div>
+              {% else %}
+              <div class="card-img-placeholder"><span>{{ article.data.category or article.data.section }}</span></div>
+              {% endif %}
+            </a>
+            <div class="card-body">
+              <span class="card-tag">{{ article.data.category or article.data.section }}</span>
+              <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+              <p class="card-meta">{{ article.date | dateDisplay }}</p>
+            </div>
+          </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </aside>
+    {% endif %}
+
+  </div>
+
+  <aside class="article-sidebar">
+    {% include "partials/ad-slot.njk" %}
+  </aside>
+</div>
+{% endblock %}

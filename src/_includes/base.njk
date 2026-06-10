@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }} — Ride More. Know More.{% endif %}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
+  <meta property="og:image" content="{{ ogImage or site.defaultOgImage | absoluteUrl(site.url) }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="{{ site.twitter }}">
+  <meta name="twitter:title" content="{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ description or site.description }}">
+  <meta name="twitter:image" content="{{ ogImage or site.defaultOgImage | absoluteUrl(site.url) }}">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&display=swap">
+  </noscript>
+
+  <!-- PASTE ADSENSE AUTO-ADS SCRIPT HERE -->
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+  {% include "partials/header.njk" %}
+
+  <main id="main">
+    {% block content %}{{ content | safe }}{% endblock %}
+  </main>
+
+  {% include "partials/footer.njk" %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: "How-To Guides"
+description: "Motorcycle maintenance guides, mods, beginner tips, and how-tos written by riders."
+permalink: /how-to/
+---
+
+<div class="section-index">
+  <header class="section-index-header">
+    <h1 class="section-index-title">How-To</h1>
+    <p class="section-index-desc">Maintenance, mods, and guides. Straight answers, no fluff.</p>
+  </header>
+
+  {% if collections.howto | length %}
+  <div class="card-grid">
+    {% for article in collections.howto %}
+    <article class="article-card">
+      <a href="{{ article.url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>How-To</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">How-To</span>
+        <h2 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h2>
+        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p style="color:var(--text-muted);">How-to guides coming soon.</p>
+  {% endif %}
+</div>

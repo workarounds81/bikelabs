@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: "Gear Reviews"
+description: "Honest motorcycle gear reviews — helmets, jackets, gloves, boots, and tech. Tested by riders."
+permalink: /reviews/
+---
+
+<div class="section-index">
+  <header class="section-index-header">
+    <h1 class="section-index-title">Gear Reviews</h1>
+    <p class="section-index-desc">Honest reviews on helmets, jackets, gloves, boots, and riding tech. No sponsored opinions.</p>
+  </header>
+
+  {% if collections.reviews | length %}
+  <div class="card-grid">
+    {% for article in collections.reviews %}
+    <article class="article-card">
+      <a href="{{ article.url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>{{ article.data.category or "Review" }}</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">{{ article.data.category or "Review" }}</span>
+        <h2 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h2>
+        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p style="color:var(--text-muted);">Reviews coming soon.</p>
+  {% endif %}
+</div>

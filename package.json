@@ -1,0 +1,17 @@
+{
+  "name": "bikelabs",
+  "version": "1.0.0",
+  "description": "BikeLabs — Ride More. Know More.",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@quasibit/eleventy-plugin-sitemap": "^2.2.0",
+    "clean-css": "^5.3.3"
+  }
+}

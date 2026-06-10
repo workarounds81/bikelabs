@@ -1,0 +1,11 @@
+[build]
+  command = "npx @11ty/eleventy"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/404/index.html"
+  status = 404

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bikelabs.com/sitemap.xml
