@@ -24,6 +24,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          PATHPREFIX: /bikelabs/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
