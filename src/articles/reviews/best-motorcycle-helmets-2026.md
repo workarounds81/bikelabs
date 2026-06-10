@@ -7,6 +7,7 @@ tags: [helmets, safety, buying-guide]
 description: "We tested 12 motorcycle helmets across every price point. Here's what's actually worth buying in 2026."
 affiliate: true
 featured: true
+image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
 layout: article.njk
 permalink: /reviews/best-motorcycle-helmets-2026/
 ---

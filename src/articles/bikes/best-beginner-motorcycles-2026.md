@@ -6,6 +6,7 @@ category: beginner
 tags: [beginner, buying-guide, bikes]
 description: "The best motorcycles for new riders in 2026 — forgiving, reliable, and won't embarrass you when you get better."
 affiliate: false
+image: https://images.unsplash.com/photo-1568772585407-9b8ea7e7d0c0?w=1200&q=80&auto=format&fit=crop
 layout: article.njk
 permalink: /bikes/best-beginner-motorcycles-2026/
 ---

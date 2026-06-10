@@ -6,6 +6,7 @@ category: routes
 tags: [routes, southeast-asia, travel, culture]
 description: "The best motorcycle roads in Southeast Asia — from the mountain loops of northern Thailand to the coast roads of Vietnam. A rider's guide to the region."
 affiliate: false
+image: https://images.unsplash.com/photo-1590736969596-5c4c9a879a33?w=1200&q=80&auto=format&fit=crop
 layout: culture.njk
 permalink: /culture/best-motorcycle-roads-southeast-asia/
 ---

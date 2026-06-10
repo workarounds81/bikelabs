@@ -6,6 +6,7 @@ category: middleweight
 tags: [middleweight, naked, comparison, honda, yamaha]
 description: "Honda CB650R vs Yamaha MT-07 — two of the best middleweight nakeds in 2026 compared head to head. One is smooth and sophisticated. The other is a chainsaw."
 affiliate: false
+image: https://images.unsplash.com/photo-1558981852-426c09600be1?w=1200&q=80&auto=format&fit=crop
 layout: article.njk
 permalink: /bikes/honda-cb650r-vs-yamaha-mt07/
 ---
