@@ -4,7 +4,7 @@ title: "Motorcycle Gear Ratio & Sprocket Calculator"
 description: "Calculate your motorcycle's gear ratios, estimated top speed per gear, and see how sprocket changes affect performance. Free tool for any bike."
 permalink: /tools/gear-ratio-calculator/
 ---
-
+<script>window.BIKES = {{ bikes | dump | safe }};</script>
 <div class="page-hero">
   <div class="container">
     <div class="page-hero__content">
@@ -24,6 +24,17 @@ permalink: /tools/gear-ratio-calculator/
       </div>
 
       <div class="calc-card">
+        <h2 class="calc-card__title">Select Your Bike (Optional)</h2>
+        <div class="calc-grid" style="margin-bottom:1.5rem;">
+          <div class="calc-field">
+            <label for="make-select">Make</label>
+            <select id="make-select"><option value="">-- Select Make --</option></select>
+          </div>
+          <div class="calc-field">
+            <label for="model-select">Model</label>
+            <select id="model-select" disabled><option value="">-- Select Model --</option></select>
+          </div>
+        </div>
         <h2 class="calc-card__title">Sprocket &amp; Tyre Setup</h2>
         <div class="calc-grid">
           <div class="calc-field">
@@ -405,6 +416,46 @@ permalink: /tools/gear-ratio-calculator/
 </style>
 
 <script>
+(function(){
+  var bikes=window.BIKES||[];
+  var makes=[...new Set(bikes.map(b=>b.make))].sort();
+  var ms=document.getElementById('make-select'),mo=document.getElementById('model-select');
+  makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;ms.appendChild(o);});
+  ms.addEventListener('change',function(){
+    mo.innerHTML='<option value="">-- Select Model --</option>';mo.disabled=true;
+    if(!this.value)return;
+    bikes.filter(b=>b.make===this.value).forEach(function(b){
+      var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';
+      o.dataset.front=b.front_sprocket;o.dataset.rear=b.rear_sprocket;o.dataset.tyre=b.rear_tyre||'';
+      mo.appendChild(o);
+    });
+    mo.disabled=false;
+  });
+  mo.addEventListener('change',function(){
+    var s=this.options[this.selectedIndex];
+    if(s.dataset.front){document.getElementById('front-sprocket').value=s.dataset.front;}
+    if(s.dataset.rear){document.getElementById('rear-sprocket').value=s.dataset.rear;}
+    if(s.dataset.tyre){
+      var m=s.dataset.tyre.match(/^(\d+)\/(\d+)ZR(\d+)|^(\d+)\/(\d+)R(\d+)|^(\d+)\/(\d+)-(\d+)/);
+      if(m){
+        var w=m[1]||m[4]||m[7],a=m[2]||m[5]||m[8],r=m[3]||m[6]||m[9];
+        if(w){
+          var wSel=document.getElementById('tire-width');
+          for(var i=0;i<wSel.options.length;i++){if(wSel.options[i].value==w){wSel.selectedIndex=i;break;}}
+        }
+        if(a){
+          var aSel=document.getElementById('aspect-ratio');
+          for(var i=0;i<aSel.options.length;i++){if(aSel.options[i].value==a){aSel.selectedIndex=i;break;}}
+        }
+        if(r){
+          var rSel=document.getElementById('wheel-size');
+          for(var i=0;i<rSel.options.length;i++){if(rSel.options[i].value==r){rSel.selectedIndex=i;break;}}
+        }
+      }
+    }
+  });
+})();
+
 (function() {
   // Show/hide gear rows based on selected gear count
   const gearCountEl = document.getElementById('gear-count');
