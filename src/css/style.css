@@ -61,12 +61,19 @@ a:hover { color: var(--accent-hover); }
 }
 
 .logo {
+  display: flex;
+  align-items: center;
   font-family: var(--font-heading);
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.5px;
   text-transform: uppercase;
+}
+.logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 .logo span { color: var(--accent); }
 .logo:hover { color: var(--text); }
