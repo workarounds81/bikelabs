@@ -1,0 +1,79 @@
+---
+layout: base.njk
+title: "Motorcycle Fuel Range Calculator"
+description: "Calculate exactly how far you can ride on a full tank. Enter your bike's tank size and fuel consumption to plan your ride."
+permalink: /tools/fuel-range-calculator/
+---
+<script>window.BIKES = {{ bikes | dump | safe }};</script>
+<div class="tool-page">
+  <div class="container">
+    <h1>Motorcycle Fuel Range Calculator</h1>
+    <p class="tool-intro">Find out exactly how far you can ride before hitting reserve — and how far reserve will get you. Select your bike to auto-fill tank size and fuel consumption.</p>
+    <div class="tool-card">
+      <h2>Select Your Bike (Optional)</h2>
+      <div class="selector-row">
+        <div class="form-group"><label>Make</label><select id="make-select"><option value="">-- Select Make --</option></select></div>
+        <div class="form-group"><label>Model</label><select id="model-select" disabled><option value="">-- Select Model --</option></select></div>
+      </div>
+      <h2>Tank & Consumption</h2>
+      <div class="selector-row">
+        <div class="form-group"><label>Tank Size (litres)</label><input type="number" id="tank" value="15" min="3" max="50" step="0.1"></div>
+        <div class="form-group"><label>Reserve (litres)</label><input type="number" id="reserve" value="2.5" min="0.5" max="10" step="0.1"></div>
+        <div class="form-group"><label>Consumption (L/100km)</label><input type="number" id="cons" value="5.5" min="2" max="20" step="0.1"></div>
+      </div>
+      <button class="btn-calculate" onclick="calcFuel()">Calculate Range</button>
+      <div id="results" class="results" style="display:none">
+        <h2>Range Results</h2>
+        <div class="range-cards">
+          <div class="range-card green"><div class="range-label">Full Tank</div><div class="range-value" id="r-full-km">—</div><div class="range-sub" id="r-full-mi">—</div></div>
+          <div class="range-card orange"><div class="range-label">To Reserve</div><div class="range-value" id="r-res-km">—</div><div class="range-sub" id="r-res-mi">—</div></div>
+          <div class="range-card red"><div class="range-label">Reserve Only</div><div class="range-value" id="r-only-km">—</div><div class="range-sub" id="r-only-mi">—</div></div>
+        </div>
+        <p class="results-note">Manufacturer consumption figures measured under ideal conditions. Real-world range varies with speed, load and riding style.</p>
+      </div>
+    </div>
+    <div class="tool-seo">
+      <h2>How to Use the Motorcycle Fuel Range Calculator</h2>
+      <p>Select your bike from the dropdown to auto-fill tank size and fuel consumption, or enter your own values. The motorcycle fuel range calculator shows your total range on a full tank, how far you can ride before hitting reserve, and how far the reserve fuel will carry you. Always build in a safety margin — plan your fuel stops at 80% of the calculated range.</p>
+      <h2>Tips for Maximising Range</h2>
+      <p>Steady speeds between 80–100 km/h give the best fuel economy. High speeds, hard acceleration, cold weather and heavy luggage all increase consumption significantly. For long-distance touring, use your bike's actual consumption from past rides rather than the manufacturer figure.</p>
+    </div>
+  </div>
+</div>
+<style>
+.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.range-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.range-card{border-radius:6px;padding:1.5rem 1rem;text-align:center}.range-card.green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3)}.range-card.orange{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3)}.range-card.red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3)}.range-label{font-size:.8rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}.range-value{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:#f0f0f0}.range-sub{font-size:.9rem;color:#aaa;margin-top:.25rem}.results-note{color:#666;font-size:.85rem;margin-top:1rem;font-style:italic}.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}@media(max-width:600px){.range-cards{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var bikes=window.BIKES||[];
+  var makes=[...new Set(bikes.map(b=>b.make))].sort();
+  var ms=document.getElementById('make-select'),mo=document.getElementById('model-select');
+  makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;ms.appendChild(o);});
+  ms.addEventListener('change',function(){
+    mo.innerHTML='<option value="">-- Select Model --</option>';mo.disabled=true;
+    if(!this.value)return;
+    bikes.filter(b=>b.make===this.value).forEach(function(b){var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';o.dataset.t=b.tank_litres;o.dataset.f=b.fuel_l100km;mo.appendChild(o);});
+    mo.disabled=false;
+  });
+  mo.addEventListener('change',function(){
+    var s=this.options[this.selectedIndex];
+    if(s.dataset.t)document.getElementById('tank').value=s.dataset.t;
+    if(s.dataset.f)document.getElementById('cons').value=s.dataset.f;
+  });
+})();
+function calcFuel(){
+  var tank=+document.getElementById('tank').value;
+  var res=+document.getElementById('reserve').value;
+  var cons=+document.getElementById('cons').value;
+  var full=tank/cons*100;
+  var toRes=(tank-res)/cons*100;
+  var onRes=res/cons*100;
+  document.getElementById('r-full-km').textContent=full.toFixed(0)+' km';
+  document.getElementById('r-full-mi').textContent=(full*0.621).toFixed(0)+' miles';
+  document.getElementById('r-res-km').textContent=toRes.toFixed(0)+' km';
+  document.getElementById('r-res-mi').textContent=(toRes*0.621).toFixed(0)+' miles';
+  document.getElementById('r-only-km').textContent=onRes.toFixed(0)+' km';
+  document.getElementById('r-only-mi').textContent=(onRes*0.621).toFixed(0)+' miles';
+  document.getElementById('results').style.display='block';
+}
+</script>

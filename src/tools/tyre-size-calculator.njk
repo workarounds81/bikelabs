@@ -1,0 +1,101 @@
+---
+layout: base.njk
+title: "Motorcycle Tyre Size Calculator"
+description: "Decode any motorcycle tyre size code. Get actual diameter, sidewall height, circumference and compare OEM vs aftermarket sizes for any bike."
+permalink: /tools/tyre-size-calculator/
+---
+<script>window.BIKES = {{ bikes | dump | safe }};</script>
+<div class="tool-page">
+  <div class="container">
+    <h1>Motorcycle Tyre Size Calculator</h1>
+    <p class="tool-intro">Select your bike to auto-fill tyre codes, or enter any size manually. Compare two tyre sizes and see exactly how a swap affects your speedo reading.</p>
+    <div class="tool-card">
+      <h2>Select Your Bike (Optional)</h2>
+      <div class="selector-row">
+        <div class="form-group"><label>Make</label><select id="make-select"><option value="">-- Select Make --</option></select></div>
+        <div class="form-group"><label>Model</label><select id="model-select" disabled><option value="">-- Select Model --</option></select></div>
+        <div class="form-group"><label>Position</label><select id="tyre-pos"><option value="front">Front</option><option value="rear">Rear</option></select></div>
+      </div>
+      <h2>Current Tyre</h2>
+      <div class="selector-row">
+        <div class="form-group"><label>Width (mm)</label><input type="number" id="w1" value="160" min="60" max="300"></div>
+        <div class="form-group"><label>Aspect Ratio (%)</label><input type="number" id="a1" value="60" min="30" max="90"></div>
+        <div class="form-group"><label>Rim (inches)</label><input type="number" id="r1" value="17" min="10" max="21"></div>
+      </div>
+      <h2>Alternative Tyre</h2>
+      <div class="selector-row">
+        <div class="form-group"><label>Width (mm)</label><input type="number" id="w2" value="170" min="60" max="300"></div>
+        <div class="form-group"><label>Aspect Ratio (%)</label><input type="number" id="a2" value="60" min="30" max="90"></div>
+        <div class="form-group"><label>Rim (inches)</label><input type="number" id="r2" value="17" min="10" max="21"></div>
+      </div>
+      <button class="btn-calculate" onclick="calcTyre()">Calculate</button>
+      <div id="results" class="results" style="display:none">
+        <h2>Results</h2>
+        <div class="results-grid">
+          <div><h3>Current Tyre</h3>
+            <table class="results-table">
+              <tr><td>Sidewall Height</td><td id="s1"></td></tr>
+              <tr><td>Overall Diameter</td><td id="d1"></td></tr>
+              <tr><td>Circumference</td><td id="c1"></td></tr>
+            </table>
+          </div>
+          <div><h3>Alternative Tyre</h3>
+            <table class="results-table">
+              <tr><td>Sidewall Height</td><td id="s2"></td></tr>
+              <tr><td>Overall Diameter</td><td id="d2"></td></tr>
+              <tr><td>Circumference</td><td id="c2"></td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="result-highlight" id="speedo-note"></div>
+      </div>
+    </div>
+    <div class="tool-seo">
+      <h2>How to Read a Motorcycle Tyre Size Code</h2>
+      <p>A tyre code like <strong>160/60/17</strong> breaks down simply. The first number (160) is the tyre width in millimetres. The second (60) is the aspect ratio — the sidewall height as a percentage of the width. The third (17) is the rim diameter in inches. Use this motorcycle tyre size calculator to convert these numbers into real dimensions and compare sizes before buying.</p>
+      <h2>Does Tyre Size Affect Speedo Reading?</h2>
+      <p>Yes. A larger overall diameter means the wheel covers more ground per revolution, so your speedo reads lower than your actual speed. A smaller diameter makes the speedo over-read. This tool shows the exact percentage difference so you know what to expect after a tyre swap.</p>
+    </div>
+  </div>
+</div>
+<style>
+.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin-bottom:.75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.results-table{width:100%;border-collapse:collapse}.results-table tr{border-bottom:1px solid #2a2a2a}.results-table td{padding:.5rem 0;color:#f0f0f0}.results-table td:last-child{text-align:right;color:#FF6B00;font-weight:600}.result-highlight{background:#2a2a2a;border-radius:4px;padding:1rem 1.2rem;margin-top:1rem;color:#f0f0f0}.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}@media(max-width:600px){.results-grid{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var bikes=window.BIKES||[];
+  var makes=[...new Set(bikes.map(b=>b.make))].sort();
+  var ms=document.getElementById('make-select'),mo=document.getElementById('model-select');
+  makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;ms.appendChild(o);});
+  ms.addEventListener('change',function(){
+    mo.innerHTML='<option value="">-- Select Model --</option>';mo.disabled=true;
+    if(!this.value)return;
+    bikes.filter(b=>b.make===this.value).forEach(function(b){var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';o.dataset.f=b.front_tyre;o.dataset.r=b.rear_tyre;mo.appendChild(o);});
+    mo.disabled=false;
+  });
+  function fill(){
+    var sel=mo.options[mo.selectedIndex];if(!sel.dataset.f)return;
+    var pos=document.getElementById('tyre-pos').value;
+    var code=pos==='front'?sel.dataset.f:sel.dataset.r;
+    var p=code.split('/');if(p.length===3){document.getElementById('w1').value=p[0];document.getElementById('a1').value=p[1];document.getElementById('r1').value=p[2];}
+  }
+  mo.addEventListener('change',fill);
+  document.getElementById('tyre-pos').addEventListener('change',fill);
+})();
+function parseTyre(w,a,r){var sw=w*a/100;var dia=sw*2+r*25.4;return{sw:sw,dia:dia,circ:Math.PI*dia};}
+function calcTyre(){
+  var t1=parseTyre(+document.getElementById('w1').value,+document.getElementById('a1').value,+document.getElementById('r1').value);
+  var t2=parseTyre(+document.getElementById('w2').value,+document.getElementById('a2').value,+document.getElementById('r2').value);
+  document.getElementById('s1').textContent=t1.sw.toFixed(1)+' mm';
+  document.getElementById('d1').textContent=t1.dia.toFixed(1)+' mm';
+  document.getElementById('c1').textContent=t1.circ.toFixed(0)+' mm';
+  document.getElementById('s2').textContent=t2.sw.toFixed(1)+' mm';
+  document.getElementById('d2').textContent=t2.dia.toFixed(1)+' mm';
+  document.getElementById('c2').textContent=t2.circ.toFixed(0)+' mm';
+  var diff=((t2.circ-t1.circ)/t1.circ*100).toFixed(1);
+  document.getElementById('speedo-note').textContent=diff==0?'No change to speedo reading.':
+    'The alternative tyre diameter differs by '+Math.abs(diff)+'%. Your speedo will '+
+    (diff>0?'under-read by '+Math.abs(diff)+'% (actual speed is higher).':'over-read by '+Math.abs(diff)+'% (actual speed is lower).');
+  document.getElementById('results').style.display='block';
+}
+</script>
