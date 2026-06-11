@@ -714,6 +714,8 @@ body { overflow-x: hidden; }
 
 /* Tools Section */
 .tools-section { background: #111; padding: 3rem 0; margin-top: 2rem; }
+.card-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+@media (max-width: 600px) { .card-grid-2x2 { grid-template-columns: 1fr; } }
 .tool-card-home { background: #1e1e1e; border-radius: 8px; padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid #2a2a2a; transition: border-color 0.2s; }
 .tool-card-home:hover { border-color: #FF6B00; }
 .tool-icon { font-size: 2rem; line-height: 1; }
