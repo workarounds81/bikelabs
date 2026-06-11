@@ -143,12 +143,15 @@ a:hover { color: var(--accent-hover); }
 /* ============================================================
    HERO
    ============================================================ */
+.hero-wrap {
+  max-width: var(--max-site);
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
 .hero {
   position: relative;
   background: var(--bg-card);
   overflow: hidden;
-  max-width: var(--max-site);
-  margin: 1.5rem auto;
   border-radius: 6px;
 }
 .hero-img {
