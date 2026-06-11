@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="logo">Bike<span>Labs</span></a>
+    <a href="{{ '/' | url }}" class="logo">Bike<span>Labs</span></a>
 
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
     <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
@@ -8,11 +8,11 @@
     </label>
 
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="/reviews/">Reviews</a>
-      <a href="/bikes/">Bikes</a>
-      <a href="/culture/">Culture</a>
-      <a href="/how-to/">How-To</a>
-      <a href="/shop/" class="nav-shop">Shop</a>
+      <a href="{{ '/reviews/' | url }}">Reviews</a>
+      <a href="{{ '/bikes/' | url }}">Bikes</a>
+      <a href="{{ '/culture/' | url }}">Culture</a>
+      <a href="{{ '/how-to/' | url }}">How-To</a>
+      <a href="{{ '/shop/' | url }}" class="nav-shop">Shop</a>
     </nav>
   </div>
 </header>

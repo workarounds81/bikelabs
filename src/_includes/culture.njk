@@ -25,9 +25,9 @@ ogType: article
   {% endif %}
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a>
+    <a href="{{ '/' | url }}">Home</a>
     <span>&rsaquo;</span>
-    <a href="/culture/">Culture</a>
+    <a href="{{ '/culture/' | url }}">Culture</a>
     <span>&rsaquo;</span>
     <span>{{ title }}</span>
   </nav>
