@@ -71,7 +71,7 @@ a:hover { color: var(--accent-hover); }
   text-transform: uppercase;
 }
 .logo-img {
-  height: 48px;
+  height: 144px;
   width: auto;
   display: block;
 }
