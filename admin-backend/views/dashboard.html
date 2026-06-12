@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BikeLabs Admin</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f0f0f;color:#f0f0f0;font-family:system-ui,sans-serif;min-height:100vh}
+.topbar{background:#1a1a1a;border-bottom:1px solid #2a2a2a;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-size:1.3rem;font-weight:900;color:#FF6B00;letter-spacing:-1px}.brand span{color:#f0f0f0}
+nav a{color:#aaa;text-decoration:none;margin-left:1.5rem;font-size:.9rem;padding:.3rem .6rem;border-radius:4px;transition:color .15s}
+nav a:hover,nav a.active{color:#FF6B00}
+.logout{background:none;border:1px solid #3a3a3a;color:#aaa;padding:.3rem .8rem;border-radius:4px;cursor:pointer;font-size:.85rem;margin-left:1.5rem}
+.logout:hover{border-color:#FF6B00;color:#FF6B00}
+.main{max-width:1100px;margin:0 auto;padding:2.5rem 2rem}
+h1{font-size:1.8rem;margin-bottom:.25rem}
+.sub{color:#666;margin-bottom:2rem;font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-bottom:2.5rem}
+.stat{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:1.5rem;text-align:center}
+.stat-num{font-size:2.5rem;font-weight:700;color:#FF6B00;line-height:1}
+.stat-label{color:#aaa;font-size:.85rem;margin-top:.5rem}
+.actions{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.action-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:1.5rem;text-decoration:none;color:inherit;transition:border-color .2s}
+.action-card:hover{border-color:#FF6B00}
+.action-card h3{color:#FF6B00;margin-bottom:.5rem;font-size:1.1rem}
+.action-card p{color:#888;font-size:.85rem;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">BIKE<span>LABS</span> <span style="color:#666;font-size:.75rem;font-weight:400;margin-left:.5rem">Admin</span></div>
+  <nav>
+    <a href="/admin" class="active">Dashboard</a>
+    <a href="/admin/articles">Articles</a>
+    <a href="/admin/shop">Shop</a>
+    <form method="POST" action="/admin/logout" style="display:inline">
+      <button class="logout">Sign Out</button>
+    </form>
+  </nav>
+</div>
+<div class="main">
+  <h1>Dashboard</h1>
+  <p class="sub">Welcome back, xglobalx</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">{{COUNT_REVIEWS}}</div><div class="stat-label">Reviews</div></div>
+    <div class="stat"><div class="stat-num">{{COUNT_BIKES}}</div><div class="stat-label">Bikes</div></div>
+    <div class="stat"><div class="stat-num">{{COUNT_CULTURE}}</div><div class="stat-label">Culture</div></div>
+    <div class="stat"><div class="stat-num">{{COUNT_HOWTO}}</div><div class="stat-label">How-To</div></div>
+    <div class="stat"><div class="stat-num">{{COUNT_SHOP}}</div><div class="stat-label">Shop Products</div></div>
+  </div>
+  <div class="actions">
+    <a href="/admin/articles/new" class="action-card">
+      <h3>+ New Article</h3>
+      <p>Write a review, bike feature, culture piece or how-to guide.</p>
+    </a>
+    <a href="/admin/articles" class="action-card">
+      <h3>All Articles</h3>
+      <p>View, edit or delete existing articles across all sections.</p>
+    </a>
+    <a href="/admin/shop/new" class="action-card">
+      <h3>+ New Product</h3>
+      <p>Add an Amazon affiliate, AliExpress or own product to the shop.</p>
+    </a>
+    <a href="/admin/shop" class="action-card">
+      <h3>Shop Products</h3>
+      <p>Manage all products in the shop section.</p>
+    </a>
+  </div>
+</div>
+</body>
+</html>

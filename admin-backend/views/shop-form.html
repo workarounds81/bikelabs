@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{FORM_TITLE}} — BikeLabs Admin</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f0f0f;color:#f0f0f0;font-family:system-ui,sans-serif;min-height:100vh}
+.topbar{background:#1a1a1a;border-bottom:1px solid #2a2a2a;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-size:1.3rem;font-weight:900;color:#FF6B00;letter-spacing:-1px}.brand span{color:#f0f0f0}
+nav a{color:#aaa;text-decoration:none;margin-left:1.5rem;font-size:.9rem;padding:.3rem .6rem;border-radius:4px}
+nav a:hover{color:#FF6B00}
+.logout{background:none;border:1px solid #3a3a3a;color:#aaa;padding:.3rem .8rem;border-radius:4px;cursor:pointer;font-size:.85rem;margin-left:1.5rem}
+.logout:hover{border-color:#FF6B00;color:#FF6B00}
+.main{max-width:780px;margin:0 auto;padding:2.5rem 2rem}
+.page-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
+h1{font-size:1.8rem}
+.back{color:#aaa;text-decoration:none;font-size:.9rem}
+.back:hover{color:#FF6B00}
+.form-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:2rem;margin-bottom:1.5rem}
+.form-card h2{color:#FF6B00;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid #2a2a2a}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.field label{font-size:.8rem;color:#aaa;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+input[type=text],input[type=url],input[type=number],select,textarea{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.65rem .9rem;border-radius:6px;font-size:.95rem;width:100%;font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#FF6B00}
+textarea{resize:vertical;min-height:90px}
+.type-section{display:none}.type-section.show{display:block}
+.type-tabs{display:flex;gap:.5rem;margin-bottom:1.25rem}
+.type-tab{background:#2a2a2a;color:#aaa;border:1px solid #3a3a3a;padding:.4rem 1rem;border-radius:4px;cursor:pointer;font-size:.85rem}
+.type-tab.active{background:#FF6B00;color:#fff;border-color:#FF6B00}
+.actions{display:flex;gap:1rem;align-items:center;margin-top:.5rem}
+.btn-save{background:#FF6B00;color:#fff;border:none;padding:.8rem 2rem;border-radius:6px;font-size:1rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+.btn-save:hover{background:#e05e00}
+.btn-cancel{color:#aaa;text-decoration:none;font-size:.9rem}
+.btn-cancel:hover{color:#FF6B00}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">BIKE<span>LABS</span> <span style="color:#666;font-size:.75rem;font-weight:400;margin-left:.5rem">Admin</span></div>
+  <nav>
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/articles">Articles</a>
+    <a href="/admin/shop">Shop</a>
+    <form method="POST" action="/admin/logout" style="display:inline">
+      <button class="logout">Sign Out</button>
+    </form>
+  </nav>
+</div>
+<div class="main">
+  <div class="page-head">
+    <h1>{{FORM_TITLE}}</h1>
+    <a href="/admin/shop" class="back">← Back to Shop</a>
+  </div>
+  <form method="POST" action="{{ACTION}}" enctype="multipart/form-data">
+    <div class="form-card">
+      <h2>Product Details</h2>
+      <div class="field"><label>Product Name *</label><input type="text" name="name" value="{{VAL_NAME}}" required></div>
+      <div class="row">
+        <div class="field"><label>Category</label><input type="text" name="category" value="{{VAL_CATEGORY}}" placeholder="Helmets, Jackets, Tyres..."></div>
+        <div class="field">
+          <label>Status</label>
+          <select name="status">
+            <option value="active" {{STATUS_ACTIVE}}>Active</option>
+            <option value="inactive" {{STATUS_INACTIVE}}>Inactive</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Product Type</h2>
+      <div class="type-tabs">
+        <button type="button" class="type-tab" id="tab-amazon" onclick="setType('amazon')">Amazon</button>
+        <button type="button" class="type-tab" id="tab-aliexpress" onclick="setType('aliexpress')">AliExpress</button>
+        <button type="button" class="type-tab" id="tab-own" onclick="setType('own')">Own Product</button>
+      </div>
+      <input type="hidden" name="type" id="type-input" value="">
+
+      <div class="type-section" id="sec-amazon">
+        <div class="field"><label>ASIN (Amazon Product ID)</label><input type="text" name="asin" value="{{VAL_ASIN}}" placeholder="B08XYZ123"></div>
+        <div class="field"><label>Affiliate URL</label><input type="url" name="affiliateUrl" value="{{VAL_AFFILIATE_URL}}" placeholder="https://amazon.com/dp/...?tag=yourTag"></div>
+        <div class="field"><label>Image URL</label><input type="url" name="imageUrl" value="{{VAL_IMAGE}}" placeholder="https://..."></div>
+      </div>
+
+      <div class="type-section" id="sec-aliexpress">
+        <div class="field"><label>Affiliate URL</label><input type="url" name="affiliateUrl" value="{{VAL_AFFILIATE_URL}}" placeholder="https://aliexpress.com/..."></div>
+        <div class="field"><label>Image URL</label><input type="url" name="imageUrl" value="{{VAL_IMAGE}}" placeholder="https://..."></div>
+      </div>
+
+      <div class="type-section" id="sec-own">
+        <div class="row">
+          <div class="field"><label>Price</label><input type="text" name="price" value="{{VAL_PRICE}}" placeholder="$49.99"></div>
+          <div class="field"><label>Product URL</label><input type="url" name="ownUrl" value="{{VAL_OWN_URL}}" placeholder="https://..."></div>
+        </div>
+        <div class="field"><label>Upload Image</label><input type="file" name="imageFile" accept="image/*" style="color:#aaa"></div>
+        <div class="field"><label>Or Image URL</label><input type="url" name="imageUrl" value="{{VAL_IMAGE}}" placeholder="https://..."></div>
+      </div>
+
+      <div class="field" style="margin-top:1rem"><label>Verdict / Short Description</label><textarea name="verdict">{{VAL_VERDICT}}</textarea></div>
+      <div class="field"><label>Full Description</label><textarea name="description">{{VAL_DESCRIPTION}}</textarea></div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn-save">Save Product</button>
+      <a href="/admin/shop" class="btn-cancel">Cancel</a>
+    </div>
+  </form>
+</div>
+<script>
+var currentType = '{{TYPE_AMAZON}}' === 'selected' ? 'amazon' : ('{{TYPE_ALIEXPRESS}}' === 'selected' ? 'aliexpress' : ('{{TYPE_OWN}}' === 'selected' ? 'own' : 'amazon'));
+function setType(t) {
+  currentType = t;
+  document.getElementById('type-input').value = t;
+  ['amazon','aliexpress','own'].forEach(function(x) {
+    document.getElementById('sec-'+x).classList.toggle('show', x===t);
+    document.getElementById('tab-'+x).classList.toggle('active', x===t);
+  });
+}
+setType(currentType);
+</script>
+</body>
+</html>

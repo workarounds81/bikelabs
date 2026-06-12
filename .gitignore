@@ -1,3 +1,6 @@
 node_modules/
 public/
 .claude/
+admin-backend/node_modules/
+admin-backend/*.db
+admin-backend/.env
