@@ -4,13 +4,13 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
 
-router.get('/admin/login', (req, res) => {
+router.get('/login', (req, res) => {
   let html = fs.readFileSync(path.join(__dirname, '../views/login.html'), 'utf8');
   html = html.replace('{{ERROR_CLASS}}', req.query.error ? 'show' : '');
   res.send(html);
 });
 
-router.post('/admin/login', (req, res) => {
+router.post('/login', (req, res) => {
   const { username, password } = req.body;
   if (username === 'xglobalx' && password === '123qwe123QWE') {
     const token = jwt.sign({ username }, process.env.JWT_SECRET || 'bl-secret-change-me', { expiresIn: '7d' });
@@ -20,7 +20,7 @@ router.post('/admin/login', (req, res) => {
   return res.redirect('/admin/login?error=1');
 });
 
-router.post('/admin/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   res.clearCookie('token');
   return res.redirect('/admin/login');
 });
