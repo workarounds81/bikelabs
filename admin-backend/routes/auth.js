@@ -6,7 +6,7 @@ const path = require('path');
 
 router.get('/admin/login', (req, res) => {
   let html = fs.readFileSync(path.join(__dirname, '../views/login.html'), 'utf8');
-  html = html.replace('style="display:none"', req.query.error ? '' : 'style="display:none"');
+  html = html.replace('{{ERROR_CLASS}}', req.query.error ? 'show' : '');
   res.send(html);
 });
 
