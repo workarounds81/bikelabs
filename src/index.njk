@@ -22,7 +22,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
     <span class="hero-tag">{{ featured.data.section or "Latest" }}</span>
     <h2 class="hero-title">{{ featured.data.title }}</h2>
     <p class="hero-excerpt">{{ featured.data.description }}</p>
-    <a href="{{ featured.url }}" class="btn-primary">Read More &rarr;</a>
+    <a href="{{ featured.url | url }}" class="btn-primary">Read More &rarr;</a>
   </div>
 </section>
 </div>
@@ -43,7 +43,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
   <div class="card-grid">
     {% for article in collections.reviews | slice(0, 3) %}
     <article class="article-card">
-      <a href="{{ article.url }}">
+      <a href="{{ article.url | url }}">
         {% if article.data.image %}
         <div class="card-img-wrap">
           <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
@@ -54,7 +54,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
       </a>
       <div class="card-body">
         <span class="card-tag">{{ article.data.category or article.data.section }}</span>
-        <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+        <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
         <p class="card-excerpt">{{ article.data.description }}</p>
         <p class="card-meta">{{ article.date | dateDisplay }}</p>
       </div>
@@ -76,7 +76,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
   <div class="card-grid-2">
     {% for article in collections.bikes | slice(0, 2) %}
     <article class="article-card">
-      <a href="{{ article.url }}">
+      <a href="{{ article.url | url }}">
         {% if article.data.image %}
         <div class="card-img-wrap">
           <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
@@ -87,7 +87,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
       </a>
       <div class="card-body">
         <span class="card-tag">Bikes</span>
-        <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+        <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
         <p class="card-excerpt">{{ article.data.description }}</p>
         <p class="card-meta">{{ article.date | dateDisplay }}</p>
       </div>
@@ -107,7 +107,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
   <div class="card-grid-2">
     {% for article in collections.culture | slice(0, 2) %}
     <article class="article-card">
-      <a href="{{ article.url }}">
+      <a href="{{ article.url | url }}">
         {% if article.data.image %}
         <div class="card-img-wrap">
           <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
@@ -118,7 +118,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
       </a>
       <div class="card-body">
         <span class="card-tag">Culture</span>
-        <h3 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+        <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
         <p class="card-excerpt">{{ article.data.description }}</p>
         <p class="card-meta">{{ article.date | dateDisplay }}</p>
       </div>

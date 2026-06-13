@@ -15,7 +15,7 @@ permalink: /bikes/
   <div class="card-grid">
     {% for article in collections.bikes %}
     <article class="article-card">
-      <a href="{{ article.url }}">
+      <a href="{{ article.url | url }}">
         {% if article.data.image %}
         <div class="card-img-wrap">
           <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
@@ -26,7 +26,7 @@ permalink: /bikes/
       </a>
       <div class="card-body">
         <span class="card-tag">{{ article.data.category or "Bikes" }}</span>
-        <h2 class="card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h2>
+        <h2 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h2>
         <p class="card-excerpt">{{ article.data.description }}</p>
         <p class="card-meta">{{ article.date | dateDisplay }}</p>
       </div>
