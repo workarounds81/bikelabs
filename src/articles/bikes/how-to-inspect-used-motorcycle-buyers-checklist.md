@@ -6,7 +6,7 @@ category: buying guide
 tags: [buying guide, used, inspection, checklist, secondhand, beginner]
 description: "A complete mechanical evaluation checklist for buying a used motorcycle — what to look for, what to listen for, and how to spot crash damage, hidden problems, and future costs before you hand over money."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/buyerchecklist.jpeg
 layout: article.njk
 permalink: /bikes/how-to-inspect-used-motorcycle-buyers-checklist/
 ---

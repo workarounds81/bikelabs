@@ -437,6 +437,7 @@ a:hover { color: var(--accent-hover); }
 .article-main {
   width: 100%;
 }
+/* Hero and related cards span full 1200px */
 .article-hero {
   width: 100%;
   aspect-ratio: 16/9;
@@ -453,6 +454,13 @@ a:hover { color: var(--accent-hover); }
 .breadcrumb a { color: var(--text-muted); }
 .breadcrumb a:hover { color: var(--accent); }
 .breadcrumb span { margin: 0 0.35rem; }
+
+/* Constrain reading content to optimal line length */
+.breadcrumb,
+.article-header,
+.affiliate-disclosure,
+.article-body,
+.related-articles { max-width: 740px; margin-left: auto; margin-right: auto; }
 
 .article-header { margin-bottom: 1.5rem; }
 .article-category {

@@ -6,7 +6,7 @@ category: technical
 tags: [engine, configuration, singles, twins, inline-four, triple, technical]
 description: "How engine layout determines a motorcycle's torque curve, character, and sound — from single-cylinder thumpers to screaming inline-fours."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/Engineconfiguration.jpg
 layout: article.njk
 permalink: /bikes/motorcycle-engine-configurations-guide/
 ---
