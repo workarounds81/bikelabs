@@ -1,9 +1,132 @@
 ---
 layout: base.njk
-title: "Motorcycle Suspension Geometry Calculator"
-description: "Calculate motorcycle trail length from rake angle, fork offset and wheel size. Instantly see how geometry changes affect handling and stability."
+title: Motorcycle Suspension Geometry Calculator
+description: Calculate front-end trail from rake angle, fork offset, and wheel diameter. Understand how geometry changes affect stability and handling.
 permalink: /tools/suspension-geometry-calculator/
 ---
+
+<div class="tool-page">
+  <div>
+    <h1>Suspension Geometry Calculator</h1>
+    <p class="tool-intro">Adjust rake angle, fork offset, and wheel size to calculate trail length and see how your front-end geometry affects handling character.</p>
+
+    <div class="tool-layout">
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+
+      <div class="tool-main">
+        <div class="tool-card">
+
+          <h2>Presets</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="geometry-preset">Load a Preset</label>
+              <select id="geometry-preset" onchange="loadPreset(this.value)">
+                <option value="">— Select a preset —</option>
+                <option value="sport">Sport (24° / 32mm / 17in)</option>
+                <option value="naked">Naked (25.5° / 28mm / 17in)</option>
+                <option value="adventure">Adventure (27° / 25mm / 21in)</option>
+                <option value="cruiser">Cruiser (32° / 10mm / 21in)</option>
+              </select>
+            </div>
+          </div>
+
+          <h2>Geometry Inputs</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="wheel-diameter">Front Wheel Diameter (inches)</label>
+              <select id="wheel-diameter" onchange="calculate()">
+                <option value="17" selected>17"</option>
+                <option value="18">18"</option>
+                <option value="19">19"</option>
+                <option value="21">21"</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="rake-angle">Rake Angle (degrees)</label>
+              <input type="number" id="rake-angle" value="24.5" min="15" max="45" step="0.1" oninput="calculate()">
+            </div>
+            <div class="form-group">
+              <label for="fork-offset">Fork / Triple Clamp Offset (mm)</label>
+              <input type="number" id="fork-offset" value="32" min="0" max="80" step="1" oninput="calculate()">
+            </div>
+          </div>
+
+          <div id="sg-results">
+            <div class="trail-result-card">
+              <div class="trail-hero">
+                <div class="trail-hero-value" id="trail-value">—</div>
+                <div class="trail-hero-label">Trail (mm)</div>
+              </div>
+              <div class="trail-badge-wrap">
+                <span class="trail-badge" id="trail-badge">Enter values above</span>
+              </div>
+              <p class="trail-desc" id="trail-desc"></p>
+            </div>
+
+            <div class="trail-gauge-wrap">
+              <div class="trail-gauge-label">
+                <span>50mm</span>
+                <span id="trail-gauge-marker-label" class="trail-gauge-current-label"></span>
+                <span>160mm</span>
+              </div>
+              <div class="trail-gauge-track">
+                <div class="trail-gauge-zones">
+                  <div class="trail-gauge-zone zone-red" style="left:0%;width:9.1%"  title="Danger Zone"></div>
+                  <div class="trail-gauge-zone zone-orange" style="left:9.1%;width:22.7%" title="Track"></div>
+                  <div class="trail-gauge-zone zone-green" style="left:31.8%;width:22.7%" title="Sport"></div>
+                  <div class="trail-gauge-zone zone-blue-light" style="left:54.5%;width:18.2%" title="Touring"></div>
+                  <div class="trail-gauge-zone zone-blue" style="left:72.7%;width:27.3%" title="Cruiser"></div>
+                </div>
+                <div class="trail-gauge-needle" id="trail-needle" style="left:0%;display:none"></div>
+              </div>
+              <div class="trail-gauge-ticks">
+                <span style="left:0%">50</span>
+                <span style="left:9.1%">60</span>
+                <span style="left:31.8%">85</span>
+                <span style="left:54.5%">110</span>
+                <span style="left:72.7%">130</span>
+                <span style="left:100%">160</span>
+              </div>
+            </div>
+
+            <div class="sg-detail-row">
+              <div class="sg-detail-item">
+                <span class="label">Rake Angle</span>
+                <span class="value" id="detail-rake">—</span>
+              </div>
+              <div class="sg-detail-item">
+                <span class="label">Fork Offset</span>
+                <span class="value" id="detail-offset">—</span>
+              </div>
+              <div class="sg-detail-item">
+                <span class="label">Wheel Radius</span>
+                <span class="value" id="detail-radius">—</span>
+              </div>
+              <div class="sg-detail-item">
+                <span class="label">Trail</span>
+                <span class="value" id="detail-trail">—</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tool-seo">
+          <h2>What Is Trail?</h2>
+          <p>Trail is the horizontal distance between where the front tyre contacts the ground and the point where the steering axis (extended from the fork) meets the ground. A larger trail creates a stronger self-centering tendency and higher-speed stability; smaller trail makes the steering lighter and more responsive at low speed.</p>
+          <h2>How Rake and Offset Work Together</h2>
+          <p>Rake is the angle of the steering axis from vertical. Increasing rake increases trail and stability. Fork offset (also called triple clamp offset) works in the opposite direction — increasing offset reduces trail. This is why manufacturers can fine-tune handling feel independently from frame geometry: a sportbike might have a steeper rake combined with more offset to achieve the desired trail figure without compromising chassis stiffness.</p>
+          <h2>Trail Formula</h2>
+          <p>Trail = (wheel_radius × tan(rake)) − (fork_offset / cos(rake)). The wheel radius is half the tyre diameter, calculated from the rim size only (the tyre section height is not included in this simplified model, which assumes the geometric contact patch reference).</p>
+          <h2>Changing Geometry on Your Bike</h2>
+          <p>Lowering the front suspension reduces rake and trail, quickening the steering. Raising the rear has the same effect. Aftermarket offset triple clamps (typically 5–10mm more or less offset than stock) are a popular way to fine-tune track-day handling without altering the frame or suspension travel.</p>
+        </div>
+      </div>
+
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+    </div>
+  </div>
+</div>
 
 <style>
 .tool-page{padding:3rem 0}.tool-page h1{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px;margin:0 auto 2rem}
@@ -14,178 +137,138 @@ permalink: /tools/suspension-geometry-calculator/
 .tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}
 .selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
 .btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
+.btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
+.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00;color:#fff}
 .results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}
 .tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-.trail-display{text-align:center;padding:1.5rem 0 1rem}
-.trail-display__val{font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:700;color:#f0f0f0;line-height:1}
-.trail-display__unit{font-size:1.2rem;color:#aaa;margin-top:.25rem}
-.geo-class{border-radius:8px;padding:1rem 1.25rem;text-align:center;margin:.75rem 0 1.25rem;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;transition:background .3s,color .3s}
-.geo-class--red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5}
-.geo-class--orange{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:#fdba74}
-.geo-class--green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}
-.geo-class--blue{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);color:#93c5fd}
-.gauge-wrap{margin:1.25rem 0 .5rem}
-.gauge-track{background:#2a2a2a;border-radius:4px;height:14px;position:relative;overflow:visible}
-.gauge-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#ef4444,#FF6B00,#22c55e,#3b82f6);transition:width .35s ease}
-.gauge-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);transition:left .35s ease;box-shadow:0 0 6px rgba(255,255,255,.4)}
-.gauge-labels{display:flex;justify-content:space-between;font-size:.75rem;color:#555;margin-top:.4rem}
-.presets-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.25rem}
-.preset-btn{background:#2a2a2a;border:1px solid #3a3a3a;color:#aaa;padding:.45rem .9rem;border-radius:4px;font-size:.82rem;cursor:pointer;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em;transition:border-color .15s,color .15s}
-.preset-btn:hover{border-color:#FF6B00;color:#FF6B00}
-.geo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
-@media(max-width:500px){.geo-stats{grid-template-columns:1fr 1fr}}
-.geo-stat{background:#161616;border-radius:6px;padding:.75rem 1rem;text-align:center;border:1px solid #2a2a2a}
-.geo-stat__val{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#f0f0f0;font-weight:700}
-.geo-stat__label{font-size:.75rem;color:#aaa;margin-top:.2rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}
+.bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}.bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
+@keyframes bl-spin{to{transform:rotate(360deg)}}
+.bl-status{display:none;padding:.6rem 1rem;border-radius:6px;font-size:.88rem;margin-top:.75rem}.bl-status--success{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}.bl-status--warn{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:#fdba74}.bl-status--error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5}
+
+.trail-result-card{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.5rem;margin-bottom:1rem;text-align:center}
+.trail-hero{margin-bottom:.75rem}
+.trail-hero-value{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:700;color:#FF6B00;line-height:1}
+.trail-hero-label{font-size:.85rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-top:.2rem}
+.trail-badge-wrap{margin-bottom:.75rem}
+.trail-badge{display:inline-block;padding:.3rem 1rem;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;background:#2a2a2a;color:#aaa}
+.trail-badge.badge-red{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#fca5a5}
+.trail-badge.badge-orange{background:rgba(255,107,0,.15);border:1px solid rgba(255,107,0,.4);color:#fdba74}
+.trail-badge.badge-green{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);color:#86efac}
+.trail-badge.badge-blue{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4);color:#93c5fd}
+.trail-desc{color:#ccc;font-size:.88rem;line-height:1.6;margin:0}
+
+.trail-gauge-wrap{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.trail-gauge-label{display:flex;justify-content:space-between;font-size:.75rem;color:#aaa;margin-bottom:.4rem}
+.trail-gauge-current-label{color:#FF6B00;font-weight:700;font-family:'Barlow Condensed',sans-serif}
+.trail-gauge-track{position:relative;height:20px;border-radius:4px;overflow:hidden;background:#111;margin-bottom:.3rem}
+.trail-gauge-zones{position:absolute;top:0;left:0;width:100%;height:100%;display:flex}
+.trail-gauge-zone{height:100%;opacity:.6}
+.zone-red{background:#ef4444}
+.zone-orange{background:#FF6B00}
+.zone-green{background:#22c55e}
+.zone-blue-light{background:#60a5fa}
+.zone-blue{background:#3b82f6}
+.trail-gauge-needle{position:absolute;top:-2px;bottom:-2px;width:3px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 6px rgba(255,255,255,.6);transition:left .3s ease}
+.trail-gauge-ticks{position:relative;height:16px;font-size:.7rem;color:#555}
+.trail-gauge-ticks span{position:absolute;transform:translateX(-50%)}
+
+.sg-detail-row{display:flex;gap:1rem;flex-wrap:wrap}
+.sg-detail-item{flex:1;min-width:120px;background:#161616;border:1px solid #2a2a2a;border-radius:6px;padding:.75rem 1rem;display:flex;flex-direction:column;gap:.2rem}
+.sg-detail-item .label{font-size:.72rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px}
+.sg-detail-item .value{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;color:#f0f0f0;font-weight:700}
 </style>
 
-<div class="tool-page">
-  <div>
-    <h1>Suspension Geometry Calculator</h1>
-    <p class="tool-intro" style="text-align:center">Calculate motorcycle trail from rake, fork offset, and wheel size. Understand how geometry affects handling character.</p>
-    <div class="tool-layout">
-      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
-      <div class="tool-main">
-        <div class="tool-card">
-
-          <h2>Quick Presets</h2>
-          <div class="presets-row">
-            <button class="preset-btn" onclick="sgApplyPreset(24, 32, 17)">Sport (24° / 32mm / 17")</button>
-            <button class="preset-btn" onclick="sgApplyPreset(25.5, 28, 17)">Naked (25.5° / 28mm / 17")</button>
-            <button class="preset-btn" onclick="sgApplyPreset(27, 25, 21)">Adventure (27° / 25mm / 21")</button>
-            <button class="preset-btn" onclick="sgApplyPreset(32, 10, 21)">Cruiser (32° / 10mm / 21")</button>
-          </div>
-
-          <h2>Geometry Inputs</h2>
-          <div class="selector-row">
-            <div class="form-group">
-              <label for="sg-wheel">Front Wheel Diameter (in)</label>
-              <select id="sg-wheel">
-                <option value="17" selected>17"</option>
-                <option value="18">18"</option>
-                <option value="19">19"</option>
-                <option value="21">21"</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="sg-rake">Rake Angle (degrees)</label>
-              <input type="number" id="sg-rake" value="24.5" min="15" max="45" step="0.1">
-            </div>
-            <div class="form-group">
-              <label for="sg-offset">Fork Offset (mm)</label>
-              <input type="number" id="sg-offset" value="32" min="0" max="80" step="1">
-            </div>
-          </div>
-
-          <div class="results" id="sg-results">
-            <div class="trail-display">
-              <div class="trail-display__val" id="sg-trail-val">—</div>
-              <div class="trail-display__unit">mm trail</div>
-            </div>
-
-            <div class="geo-class" id="sg-class-badge">Enter values above</div>
-
-            <div class="gauge-wrap">
-              <div class="gauge-track">
-                <div class="gauge-fill" id="sg-gauge-fill" style="width:0%"></div>
-                <div class="gauge-marker" id="sg-gauge-marker" style="left:0%"></div>
-              </div>
-              <div class="gauge-labels"><span>50mm</span><span>80mm</span><span>110mm</span><span>130mm</span><span>160mm+</span></div>
-            </div>
-
-            <div class="geo-stats">
-              <div class="geo-stat">
-                <div class="geo-stat__val" id="sg-stat-rake">—</div>
-                <div class="geo-stat__label">Rake (°)</div>
-              </div>
-              <div class="geo-stat">
-                <div class="geo-stat__val" id="sg-stat-offset">—</div>
-                <div class="geo-stat__label">Offset (mm)</div>
-              </div>
-              <div class="geo-stat">
-                <div class="geo-stat__val" id="sg-stat-wheel">—</div>
-                <div class="geo-stat__label">Wheel (in)</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="tool-seo">
-          <h2>What Is Trail in Motorcycle Geometry?</h2>
-          <p>Trail is the horizontal distance between where the front wheel contacts the ground and where the steering axis (extended through the fork tubes) meets the ground. It is the single most important geometry dimension for predicting a motorcycle's self-centring behaviour and handling feel.</p>
-          <h2>How Rake and Fork Offset Interact</h2>
-          <p>Rake (also called caster angle) is the angle of the steering axis from vertical. A steeper rake increases trail, making the bike feel more stable but slower to turn. Fork offset counteracts this: a larger offset reduces trail, making the steering quicker and lighter. Sportbikes use a combination of steep rake and large offset to achieve quick handling without instability; cruisers use shallow rake and minimal offset for high-speed stability and classic proportions.</p>
-          <h2>Trail Targets by Riding Style</h2>
-          <p>60–85mm trail is typical of track and race-biased machines — extremely responsive but requiring active rider input. 85–110mm covers the bulk of sport and naked bikes where handling and stability are balanced. 110–130mm suits touring machines that prioritise high-speed stability over steering agility. Above 130mm is the domain of cruisers, choppers, and long-haul bikes where straight-line feel is paramount.</p>
-        </div>
-      </div>
-      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
-    </div>
-  </div>
-</div>
-
 <script>
-(function () {
-  var GAUGE_MIN = 50;
-  var GAUGE_MAX = 160;
+var PRESETS = {
+  sport:     { rake: 24.0, offset: 32, wheel: '17' },
+  naked:     { rake: 25.5, offset: 28, wheel: '17' },
+  adventure: { rake: 27.0, offset: 25, wheel: '21' },
+  cruiser:   { rake: 32.0, offset: 10, wheel: '21' }
+};
 
-  function sgCalculate() {
-    var wheelIn = parseFloat(document.getElementById('sg-wheel').value);
-    var rake = parseFloat(document.getElementById('sg-rake').value);
-    var forkOffset = parseFloat(document.getElementById('sg-offset').value);
+function setSelectByValue(id, value) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  for (var i = 0; i < el.options.length; i++) {
+    if (el.options[i].value === String(value)) { el.selectedIndex = i; return; }
+  }
+}
 
-    if (isNaN(wheelIn) || isNaN(rake) || isNaN(forkOffset)) return;
+function loadPreset(key) {
+  if (!key || !PRESETS[key]) return;
+  var p = PRESETS[key];
+  document.getElementById('rake-angle').value = p.rake;
+  document.getElementById('fork-offset').value = p.offset;
+  setSelectByValue('wheel-diameter', p.wheel);
+  // Reset preset select so the same preset can be reloaded
+  setTimeout(function () {
+    document.getElementById('geometry-preset').value = '';
+  }, 100);
+  calculate();
+}
 
-    var rakeRad = rake * Math.PI / 180;
-    var wheelRadiusMM = (wheelIn * 25.4) / 2;
-    var trail = (wheelRadiusMM * Math.sin(rakeRad)) / Math.cos(rakeRad) - forkOffset / Math.cos(rakeRad);
+function calculate() {
+  var wheelIn = parseFloat(document.getElementById('wheel-diameter').value);
+  var rake = parseFloat(document.getElementById('rake-angle').value);
+  var offset = parseFloat(document.getElementById('fork-offset').value);
 
-    document.getElementById('sg-trail-val').textContent = trail.toFixed(1);
-    document.getElementById('sg-stat-rake').textContent = rake.toFixed(1);
-    document.getElementById('sg-stat-offset').textContent = forkOffset.toFixed(0);
-    document.getElementById('sg-stat-wheel').textContent = wheelIn + '"';
+  if (isNaN(wheelIn) || isNaN(rake) || isNaN(offset)) return;
 
-    // Classification
-    var badge = document.getElementById('sg-class-badge');
-    var cls, label;
-    if (trail < 60) {
-      cls = 'geo-class--red'; label = '⚠️ Danger Zone — Speed Wobble Risk';
-    } else if (trail <= 85) {
-      cls = 'geo-class--orange'; label = 'Track / Race Geometry';
-    } else if (trail <= 110) {
-      cls = 'geo-class--green'; label = 'Sport / All-Round Geometry';
-    } else if (trail <= 130) {
-      cls = 'geo-class--blue'; label = 'Touring / Comfort Geometry';
-    } else {
-      cls = 'geo-class--blue'; label = 'Cruiser / Long-Haul Geometry';
-    }
-    badge.className = 'geo-class ' + cls;
-    badge.textContent = label;
+  var rakeRad = rake * Math.PI / 180;
+  var wheelRadiusMM = (wheelIn * 25.4) / 2;
 
-    // Gauge
-    var pct = Math.min(Math.max((trail - GAUGE_MIN) / (GAUGE_MAX - GAUGE_MIN) * 100, 0), 100);
-    document.getElementById('sg-gauge-fill').style.width = pct + '%';
-    document.getElementById('sg-gauge-marker').style.left = pct + '%';
+  // trail = wheelRadius * tan(rake) - forkOffset / cos(rake)
+  var trail = wheelRadiusMM * Math.tan(rakeRad) - offset / Math.cos(rakeRad);
+  var trailRounded = Math.round(trail * 10) / 10;
+
+  // Update hero value
+  document.getElementById('trail-value').textContent = trailRounded.toFixed(1);
+
+  // Classification
+  var label, desc, badgeClass;
+  if (trail < 60) {
+    label = 'Danger Zone — Speed Wobble Risk';
+    desc = 'Trail is critically short. This configuration is unstable at speed.';
+    badgeClass = 'badge-red';
+  } else if (trail <= 85) {
+    label = 'Track / Race Geometry';
+    desc = 'Maximum cornering agility. Suited to closed circuit use. Twitchy at highway speeds.';
+    badgeClass = 'badge-orange';
+  } else if (trail <= 110) {
+    label = 'Sport / All-Round Geometry';
+    desc = 'Excellent balance of agility and stability. Ideal for most riders.';
+    badgeClass = 'badge-green';
+  } else if (trail <= 130) {
+    label = 'Touring / Comfort Geometry';
+    desc = 'High-speed stability prioritised. Reduced low-speed agility.';
+    badgeClass = 'badge-blue';
+  } else {
+    label = 'Cruiser / Long-Haul Geometry';
+    desc = 'Very stable in a straight line. Heavy steering effort at low speeds.';
+    badgeClass = 'badge-blue';
   }
 
-  // Live listeners
-  ['sg-wheel', 'sg-rake', 'sg-offset'].forEach(function (id) {
-    document.getElementById(id).addEventListener('input', sgCalculate);
-  });
+  var badge = document.getElementById('trail-badge');
+  badge.textContent = label;
+  badge.className = 'trail-badge ' + badgeClass;
+  document.getElementById('trail-desc').textContent = desc;
 
-  // Presets
-  window.sgApplyPreset = function (rake, offset, wheel) {
-    document.getElementById('sg-rake').value = rake;
-    document.getElementById('sg-offset').value = offset;
-    var wSel = document.getElementById('sg-wheel');
-    for (var i = 0; i < wSel.options.length; i++) {
-      if (parseFloat(wSel.options[i].value) === wheel) { wSel.selectedIndex = i; break; }
-    }
-    sgCalculate();
-  };
+  // Gauge: scale 50–160mm → 0–100%
+  var gaugeMin = 50, gaugeMax = 160;
+  var pct = Math.max(0, Math.min(100, ((trail - gaugeMin) / (gaugeMax - gaugeMin)) * 100));
+  var needle = document.getElementById('trail-needle');
+  needle.style.display = '';
+  needle.style.left = pct.toFixed(1) + '%';
+  document.getElementById('trail-gauge-marker-label').textContent = trailRounded.toFixed(1) + 'mm';
 
-  // Initial calculation on page load
-  sgCalculate();
-}());
+  // Detail row
+  document.getElementById('detail-rake').textContent = rake.toFixed(1) + '°';
+  document.getElementById('detail-offset').textContent = offset.toFixed(0) + ' mm';
+  document.getElementById('detail-radius').textContent = wheelRadiusMM.toFixed(1) + ' mm';
+  document.getElementById('detail-trail').textContent = trailRounded.toFixed(1) + ' mm';
+}
+
+// Calculate on load with defaults
+calculate();
 </script>
