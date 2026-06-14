@@ -41,7 +41,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
     <a href="{{ '/reviews/' | url }}" class="section-link">All Reviews &rarr;</a>
   </div>
   <div class="card-grid">
-    {% for article in collections.reviews | slice(0, 3) %}
+    {% for article in collections.reviews | limit(3) %}
     <article class="article-card">
       <a href="{{ article.url | url }}">
         {% if article.data.image %}
@@ -74,7 +74,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
     <a href="{{ '/bikes/' | url }}" class="section-link">All Bikes &rarr;</a>
   </div>
   <div class="card-grid-2">
-    {% for article in collections.bikes | slice(0, 2) %}
+    {% for article in collections.bikes | limit(2) %}
     <article class="article-card">
       <a href="{{ article.url | url }}">
         {% if article.data.image %}
@@ -105,7 +105,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
     <a href="{{ '/culture/' | url }}" class="section-link">All Culture &rarr;</a>
   </div>
   <div class="card-grid-2">
-    {% for article in collections.culture | slice(0, 2) %}
+    {% for article in collections.culture | limit(2) %}
     <article class="article-card">
       <a href="{{ article.url | url }}">
         {% if article.data.image %}

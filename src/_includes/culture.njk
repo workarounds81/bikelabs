@@ -53,7 +53,7 @@ ogType: article
   <aside class="related-articles">
     <h2>More Culture</h2>
     <div class="card-grid-2">
-      {% for article in related | slice(0, 2) %}
+      {% for article in related | limit(2) %}
         {% if article.url !== page.url %}
         <article class="article-card">
           <a href="{{ article.url | url }}">

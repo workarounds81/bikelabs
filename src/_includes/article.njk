@@ -78,7 +78,7 @@ ogType: article
     <aside class="related-articles">
       <h2>More {{ section | capitalize }}</h2>
       <div class="card-grid">
-        {% for article in related | slice(0, 3) %}
+        {% for article in related | limit(3) %}
           {% if article.url !== page.url %}
           <article class="article-card">
             <a href="{{ article.url | url }}">

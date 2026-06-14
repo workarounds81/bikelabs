@@ -102,6 +102,8 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("limit", (arr, n) => arr ? arr.slice(0, n) : []);
+
   eleventyConfig.addFilter("dateISO", (date) => {
     return new Date(date).toISOString();
   });
