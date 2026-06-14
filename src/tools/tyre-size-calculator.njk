@@ -11,7 +11,9 @@ permalink: /tools/tyre-size-calculator/
     <h1>Motorcycle Tyre Size Calculator</h1>
     <p class="tool-intro">Look up your bike to auto-fill OEM tyre sizes, or enter any size manually. Compare two sizes and see exactly how a swap affects your speedo reading.</p>
 
-    <div class="tool-card">
+    <div class="tool-layout">
+      <div class="tool-main">
+        <div class="tool-card">
       <!-- LIVE API LOOKUP -->
       <h2>Find Your Bike</h2>
       <div id="bike-finder-tyre" class="api-lookup-block"></div>
@@ -71,11 +73,24 @@ permalink: /tools/tyre-size-calculator/
       <h2>Does Tyre Size Affect Speedo Reading?</h2>
       <p>Yes. A larger overall diameter means the wheel covers more ground per revolution, so your speedo reads lower than your actual speed. A smaller diameter makes the speedo over-read. This tool shows the exact percentage difference so you know what to expect after a tyre swap.</p>
     </div>
+      </div>{# end tool-main #}
+      <aside class="tool-sidebar">
+        <div class="ad-slot">
+          <!-- AdSense 300×600 -->
+        </div>
+      </aside>
+    </div>{# end tool-layout #}
   </div>
 </div>
 
 <style>
-.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin-bottom:.75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
+.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}
+.tool-layout{display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:start}
+.tool-main{}
+.tool-sidebar{position:sticky;top:1rem}
+.ad-slot{background:#1a1a1a;border:1px dashed #2a2a2a;border-radius:8px;min-height:600px;display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;text-align:center}
+@media(max-width:900px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{display:none}}
+.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin-bottom:.75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
 .btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
 .btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
 .results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.results-table{width:100%;border-collapse:collapse}.results-table tr{border-bottom:1px solid #2a2a2a}.results-table td{padding:.5rem 0;color:#f0f0f0}.results-table td:last-child{text-align:right;color:#FF6B00;font-weight:600}.result-highlight{background:#2a2a2a;border-radius:4px;padding:1rem 1.2rem;margin-top:1rem;color:#f0f0f0}
