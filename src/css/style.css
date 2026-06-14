@@ -723,6 +723,9 @@ body { overflow-x: hidden; }
 .tool-card-home p { color: #aaa; font-size: 0.9rem; line-height: 1.6; margin: 0; flex: 1; }
 .btn-tool { display: inline-block; background: #FF6B00; color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.9rem; align-self: flex-start; }
 .btn-tool:hover { background: #e55a00; color: #fff; }
+.tool-card-link { text-decoration: none; }
+.tool-card-link h3 { color: #FF6B00; }
+.tool-card-link:hover h3 { color: #fff; }
 
 /* Compact tool grid (homepage) */
 .card-grid-tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
