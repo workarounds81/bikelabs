@@ -26,9 +26,13 @@ permalink: /tools/top-speed-calculator/
               <label for="gear-count">Number of Gears</label>
               <select id="gear-count">
                 <option value="cvt">Automatic / CVT</option>
+                <option value="1">1-speed</option>
+                <option value="2">2-speed</option>
+                <option value="3">3-speed</option>
                 <option value="4">4-speed</option>
                 <option value="5">5-speed</option>
                 <option value="6" selected>6-speed</option>
+                <option value="7">7-speed</option>
               </select>
             </div>
             <div class="form-group" id="primary-ratio-group">
@@ -40,6 +44,8 @@ permalink: /tools/top-speed-calculator/
           <div id="cvt-notice" style="display:none;background:rgba(255,107,0,.08);border:1px solid rgba(255,107,0,.3);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1rem;color:#fdba74;font-size:.9rem;">
             ⚠️ This bike has an automatic / CVT transmission. Top speed via gear ratios cannot be calculated — CVT ratios vary continuously and are not fixed values. Use the manufacturer's stated top speed instead.
           </div>
+
+          <p style="font-size:.82rem;color:#666;margin:.25rem 0 .75rem;">⚠️ Gear ratios are not available from manufacturer specs — enter yours from a workshop manual or service data.</p>
 
           <div id="gear-ratio-section">
             <div class="selector-row gear-row" data-gear="1">
@@ -238,11 +244,15 @@ permalink: /tools/top-speed-calculator/
       return;
     }
 
-    var txMatch = tx.match(/(\d)-speed/i);
+    // Match "6-speed", "6 speed", "6 Speed Manual", "6-Speed", "6spd" etc.
+    var txMatch = tx.match(/(\d)\s*[-\s]?\s*speed/i) || tx.match(/(\d)\s*spd/i) || tx.match(/^(\d)\s*$/);
     if (txMatch) {
       setSelectByValue('gear-count', txMatch[1]);
       updateGearRows();
-      filled.push('gear count');
+      filled.push(txMatch[1] + '-speed transmission');
+    } else if (tx && !/cvt|automatic|auto/i.test(tx)) {
+      // Transmission data exists but couldn't parse gear count — note it
+      filled.push('transmission (' + tx + ' — set gear count manually)');
     }
 
     if (spec.rear_tire) {
