@@ -226,7 +226,15 @@ permalink: /tools/top-speed-calculator/
     if (isCvt) {
       setSelectByValue('gear-count', 'cvt');
       updateGearRows();
-      showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — Automatic/CVT transmission detected. Gear ratio calculation is not applicable.', 'warn');
+      var tsVal = spec.top_speed || null;
+      if (tsVal) {
+        document.getElementById('cvt-notice').innerHTML =
+          'ℹ️ <strong>Automatic / CVT transmission</strong> — gear ratio calculation does not apply.'
+          + '<br><span style="color:#86efac;font-size:1.05em;font-weight:700;">Manufacturer top speed: ' + tsVal + '</span>';
+        showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — CVT detected. Manufacturer top speed: ' + tsVal, 'success');
+      } else {
+        showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — Automatic/CVT detected. No top speed data available in the spec database for this model.', 'warn');
+      }
       return;
     }
 
