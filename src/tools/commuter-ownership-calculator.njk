@@ -122,7 +122,8 @@ permalink: /tools/commuter-ownership-calculator/
     var filled = [];
 
     if (spec.displacement) {
-      var ccMatch = String(spec.displacement).match(/([\d,]+)\s*cc/i);
+      var dispStr = String(spec.displacement);
+      var ccMatch = dispStr.match(/([\d,]+)\s*cc/i) || dispStr.match(/^([\d,]+)$/);
       if (ccMatch) {
         var cc = parseInt(ccMatch[1].replace(/,/g, ''));
         document.getElementById('engine-cc').value = cc;
