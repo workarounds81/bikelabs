@@ -21,7 +21,7 @@ ogType: article
 <div class="culture-layout">
 
   {% if image %}
-  <img class="article-hero" src="{{ image }}" alt="{{ title }}" fetchpriority="high" decoding="async" style="border-radius:4px;margin-bottom:2rem;">
+  <img class="article-hero" src="{{ image | url }}" alt="{{ title }}" fetchpriority="high" decoding="async" style="border-radius:4px;margin-bottom:2rem;">
   {% endif %}
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
