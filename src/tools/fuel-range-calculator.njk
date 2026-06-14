@@ -4,24 +4,53 @@ title: "Motorcycle Fuel Range Calculator"
 description: "Calculate exactly how far you can ride on a full tank. Enter your bike's tank size and fuel consumption to plan your ride."
 permalink: /tools/fuel-range-calculator/
 ---
+<script src="{{ '/js/bike-lookup.js' | url }}"></script>
 <script>window.BIKES = {{ bikes | dump | safe }};</script>
+
 <div class="tool-page">
   <div class="container">
     <h1>Motorcycle Fuel Range Calculator</h1>
     <p class="tool-intro">Find out exactly how far you can ride before hitting reserve — and how far reserve will get you. Select your bike to auto-fill tank size and fuel consumption.</p>
+
     <div class="tool-card">
-      <h2>Select Your Bike (Optional)</h2>
+      <!-- LOCAL DB SELECTOR -->
+      <h2>Select Your Bike (Local Database)</h2>
       <div class="selector-row">
         <div class="form-group"><label>Make</label><select id="make-select"><option value="">-- Select Make --</option></select></div>
         <div class="form-group"><label>Model</label><select id="model-select" disabled><option value="">-- Select Model --</option></select></div>
       </div>
-      <h2>Tank & Consumption</h2>
+
+      <!-- LIVE API LOOKUP -->
+      <h2>Or Search Live Factory Data</h2>
+      <div id="api-lookup-fuel" class="api-lookup-block">
+        <div class="selector-row">
+          <div class="form-group"><label>Make</label><input type="text" id="api-make-fuel" placeholder="e.g. Yamaha"></div>
+          <div class="form-group"><label>Model</label><input type="text" id="api-model-fuel" placeholder="e.g. MT-09"></div>
+          <div class="form-group" style="justify-content:flex-end;">
+            <label>&nbsp;</label>
+            <button class="btn-calculate btn-secondary" onclick="lookupFuel()">Search API</button>
+          </div>
+        </div>
+        <div class="selector-row" style="margin-top:.75rem;">
+          <div class="form-group">
+            <label>Unit preference</label>
+            <select id="api-fuel-unit">
+              <option value="litres" selected>Litres</option>
+              <option value="gallons">US Gallons</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <h2>Tank &amp; Consumption</h2>
       <div class="selector-row">
         <div class="form-group"><label>Tank Size (litres)</label><input type="number" id="tank" value="15" min="3" max="50" step="0.1"></div>
         <div class="form-group"><label>Reserve (litres)</label><input type="number" id="reserve" value="2.5" min="0.5" max="10" step="0.1"></div>
         <div class="form-group"><label>Consumption (L/100km)</label><input type="number" id="cons" value="5.5" min="2" max="20" step="0.1"></div>
       </div>
+
       <button class="btn-calculate" onclick="calcFuel()">Calculate Range</button>
+
       <div id="results" class="results" style="display:none">
         <h2>Range Results</h2>
         <div class="range-cards">
@@ -32,6 +61,7 @@ permalink: /tools/fuel-range-calculator/
         <p class="results-note">Manufacturer consumption figures measured under ideal conditions. Real-world range varies with speed, load and riding style.</p>
       </div>
     </div>
+
     <div class="tool-seo">
       <h2>How to Use the Motorcycle Fuel Range Calculator</h2>
       <p>Select your bike from the dropdown to auto-fill tank size and fuel consumption, or enter your own values. The motorcycle fuel range calculator shows your total range on a full tank, how far you can ride before hitting reserve, and how far the reserve fuel will carry you. Always build in a safety margin — plan your fuel stops at 80% of the calculated range.</p>
@@ -40,10 +70,23 @@ permalink: /tools/fuel-range-calculator/
     </div>
   </div>
 </div>
+
 <style>
-.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.range-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.range-card{border-radius:6px;padding:1.5rem 1rem;text-align:center}.range-card.green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3)}.range-card.orange{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3)}.range-card.red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3)}.range-label{font-size:.8rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}.range-value{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:#f0f0f0}.range-sub{font-size:.9rem;color:#aaa;margin-top:.25rem}.results-note{color:#666;font-size:.85rem;margin-top:1rem;font-style:italic}.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}@media(max-width:600px){.range-cards{grid-template-columns:1fr}}
+.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}.btn-secondary{background:#2a2a2a;border:1px solid #3a3a3a;width:auto;margin-top:0;padding:.6rem 1.2rem;font-size:.9rem}.btn-secondary:hover{background:#3a3a3a}.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.range-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.range-card{border-radius:6px;padding:1.5rem 1rem;text-align:center}.range-card.green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3)}.range-card.orange{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3)}.range-card.red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3)}.range-label{font-size:.8rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}.range-value{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:#f0f0f0}.range-sub{font-size:.9rem;color:#aaa;margin-top:.25rem}.results-note{color:#666;font-size:.85rem;margin-top:1rem;font-style:italic}.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
+/* Shared API lookup */
+.api-lookup-block{background:#161616;border:1px dashed #3a3a3a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
+.bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
+@keyframes bl-spin{to{transform:rotate(360deg)}}
+.bl-status{display:none;padding:.6rem 1rem;border-radius:6px;font-size:.88rem;margin-top:.75rem}
+.bl-status--success{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}
+.bl-status--warn{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:#fdba74}
+.bl-status--error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5}
+@media(max-width:600px){.range-cards{grid-template-columns:1fr}}
 </style>
+
 <script>
+/* ── Local DB selector ── */
 (function(){
   var bikes=window.BIKES||[];
   var makes=[...new Set(bikes.map(b=>b.make))].sort();
@@ -52,7 +95,10 @@ permalink: /tools/fuel-range-calculator/
   ms.addEventListener('change',function(){
     mo.innerHTML='<option value="">-- Select Model --</option>';mo.disabled=true;
     if(!this.value)return;
-    bikes.filter(b=>b.make===this.value).forEach(function(b){var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';o.dataset.t=b.tank_litres;o.dataset.f=b.fuel_l100km;mo.appendChild(o);});
+    bikes.filter(b=>b.make===this.value).forEach(function(b){
+      var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';
+      o.dataset.t=b.tank_litres;o.dataset.f=b.fuel_l100km;mo.appendChild(o);
+    });
     mo.disabled=false;
   });
   mo.addEventListener('change',function(){
@@ -61,6 +107,95 @@ permalink: /tools/fuel-range-calculator/
     if(s.dataset.f)document.getElementById('cons').value=s.dataset.f;
   });
 })();
+
+/* ── Live API lookup ── */
+async function lookupFuel() {
+  var make  = document.getElementById('api-make-fuel').value.trim();
+  var model = document.getElementById('api-model-fuel').value.trim();
+  var unit  = document.getElementById('api-fuel-unit').value;
+  var container = document.getElementById('api-lookup-fuel');
+
+  if (!make || !model) {
+    showLookupStatus(container, 'Please enter both a make and model.', 'warn');
+    return;
+  }
+
+  hideLookupStatus(container);
+  showLookupLoading(container);
+
+  try {
+    var spec = await fetchBikeSpecs(make, model);
+    hideLookupLoading(container);
+
+    if (!spec) {
+      showLookupStatus(container, 'No results found. Check the make/model spelling and try again.', 'warn');
+      return;
+    }
+
+    if (!spec.fuel_capacity) {
+      showLookupStatus(container,
+        'Technical specifications incomplete — fuel capacity data missing. Please input custom metrics manually.',
+        'warn');
+      return;
+    }
+
+    /*
+     * API returns strings like:
+     *   "15.14 litres (4.00 US gallons)"
+     *   "4.5 gallons (17.0 litres)"
+     * Strategy: extract all numeric values and pick by unit preference.
+     */
+    var raw = spec.fuel_capacity;
+    /* Find all number+unit pairs */
+    var litreMatch   = raw.match(/([\d.]+)\s*litr/i);
+    var gallonMatch  = raw.match(/([\d.]+)\s*(?:US\s+)?gall/i);
+
+    var tankVal = null;
+    var usedUnit = '';
+
+    if (unit === 'litres' && litreMatch) {
+      tankVal  = parseFloat(litreMatch[1]);
+      usedUnit = 'L';
+    } else if (unit === 'gallons' && gallonMatch) {
+      tankVal  = parseFloat(gallonMatch[1]);
+      usedUnit = 'US gal';
+    } else if (litreMatch) {
+      /* Fallback: use litres regardless of preference */
+      tankVal  = parseFloat(litreMatch[1]);
+      usedUnit = 'L';
+    } else if (gallonMatch) {
+      tankVal  = parseFloat(gallonMatch[1]);
+      usedUnit = 'US gal';
+    }
+
+    if (!tankVal) {
+      showLookupStatus(container,
+        'Could not parse fuel capacity from "' + raw + '". Please input custom metrics manually.',
+        'warn');
+      return;
+    }
+
+    /* Always store in litres in the tank field; convert if gallons */
+    var tankLitres = usedUnit === 'US gal' ? tankVal * 3.78541 : tankVal;
+    document.getElementById('tank').value = tankLitres.toFixed(2);
+
+    showLookupStatus(container,
+      (spec.make||make) + ' ' + (spec.model||model) + ' ' + (spec.year||'') +
+      ' — Tank size ' + tankVal.toFixed(2) + ' ' + usedUnit +
+      ' (' + tankLitres.toFixed(2) + ' L) applied. Enter your consumption to calculate range.',
+      'success');
+
+  } catch(err) {
+    hideLookupLoading(container);
+    showLookupStatus(container,
+      API_KEY === 'YOUR_API_KEY_HERE'
+        ? 'API key not set. Add your API Ninjas key to /js/bike-lookup.js to enable live lookup.'
+        : 'Lookup failed: ' + err.message + '. You can still enter values manually.',
+      'error');
+  }
+}
+
+/* ── Calculation ── */
 function calcFuel(){
   var tank=+document.getElementById('tank').value;
   var res=+document.getElementById('reserve').value;

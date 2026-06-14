@@ -62,6 +62,7 @@ module.exports = function (eleventyConfig) {
 
   // Pass through static assets
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
 
