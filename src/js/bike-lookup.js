@@ -36,7 +36,11 @@ function fuzzyMake(input) {
 async function _apiFetch(params) {
   const url = 'https://api.api-ninjas.com/v1/motorcycles?' + new URLSearchParams(params);
   const res = await fetch(url, { headers: { 'X-Api-Key': API_KEY } });
-  if (!res.ok) throw new Error(`API ${res.status}`);
+  if (!res.ok) {
+    let detail = '';
+    try { const body = await res.text(); detail = body ? ': ' + body.slice(0, 120) : ''; } catch(_) {}
+    throw new Error(`API ${res.status}${detail}`);
+  }
   return res.json();
 }
 
