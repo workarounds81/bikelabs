@@ -14,21 +14,14 @@ permalink: /tools/power-weight-calculator/
     <div class="tool-card">
       <!-- LIVE API LOOKUP -->
       <h2>Find Your Bike</h2>
-      <div id="api-lookup-pw" class="api-lookup-block">
-        <div class="selector-row">
-          <div class="form-group"><label>Make</label><input type="text" id="api-make-pw" placeholder="e.g. Ducati"></div>
-          <div class="form-group"><label>Model</label><input type="text" id="api-model-pw" placeholder="e.g. Panigale V4"></div>
-          <div class="form-group">
-            <label>Weight unit</label>
-            <select id="api-weight-unit">
-              <option value="kg" selected>Kilograms (kg)</option>
-              <option value="lbs">Pounds (lbs)</option>
-            </select>
-          </div>
-          <div class="form-group" style="justify-content:flex-end;">
-            <label>&nbsp;</label>
-            <button class="btn-lookup" onclick="lookupPW()">Load Specs</button>
-          </div>
+      <div id="bike-finder-pw" class="api-lookup-block"></div>
+      <div class="selector-row" style="margin-bottom:1rem;">
+        <div class="form-group">
+          <label>Weight unit</label>
+          <select id="api-weight-unit">
+            <option value="kg" selected>Kilograms (kg)</option>
+            <option value="lbs">Pounds (lbs)</option>
+          </select>
         </div>
       </div>
 
@@ -77,7 +70,7 @@ permalink: /tools/power-weight-calculator/
 .btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
 .results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.pw-hero{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem}.pw-big{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:700;color:#f0f0f0;line-height:1}.pw-big.orange{color:#FF6B00}.pw-label{font-size:.85rem;color:#aaa;margin-top:.25rem}.pw-badge{background:#FF6B00;color:#fff;padding:.5rem 1.2rem;border-radius:20px;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700}.bench-table{width:100%;border-collapse:collapse;margin-bottom:1rem}.bench-table th{text-align:left;padding:.5rem;color:#aaa;font-size:.85rem;border-bottom:1px solid #3a3a3a}.bench-table td{padding:.5rem;color:#f0f0f0;border-bottom:1px solid #2a2a2a;font-size:.9rem}.bench-table tr.active td{background:rgba(255,107,0,.15);color:#FF6B00;font-weight:600}
 .tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00;color:#fff}
 .bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
 .bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
 @keyframes bl-spin{to{transform:rotate(360deg)}}
@@ -94,50 +87,38 @@ permalink: /tools/power-weight-calculator/
   kwI.addEventListener('input',function(){hpI.value=(+this.value/0.7457).toFixed(0);});
 })();
 
-async function lookupPW() {
-  var make=document.getElementById('api-make-pw').value.trim();
-  var model=document.getElementById('api-model-pw').value.trim();
+BikeFinder.init('bike-finder-pw', function(spec) {
+  var container=document.getElementById('bike-finder-pw');
   var weightUnit=document.getElementById('api-weight-unit').value;
-  var container=document.getElementById('api-lookup-pw');
-  if(!make||!model){showLookupStatus(container,'Please enter both a make and model.','warn');return;}
-  hideLookupStatus(container);showLookupLoading(container);
-  try {
-    var spec=await fetchBikeSpecs(make,model);
-    hideLookupLoading(container);
-    if(!spec){showLookupStatus(container,'No results found. Check the make/model spelling.','warn');return;}
-    var notes=[],hpVal=null,kwVal=null,kgVal=null;
-    if(spec.power){
-      var hpM=spec.power.match(/([\d.]+)\s*HP/i);
-      var kwM=spec.power.match(/([\d.]+)\s*kW/i);
-      if(hpM)hpVal=parseFloat(hpM[1]);
-      if(kwM)kwVal=parseFloat(kwM[1]);
-      if(hpVal&&!kwVal)kwVal=hpVal*0.7457;
-      if(kwVal&&!hpVal)hpVal=kwVal/0.7457;
-      if(hpVal){document.getElementById('hp').value=hpVal.toFixed(1);document.getElementById('kw').value=kwVal.toFixed(1);notes.push('Power: '+hpVal.toFixed(1)+' HP applied.');}
-      else notes.push('Technical specifications incomplete — power data missing. Please input manually.');
-    } else {
-      notes.push('Technical specifications incomplete — power data missing. Please input manually.');
-    }
-    var weightStr=spec.total_weight||spec.dry_weight||spec.wet_weight;
-    if(weightStr){
-      var kgM=weightStr.match(/([\d.]+)\s*kg/i);
-      var lbM=weightStr.match(/([\d.]+)\s*(?:lbs?|pounds?)/i);
-      if(weightUnit==='kg'&&kgM)kgVal=parseFloat(kgM[1]);
-      else if(weightUnit==='lbs'&&lbM)kgVal=parseFloat(lbM[1])*0.453592;
-      else if(kgM)kgVal=parseFloat(kgM[1]);
-      else if(lbM)kgVal=parseFloat(lbM[1])*0.453592;
-      if(kgVal){document.getElementById('kg').value=kgVal.toFixed(1);notes.push('Weight: '+kgVal.toFixed(1)+' kg applied.');}
-      else notes.push('Technical specifications incomplete — weight data missing. Please input manually.');
-    } else {
-      notes.push('Technical specifications incomplete — weight data missing. Please input manually.');
-    }
-    if(hpVal&&kgVal){calcPW();notes.push('Ratio calculated automatically.');}
-    showLookupStatus(container,(spec.make||make)+' '+(spec.model||model)+' '+(spec.year||'')+' — '+notes.join(' '),hpVal&&kgVal?'success':'warn');
-  } catch(err) {
-    hideLookupLoading(container);
-    showLookupStatus(container,'Lookup failed: '+err.message+'. Enter values manually.','error');
+  var notes=[],hpVal=null,kwVal=null,kgVal=null;
+  if(spec.power){
+    var hpM=spec.power.match(/([\d.]+)\s*HP/i);
+    var kwM=spec.power.match(/([\d.]+)\s*kW/i);
+    if(hpM)hpVal=parseFloat(hpM[1]);
+    if(kwM)kwVal=parseFloat(kwM[1]);
+    if(hpVal&&!kwVal)kwVal=hpVal*0.7457;
+    if(kwVal&&!hpVal)hpVal=kwVal/0.7457;
+    if(hpVal){document.getElementById('hp').value=hpVal.toFixed(1);document.getElementById('kw').value=kwVal.toFixed(1);notes.push('Power: '+hpVal.toFixed(1)+' HP applied.');}
+    else notes.push('Power data missing — please input manually.');
+  } else {
+    notes.push('Power data missing — please input manually.');
   }
-}
+  var weightStr=spec.total_weight||spec.dry_weight||spec.wet_weight;
+  if(weightStr){
+    var kgM=weightStr.match(/([\d.]+)\s*kg/i);
+    var lbM=weightStr.match(/([\d.]+)\s*(?:lbs?|pounds?)/i);
+    if(weightUnit==='kg'&&kgM)kgVal=parseFloat(kgM[1]);
+    else if(weightUnit==='lbs'&&lbM)kgVal=parseFloat(lbM[1])*0.453592;
+    else if(kgM)kgVal=parseFloat(kgM[1]);
+    else if(lbM)kgVal=parseFloat(lbM[1])*0.453592;
+    if(kgVal){document.getElementById('kg').value=kgVal.toFixed(1);notes.push('Weight: '+kgVal.toFixed(1)+' kg applied.');}
+    else notes.push('Weight data missing — please input manually.');
+  } else {
+    notes.push('Weight data missing — please input manually.');
+  }
+  if(hpVal&&kgVal){calcPW();notes.push('Ratio calculated automatically.');}
+  showLookupStatus(container,(spec.make||'')+' '+(spec.model||'')+' '+(spec.year||'')+' — '+notes.join(' '),hpVal&&kgVal?'success':'warn');
+});
 
 function calcPW(){
   var hp=+document.getElementById('hp').value;

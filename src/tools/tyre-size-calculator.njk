@@ -14,21 +14,14 @@ permalink: /tools/tyre-size-calculator/
     <div class="tool-card">
       <!-- LIVE API LOOKUP -->
       <h2>Find Your Bike</h2>
-      <div id="api-lookup-tyre" class="api-lookup-block">
-        <div class="selector-row">
-          <div class="form-group"><label>Make</label><input type="text" id="api-make-tyre" placeholder="e.g. Kawasaki"></div>
-          <div class="form-group"><label>Model</label><input type="text" id="api-model-tyre" placeholder="e.g. Z900"></div>
-          <div class="form-group">
-            <label>Position</label>
-            <select id="api-tyre-pos">
-              <option value="rear" selected>Rear → Current</option>
-              <option value="front">Front → Current</option>
-            </select>
-          </div>
-          <div class="form-group" style="justify-content:flex-end;">
-            <label>&nbsp;</label>
-            <button class="btn-lookup" onclick="lookupTyre()">Load Specs</button>
-          </div>
+      <div id="bike-finder-tyre" class="api-lookup-block"></div>
+      <div class="selector-row" style="margin-bottom:1rem;">
+        <div class="form-group">
+          <label>Position</label>
+          <select id="api-tyre-pos">
+            <option value="rear" selected>Rear → Current</option>
+            <option value="front">Front → Current</option>
+          </select>
         </div>
       </div>
 
@@ -87,7 +80,7 @@ permalink: /tools/tyre-size-calculator/
 .btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
 .results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.results-table{width:100%;border-collapse:collapse}.results-table tr{border-bottom:1px solid #2a2a2a}.results-table td{padding:.5rem 0;color:#f0f0f0}.results-table td:last-child{text-align:right;color:#FF6B00;font-weight:600}.result-highlight{background:#2a2a2a;border-radius:4px;padding:1rem 1.2rem;margin-top:1rem;color:#f0f0f0}
 .tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00;color:#fff}
 .bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
 .bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
 @keyframes bl-spin{to{transform:rotate(360deg)}}
@@ -99,31 +92,19 @@ permalink: /tools/tyre-size-calculator/
 </style>
 
 <script>
-async function lookupTyre() {
-  var make=document.getElementById('api-make-tyre').value.trim();
-  var model=document.getElementById('api-model-tyre').value.trim();
+BikeFinder.init('bike-finder-tyre', function(spec) {
+  var container=document.getElementById('bike-finder-tyre');
   var pos=document.getElementById('api-tyre-pos').value;
-  var container=document.getElementById('api-lookup-tyre');
-  if(!make||!model){showLookupStatus(container,'Please enter both a make and model.','warn');return;}
-  hideLookupStatus(container);showLookupLoading(container);
-  try {
-    var spec=await fetchBikeSpecs(make,model);
-    hideLookupLoading(container);
-    if(!spec){showLookupStatus(container,'No results found. Check the make/model spelling.','warn');return;}
-    var tyreStr=pos==='front'?spec.front_tire:spec.rear_tire;
-    var label=pos==='front'?'Front':'Rear';
-    if(!tyreStr){showLookupStatus(container,'Technical specifications incomplete — '+label.toLowerCase()+' tyre data missing. Please input manually.','warn');return;}
-    var t=parseTyreCode(tyreStr);
-    if(!t){showLookupStatus(container,'Could not parse tyre code "'+tyreStr+'". Please input manually.','warn');return;}
-    document.getElementById('w1').value=t.width;
-    document.getElementById('a1').value=t.aspect;
-    document.getElementById('r1').value=t.rim;
-    showLookupStatus(container,(spec.make||make)+' '+(spec.model||model)+' '+(spec.year||'')+' — '+label+' tyre '+tyreStr+' loaded into Current Tyre fields.','success');
-  } catch(err) {
-    hideLookupLoading(container);
-    showLookupStatus(container,'Lookup failed: '+err.message+'. Enter values manually.','error');
-  }
-}
+  var tyreStr=pos==='front'?spec.front_tire:spec.rear_tire;
+  var label=pos==='front'?'Front':'Rear';
+  if(!tyreStr){showLookupStatus(container,'Technical specifications incomplete — '+label.toLowerCase()+' tyre data missing. Please input manually.','warn');return;}
+  var t=parseTyreCode(tyreStr);
+  if(!t){showLookupStatus(container,'Could not parse tyre code "'+tyreStr+'". Please input manually.','warn');return;}
+  document.getElementById('w1').value=t.width;
+  document.getElementById('a1').value=t.aspect;
+  document.getElementById('r1').value=t.rim;
+  showLookupStatus(container,(spec.make||'')+' '+(spec.model||'')+' '+(spec.year||'')+' — '+label+' tyre '+tyreStr+' loaded into Current Tyre fields.','success');
+});
 
 function parseTyreCalc(w,a,r){var sw=w*a/100;var dia=sw*2+r*25.4;return{sw:sw,dia:dia,circ:Math.PI*dia};}
 function calcTyre(){

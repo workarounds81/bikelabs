@@ -14,21 +14,14 @@ permalink: /tools/fuel-range-calculator/
     <div class="tool-card">
       <!-- LIVE API LOOKUP -->
       <h2>Find Your Bike</h2>
-      <div id="api-lookup-fuel" class="api-lookup-block">
-        <div class="selector-row">
-          <div class="form-group"><label>Make</label><input type="text" id="api-make-fuel" placeholder="e.g. Yamaha"></div>
-          <div class="form-group"><label>Model</label><input type="text" id="api-model-fuel" placeholder="e.g. MT-09"></div>
-          <div class="form-group">
-            <label>Unit</label>
-            <select id="api-fuel-unit">
-              <option value="litres" selected>Litres</option>
-              <option value="gallons">US Gallons</option>
-            </select>
-          </div>
-          <div class="form-group" style="justify-content:flex-end;">
-            <label>&nbsp;</label>
-            <button class="btn-lookup" onclick="lookupFuel()">Load Specs</button>
-          </div>
+      <div id="bike-finder-fuel" class="api-lookup-block"></div>
+      <div class="selector-row" style="margin-bottom:1rem;">
+        <div class="form-group">
+          <label>Unit</label>
+          <select id="api-fuel-unit">
+            <option value="litres" selected>Litres</option>
+            <option value="gallons">US Gallons</option>
+          </select>
         </div>
       </div>
 
@@ -67,7 +60,7 @@ permalink: /tools/fuel-range-calculator/
 .btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
 .results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.range-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.range-card{border-radius:6px;padding:1.5rem 1rem;text-align:center}.range-card.green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3)}.range-card.orange{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3)}.range-card.red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3)}.range-label{font-size:.8rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}.range-value{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:#f0f0f0}.range-sub{font-size:.9rem;color:#aaa;margin-top:.25rem}.results-note{color:#666;font-size:.85rem;margin-top:1rem;font-style:italic}
 .tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00;color:#fff}
 .bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
 .bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
 @keyframes bl-spin{to{transform:rotate(360deg)}}
@@ -79,35 +72,23 @@ permalink: /tools/fuel-range-calculator/
 </style>
 
 <script>
-async function lookupFuel() {
-  var make=document.getElementById('api-make-fuel').value.trim();
-  var model=document.getElementById('api-model-fuel').value.trim();
+BikeFinder.init('bike-finder-fuel', function(spec) {
+  var container=document.getElementById('bike-finder-fuel');
   var unit=document.getElementById('api-fuel-unit').value;
-  var container=document.getElementById('api-lookup-fuel');
-  if(!make||!model){showLookupStatus(container,'Please enter both a make and model.','warn');return;}
-  hideLookupStatus(container);showLookupLoading(container);
-  try {
-    var spec=await fetchBikeSpecs(make,model);
-    hideLookupLoading(container);
-    if(!spec){showLookupStatus(container,'No results found. Check the make/model spelling.','warn');return;}
-    if(!spec.fuel_capacity){showLookupStatus(container,'Technical specifications incomplete — fuel capacity data missing. Please input manually.','warn');return;}
-    var raw=spec.fuel_capacity;
-    var litreMatch=raw.match(/([\d.]+)\s*litr/i);
-    var gallonMatch=raw.match(/([\d.]+)\s*(?:US\s+)?gall/i);
-    var tankVal=null,usedUnit='';
-    if(unit==='litres'&&litreMatch){tankVal=parseFloat(litreMatch[1]);usedUnit='L';}
-    else if(unit==='gallons'&&gallonMatch){tankVal=parseFloat(gallonMatch[1]);usedUnit='US gal';}
-    else if(litreMatch){tankVal=parseFloat(litreMatch[1]);usedUnit='L';}
-    else if(gallonMatch){tankVal=parseFloat(gallonMatch[1]);usedUnit='US gal';}
-    if(!tankVal){showLookupStatus(container,'Could not parse "'+raw+'". Please input manually.','warn');return;}
-    var tankL=usedUnit==='US gal'?tankVal*3.78541:tankVal;
-    document.getElementById('tank').value=tankL.toFixed(2);
-    showLookupStatus(container,(spec.make||make)+' '+(spec.model||model)+' '+(spec.year||'')+' — Tank '+tankVal.toFixed(2)+' '+usedUnit+' ('+tankL.toFixed(2)+' L) loaded. Enter your consumption to calculate range.','success');
-  } catch(err) {
-    hideLookupLoading(container);
-    showLookupStatus(container,'Lookup failed: '+err.message+'. Enter values manually.','error');
-  }
-}
+  if(!spec.fuel_capacity){showLookupStatus(container,'Technical specifications incomplete — fuel capacity data missing. Please input manually.','warn');return;}
+  var raw=spec.fuel_capacity;
+  var litreMatch=raw.match(/([\d.]+)\s*litr/i);
+  var gallonMatch=raw.match(/([\d.]+)\s*(?:US\s+)?gall/i);
+  var tankVal=null,usedUnit='';
+  if(unit==='litres'&&litreMatch){tankVal=parseFloat(litreMatch[1]);usedUnit='L';}
+  else if(unit==='gallons'&&gallonMatch){tankVal=parseFloat(gallonMatch[1]);usedUnit='US gal';}
+  else if(litreMatch){tankVal=parseFloat(litreMatch[1]);usedUnit='L';}
+  else if(gallonMatch){tankVal=parseFloat(gallonMatch[1]);usedUnit='US gal';}
+  if(!tankVal){showLookupStatus(container,'Could not parse "'+raw+'". Please input manually.','warn');return;}
+  var tankL=usedUnit==='US gal'?tankVal*3.78541:tankVal;
+  document.getElementById('tank').value=tankL.toFixed(2);
+  showLookupStatus(container,(spec.make||'')+' '+(spec.model||'')+' '+(spec.year||'')+' — Tank '+tankVal.toFixed(2)+' '+usedUnit+' ('+tankL.toFixed(2)+' L) loaded. Enter your consumption to calculate range.','success');
+});
 
 function calcFuel(){
   var tank=+document.getElementById('tank').value;

@@ -28,22 +28,7 @@ permalink: /tools/gear-ratio-calculator/
 
         <!-- LIVE API LOOKUP -->
         <h2 class="calc-card__title">Find Your Bike</h2>
-        <div id="api-lookup-gr" class="api-lookup-block">
-          <div class="calc-grid" style="margin-bottom:0;">
-            <div class="calc-field">
-              <label for="api-make-gr">Make</label>
-              <input type="text" id="api-make-gr" placeholder="e.g. Honda">
-            </div>
-            <div class="calc-field">
-              <label for="api-model-gr">Model</label>
-              <input type="text" id="api-model-gr" placeholder="e.g. CB650R">
-            </div>
-            <div class="calc-field" style="justify-content:flex-end;">
-              <label>&nbsp;</label>
-              <button class="calc-btn calc-btn--lookup" onclick="lookupGearRatio()">Load Specs</button>
-            </div>
-          </div>
-        </div>
+        <div id="bike-finder-gr" class="api-lookup-block"></div>
 
         <h2 class="calc-card__title">Sprocket &amp; Tyre Setup</h2>
         <div class="calc-grid">
@@ -180,7 +165,7 @@ permalink: /tools/gear-ratio-calculator/
 .seo-section h2{font-size:clamp(1.3rem,3vw,1.7rem);color:#FF6B00;margin:2.5rem 0 1rem;padding-top:2rem;border-top:1px solid #2a2a2a;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.03em}
 .seo-section h2:first-of-type{margin-top:0;padding-top:0;border-top:none}
 .seo-section p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}.btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00}
 .bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
 .bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
 @keyframes bl-spin{to{transform:rotate(360deg)}}
@@ -198,43 +183,31 @@ function setSelectByValue(id,val){
   for(var i=0;i<el.options.length;i++){if(el.options[i].value==val){el.selectedIndex=i;return;}}
 }
 
-async function lookupGearRatio() {
-  var make=document.getElementById('api-make-gr').value.trim();
-  var model=document.getElementById('api-model-gr').value.trim();
-  var container=document.getElementById('api-lookup-gr');
-  if(!make||!model){showLookupStatus(container,'Please enter both a make and model.','warn');return;}
-  hideLookupStatus(container);showLookupLoading(container);
-  try {
-    var spec=await fetchBikeSpecs(make,model);
-    hideLookupLoading(container);
-    if(!spec){showLookupStatus(container,'No results found. Check the make/model spelling.','warn');return;}
-    var notes=[];
-    if(spec.transmission){
-      var tx=spec.transmission;
-      var gearMatch=tx.match(/(\d)\s*[-\s]?\s*[Ss]peed/);
-      if(gearMatch){
-        var gc=parseInt(gearMatch[1]);
-        var gcSel=document.getElementById('gear-count');
-        for(var i=0;i<gcSel.options.length;i++){if(parseInt(gcSel.options[i].value)===gc){gcSel.selectedIndex=i;break;}}
-        gcSel.dispatchEvent(new Event('change'));
-        notes.push(gc+'-speed gearbox detected.');
-      }
-      var drive=tx.match(/chain|belt|shaft/i);
-      notes.push(drive?'Drive: '+drive[0]+'.':'Drive type not listed — verify manually.');
-    } else {
-      notes.push('Transmission data missing — enter gear count manually.');
+BikeFinder.init('bike-finder-gr', function(spec) {
+  var container=document.getElementById('bike-finder-gr');
+  var notes=[];
+  if(spec.transmission){
+    var tx=spec.transmission;
+    var gearMatch=tx.match(/(\d)\s*[-\s]?\s*[Ss]peed/);
+    if(gearMatch){
+      var gc=parseInt(gearMatch[1]);
+      var gcSel=document.getElementById('gear-count');
+      for(var i=0;i<gcSel.options.length;i++){if(parseInt(gcSel.options[i].value)===gc){gcSel.selectedIndex=i;break;}}
+      gcSel.dispatchEvent(new Event('change'));
+      notes.push(gc+'-speed gearbox detected.');
     }
-    if(spec.rear_tire){
-      var t=parseTyreCode(spec.rear_tire);
-      if(t){setSelectByValue('tire-width',t.width);setSelectByValue('aspect-ratio',t.aspect);setSelectByValue('wheel-size',t.rim);notes.push('Rear tyre '+spec.rear_tire+' applied.');}
-    }
-    notes.push('Sprocket counts not in API — enter manually.');
-    showLookupStatus(container,(spec.make||make)+' '+(spec.model||model)+' '+(spec.year||'')+' — '+notes.join(' '),'success');
-  } catch(err) {
-    hideLookupLoading(container);
-    showLookupStatus(container,'Lookup failed: '+err.message+'. Enter values manually.','error');
+    var drive=tx.match(/chain|belt|shaft/i);
+    notes.push(drive?'Drive: '+drive[0]+'.':'Drive type not listed — verify manually.');
+  } else {
+    notes.push('Transmission data missing — enter gear count manually.');
   }
-}
+  if(spec.rear_tire){
+    var t=parseTyreCode(spec.rear_tire);
+    if(t){setSelectByValue('tire-width',t.width);setSelectByValue('aspect-ratio',t.aspect);setSelectByValue('wheel-size',t.rim);notes.push('Rear tyre '+spec.rear_tire+' applied.');}
+  }
+  notes.push('Sprocket counts not in API — enter manually.');
+  showLookupStatus(container,(spec.make||'')+' '+(spec.model||'')+' '+(spec.year||'')+' — '+notes.join(' '),'success');
+});
 
 (function(){
   var gc=document.getElementById('gear-count');
