@@ -43,15 +43,15 @@ permalink: /tools/commuter-ownership-calculator/
               <input type="number" id="weeks-ridden" value="48" min="1" max="52" step="1">
             </div>
             <div class="form-group">
-              <label for="fuel-price">Fuel Price per Litre (£)</label>
-              <input type="number" id="fuel-price" value="1.85" min="0.50" max="5.00" step="0.01">
+              <label for="fuel-price">Fuel Price per Litre ($)</label>
+              <input type="number" id="fuel-price" value="1.20" min="0.30" max="5.00" step="0.01">
             </div>
           </div>
 
           <h2>Optional: Purchase Price</h2>
           <div class="selector-row">
             <div class="form-group">
-              <label for="purchase-price">Motorcycle Purchase Price (£, optional)</label>
+              <label for="purchase-price">Motorcycle Purchase Price ($, optional)</label>
               <input type="number" id="purchase-price" placeholder="Leave blank to skip payback calc" min="0" step="100">
             </div>
           </div>
@@ -66,11 +66,11 @@ permalink: /tools/commuter-ownership-calculator/
 
         <div class="tool-seo">
           <h2>Is Commuting by Motorcycle Really Cheaper?</h2>
-          <p>In most cases, yes — significantly so. A 650cc commuter bike typically costs 40–60% less to fuel annually than a family car. Add in lower tyre costs (motorcycles need two smaller tyres rather than four large ones) and less frequent servicing, and the annual saving can exceed £1,500 for typical UK commuting distances.</p>
+          <p>In most cases, yes — significantly so. A 650cc commuter bike typically costs 40–60% less to fuel annually than a family car. Add in lower tyre costs (motorcycles need two smaller tyres rather than four large ones) and less frequent servicing, and the annual saving can be substantial for typical commuting distances.</p>
           <h2>What This Calculator Includes</h2>
-          <p>Fuel cost is calculated from your consumption estimate and annual mileage. Tyre replacement frequency is estimated by engine size as a proxy for tyre wear rate. Oil change intervals are set at every 5,000 km at £35 per service, reflecting typical semi-synthetic or full-synthetic oil change pricing at an independent workshop.</p>
+          <p>Fuel cost is calculated from your consumption estimate and annual mileage. Tyre replacement frequency is estimated by engine size as a proxy for tyre wear rate. Oil change intervals are set at every 5,000 km at $40 per service, reflecting typical semi-synthetic or full-synthetic oil change pricing. Fuel consumption is estimated by engine displacement and should be adjusted to your real-world figure.</p>
           <h2>What Is Not Included</h2>
-          <p>Insurance, road tax (VED), MOT, chain and sprocket wear, brake pads, and depreciation are not factored in. These vary enormously by rider profile, location, and model. As a rough guide, budget an additional £400–£800 per year for these items on a mid-size bike — still well below the equivalent car costs.</p>
+          <p>Insurance, registration, chain and sprocket wear, brake pads, and depreciation are not factored in. These vary enormously by rider profile, location, and model. As a rough guide, budget an additional $400–$800 per year for these items on a mid-size bike — still well below the equivalent car costs.</p>
           <h2>Car Comparison Assumptions</h2>
           <p>The car comparison uses a fixed consumption of 9.0 L/100km, representative of a typical petrol family hatchback in mixed commuting conditions. The same fuel price is used for both vehicle types.</p>
         </div>
@@ -115,7 +115,7 @@ permalink: /tools/commuter-ownership-calculator/
 
 <script>
 (function () {
-  function fmt(n) { return '£' + n.toFixed(2); }
+  function fmt(n) { return '$' + n.toFixed(2); }
 
   BikeFinder.init('bike-finder-co', function (spec) {
     var container = document.getElementById('bike-finder-co');
@@ -169,7 +169,7 @@ permalink: /tools/commuter-ownership-calculator/
     var bikeTyres = (annualKm / tyreInterval) * tyreCost;
 
     // Oil: every 5000km, £35
-    var bikeOil = (annualKm / 5000) * 35;
+    var bikeOil = (annualKm / 5000) * 40;
 
     var bikeTotal = bikeFuel + bikeTyres + bikeOil;
 
@@ -187,7 +187,7 @@ permalink: /tools/commuter-ownership-calculator/
     var paybackHtml = '';
     if (!isNaN(purchasePrice) && purchasePrice > 0 && saving > 0) {
       var paybackYears = purchasePrice / saving;
-      paybackHtml = '<p class="payback-note">At this saving rate, your £' + purchasePrice.toLocaleString() + ' motorcycle pays for itself in <strong style="color:#f0f0f0">' + paybackYears.toFixed(1) + ' years</strong> (' + Math.round(paybackYears * 12) + ' months) compared to car commuting costs.</p>';
+      paybackHtml = '<p class="payback-note">At this saving rate, your $' + purchasePrice.toLocaleString() + ' motorcycle pays for itself in <strong style="color:#f0f0f0">' + paybackYears.toFixed(1) + ' years</strong> (' + Math.round(paybackYears * 12) + ' months) compared to car commuting costs.</p>';
     }
 
     document.getElementById('co-results-content').innerHTML =
@@ -196,7 +196,7 @@ permalink: /tools/commuter-ownership-calculator/
       + '<h3>Motorcycle — Annual</h3>'
       + '<div class="cost-line"><span>Fuel (' + annualKm.toFixed(0) + ' km)</span><span>' + fmt(bikeFuel) + '</span></div>'
       + '<div class="cost-line"><span>Tyres (per ' + tyreInterval.toLocaleString() + ' km)</span><span>' + fmt(bikeTyres) + '</span></div>'
-      + '<div class="cost-line"><span>Oil &amp; Service</span><span>' + fmt(bikeOil) + '</span></div>'
+      + '<div class="cost-line"><span>Oil &amp; Service (per 5,000 km)</span><span>' + fmt(bikeOil) + '</span></div>'
       + '<div class="cost-line cost-total-line"><span>Total</span><span>' + fmt(bikeTotal) + '</span></div>'
       + '</div>'
       + '<div class="cost-card">'
