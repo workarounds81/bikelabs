@@ -25,18 +25,23 @@ permalink: /tools/top-speed-calculator/
             <div class="form-group">
               <label for="gear-count">Number of Gears</label>
               <select id="gear-count">
+                <option value="cvt">Automatic / CVT</option>
                 <option value="4">4-speed</option>
                 <option value="5">5-speed</option>
                 <option value="6" selected>6-speed</option>
               </select>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="primary-ratio-group">
               <label for="primary-ratio">Primary Drive Ratio</label>
               <input type="number" id="primary-ratio" value="1.840" step="0.001" min="0.5" max="5">
             </div>
           </div>
 
-          <div id="gear-ratio-rows">
+          <div id="cvt-notice" style="display:none;background:rgba(255,107,0,.08);border:1px solid rgba(255,107,0,.3);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1rem;color:#fdba74;font-size:.9rem;">
+            ⚠️ This bike has an automatic / CVT transmission. Top speed via gear ratios cannot be calculated — CVT ratios vary continuously and are not fixed values. Use the manufacturer's stated top speed instead.
+          </div>
+
+          <div id="gear-ratio-section">
             <div class="selector-row gear-row" data-gear="1">
               <div class="form-group">
                 <label>Gear 1 Ratio</label>
@@ -74,7 +79,9 @@ permalink: /tools/top-speed-calculator/
               </div>
             </div>
           </div>
+          </div>
 
+          <div id="manual-gearbox-section">
           <h2>Final Drive &amp; Tyre</h2>
           <div class="selector-row">
             <div class="form-group">
@@ -119,7 +126,9 @@ permalink: /tools/top-speed-calculator/
             </div>
           </div>
 
-          <button class="btn-calculate" onclick="calculateTopSpeed()">Calculate Top Speed</button>
+          </div><!-- /manual-gearbox-section -->
+
+          <button class="btn-calculate" id="calc-btn" onclick="calculateTopSpeed()">Calculate Top Speed</button>
 
           <div id="ts-results" class="results" style="display:none">
             <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin-bottom:1rem;border-top:none;padding-top:0">Results</h2>
@@ -183,13 +192,26 @@ permalink: /tools/top-speed-calculator/
   }
 
   var gearCountSel = document.getElementById('gear-count');
+  var manualSection = document.getElementById('manual-gearbox-section');
+  var cvtNotice = document.getElementById('cvt-notice');
+  var calcBtn = document.getElementById('calc-btn');
+  var gearRatioSection = document.getElementById('gear-ratio-section');
+
+  function isCVT() { return gearCountSel.value === 'cvt'; }
 
   function updateGearRows() {
-    var count = parseInt(gearCountSel.value);
-    document.querySelectorAll('.gear-row').forEach(function (row) {
-      var gear = parseInt(row.dataset.gear);
-      row.style.display = gear <= count ? '' : 'none';
-    });
+    var cvt = isCVT();
+    cvtNotice.style.display = cvt ? '' : 'none';
+    manualSection.style.display = cvt ? 'none' : '';
+    gearRatioSection.style.display = cvt ? 'none' : '';
+    calcBtn.style.display = cvt ? 'none' : '';
+    if (!cvt) {
+      var count = parseInt(gearCountSel.value);
+      document.querySelectorAll('.gear-row').forEach(function (row) {
+        var gear = parseInt(row.dataset.gear);
+        row.style.display = gear <= count ? '' : 'none';
+      });
+    }
   }
 
   gearCountSel.addEventListener('change', updateGearRows);
@@ -199,7 +221,16 @@ permalink: /tools/top-speed-calculator/
     var container = document.getElementById('bike-finder-ts');
     var filled = [];
 
-    var txMatch = spec.transmission && spec.transmission.match(/(\d)-speed/i);
+    var tx = spec.transmission || '';
+    var isCvt = /cvt|automatic|auto|scooter/i.test(tx) && !/\d-speed/i.test(tx);
+    if (isCvt) {
+      setSelectByValue('gear-count', 'cvt');
+      updateGearRows();
+      showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — Automatic/CVT transmission detected. Gear ratio calculation is not applicable.', 'warn');
+      return;
+    }
+
+    var txMatch = tx.match(/(\d)-speed/i);
     if (txMatch) {
       setSelectByValue('gear-count', txMatch[1]);
       updateGearRows();
