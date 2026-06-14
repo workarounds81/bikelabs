@@ -2,7 +2,7 @@
  * BikeLabs Live Lookup — API Ninjas Motorcycles
  * https://api.api-ninjas.com/v1/motorcycles
  */
-const API_KEY = 'IF8GCTFrNmFBpzPfDvDX8m4i7KdjsoNxzK2E62at';
+const API_KEY = 'IF8GCTqSrhJUxuMWighqHBj3xBFuACqvS9rx4Vgt';
 
 /* ─── Common makes (datalist + fuzzy fallback) ─────────────────────────── */
 const COMMON_MAKES = [
