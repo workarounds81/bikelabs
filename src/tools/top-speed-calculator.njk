@@ -1,0 +1,252 @@
+---
+layout: base.njk
+title: "Motorcycle Top Speed Calculator"
+description: "Calculate estimated top speed per gear for any motorcycle. Enter your gear ratios, sprocket sizes, tyre profile and redline to see real-world speeds."
+permalink: /tools/top-speed-calculator/
+---
+<script src="{{ '/js/bike-lookup.js' | url }}"></script>
+
+<style>
+.tool-page{padding:3rem 0}.tool-page h1{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px;margin:0 auto 2rem}
+.tool-layout{display:grid;grid-template-columns:160px minmax(0,1200px) 160px;gap:1.5rem;align-items:start;justify-content:center;padding:0 1rem}
+.tool-main{}.tool-sidebar{position:sticky;top:1rem}
+.ad-slot{background:#1a1a1a;border:1px dashed #2a2a2a;border-radius:8px;min-height:600px;display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;text-align:center}
+@media(max-width:1000px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{display:none}}
+.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}
+.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
+.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
+.btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
+.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00;color:#fff}
+.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}
+.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}
+.bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}.bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
+@keyframes bl-spin{to{transform:rotate(360deg)}}
+.bl-status{display:none;padding:.6rem 1rem;border-radius:6px;font-size:.88rem;margin-top:.75rem}.bl-status--success{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}.bl-status--warn{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:#fdba74}.bl-status--error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5}
+.gear-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}
+.table-wrap{overflow-x:auto;border-radius:6px;margin-top:1rem}
+.results-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.results-table th{background:#2a2a2a;color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;padding:.65rem 1rem;text-align:left;white-space:nowrap}
+.results-table td{padding:.65rem 1rem;color:#ccc;white-space:nowrap}
+.results-table tbody tr:nth-child(odd){background:#252525}
+.results-table tbody tr:nth-child(even){background:#1e1e1e}
+.results-table tbody tr:hover{background:#2f2f2f}
+.results-table tr.top-speed-row td{color:#FF6B00;font-weight:700;background:#2a1800}
+</style>
+
+<div class="tool-page">
+  <div>
+    <h1>Top Speed Calculator</h1>
+    <p class="tool-intro" style="text-align:center">Enter your gear ratios, drive setup, and tyre profile to calculate estimated top speed in every gear at redline.</p>
+    <div class="tool-layout">
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+      <div class="tool-main">
+        <div class="tool-card">
+
+          <h2>Find Your Bike</h2>
+          <div id="bike-finder-ts" class="api-lookup-block"></div>
+
+          <h2>Transmission</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="ts-gear-count">Number of Gears</label>
+              <select id="ts-gear-count">
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6" selected>6</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ts-primary">Primary Drive Ratio</label>
+              <input type="number" id="ts-primary" value="1.840" min="0.5" max="4" step="0.001">
+            </div>
+          </div>
+
+          <h2>Gear Ratios</h2>
+          <div class="gear-grid" id="ts-gear-grid">
+            <div class="form-group ts-gear-row" data-gear="1"><label>Gear 1</label><input type="number" id="ts-gr-1" value="2.846" min="0.5" max="5" step="0.001"></div>
+            <div class="form-group ts-gear-row" data-gear="2"><label>Gear 2</label><input type="number" id="ts-gr-2" value="2.062" min="0.5" max="5" step="0.001"></div>
+            <div class="form-group ts-gear-row" data-gear="3"><label>Gear 3</label><input type="number" id="ts-gr-3" value="1.647" min="0.5" max="5" step="0.001"></div>
+            <div class="form-group ts-gear-row" data-gear="4"><label>Gear 4</label><input type="number" id="ts-gr-4" value="1.368" min="0.5" max="5" step="0.001"></div>
+            <div class="form-group ts-gear-row" data-gear="5"><label>Gear 5</label><input type="number" id="ts-gr-5" value="1.190" min="0.5" max="5" step="0.001"></div>
+            <div class="form-group ts-gear-row" data-gear="6"><label>Gear 6</label><input type="number" id="ts-gr-6" value="1.037" min="0.5" max="5" step="0.001"></div>
+          </div>
+
+          <h2>Final Drive &amp; Tyres</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="ts-front-sprocket">Front Sprocket (teeth)</label>
+              <input type="number" id="ts-front-sprocket" value="15" min="10" max="25" step="1">
+            </div>
+            <div class="form-group">
+              <label for="ts-rear-sprocket">Rear Sprocket (teeth)</label>
+              <input type="number" id="ts-rear-sprocket" value="42" min="25" max="60" step="1">
+            </div>
+            <div class="form-group">
+              <label for="ts-tyre-width">Rear Tyre Width (mm)</label>
+              <select id="ts-tyre-width">
+                <option value="120">120</option>
+                <option value="130">130</option>
+                <option value="140">140</option>
+                <option value="150">150</option>
+                <option value="160" selected>160</option>
+                <option value="170">170</option>
+                <option value="180">180</option>
+                <option value="190">190</option>
+                <option value="200">200</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ts-aspect">Aspect Ratio (%)</label>
+              <select id="ts-aspect">
+                <option value="45">45</option>
+                <option value="50">50</option>
+                <option value="55">55</option>
+                <option value="60" selected>60</option>
+                <option value="65">65</option>
+                <option value="70">70</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ts-rim">Rim Diameter (in)</label>
+              <select id="ts-rim">
+                <option value="17" selected>17"</option>
+                <option value="18">18"</option>
+                <option value="19">19"</option>
+                <option value="21">21"</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ts-redline">Redline (RPM)</label>
+              <input type="number" id="ts-redline" value="10500" min="4000" max="18000" step="500">
+            </div>
+          </div>
+
+          <button class="btn-calculate" onclick="tsCalculate()">Calculate Top Speed</button>
+
+          <div class="results" id="ts-results" style="display:none">
+            <div class="table-wrap">
+              <table class="results-table">
+                <thead><tr><th>Gear</th><th>Gear Ratio</th><th>Speed (km/h)</th><th>Speed (mph)</th></tr></thead>
+                <tbody id="ts-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tool-seo">
+          <h2>How This Top Speed Calculator Works</h2>
+          <p>This tool calculates theoretical maximum speed in each gear by combining your gear ratios, primary drive ratio, final drive (sprocket) ratio, tyre rolling circumference and engine redline into a single formula. It's useful for planning sprocket swaps, comparing gearing options, or just satisfying curiosity about your bike's performance envelope.</p>
+          <h2>Understanding the Formula</h2>
+          <p>Speed in km/h = (RPM &times; &pi; &times; tyre_diameter_m &times; 60) &divide; (gear_ratio &times; primary_ratio &times; final_drive_ratio &times; 1000). Tyre diameter is calculated from the standard tyre code: sidewall height = width &times; aspect &divide; 100. Total diameter = (sidewall &times; 2) + (rim_inches &times; 25.4), converted to metres.</p>
+          <h2>Why Real Top Speed Differs</h2>
+          <p>Theoretical top speed assumes the engine can reach redline in top gear. In practice, aerodynamic drag, wind, rider position, and mechanical losses limit actual top speed. Most bikes hit their theoretical top speed in 5th gear rather than 6th, as top gear is often an overdrive for fuel economy.</p>
+        </div>
+      </div>
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var gcSel = document.getElementById('ts-gear-count');
+
+  function updateGearRows() {
+    var count = parseInt(gcSel.value);
+    document.querySelectorAll('.ts-gear-row').forEach(function (row) {
+      row.style.display = parseInt(row.getAttribute('data-gear')) <= count ? '' : 'none';
+    });
+  }
+  gcSel.addEventListener('change', updateGearRows);
+  updateGearRows();
+
+  function setSelectVal(id, val) {
+    var el = document.getElementById(id);
+    for (var i = 0; i < el.options.length; i++) {
+      if (String(el.options[i].value) === String(val)) { el.selectedIndex = i; return; }
+    }
+  }
+
+  BikeFinder.init('bike-finder-ts', function (spec) {
+    var container = document.getElementById('bike-finder-ts');
+    var notes = [];
+
+    if (spec.transmission) {
+      var gearMatch = spec.transmission.match(/(\d)-speed/i);
+      if (gearMatch) {
+        var gc = parseInt(gearMatch[1]);
+        for (var i = 0; i < gcSel.options.length; i++) {
+          if (parseInt(gcSel.options[i].value) === gc) { gcSel.selectedIndex = i; break; }
+        }
+        gcSel.dispatchEvent(new Event('change'));
+        notes.push(gc + '-speed transmission detected.');
+      }
+      var driveMatch = spec.transmission.match(/chain|belt|shaft/i);
+      notes.push(driveMatch ? 'Drive type: ' + driveMatch[0] + '.' : 'Drive type unknown — verify sprocket counts manually.');
+    } else {
+      notes.push('Transmission data missing — enter gear count manually.');
+    }
+
+    if (spec.rear_tire) {
+      var t = parseTyreCode(spec.rear_tire);
+      if (t) {
+        setSelectVal('ts-tyre-width', t.width);
+        setSelectVal('ts-aspect', t.aspect);
+        setSelectVal('ts-rim', t.rim);
+        notes.push('Rear tyre ' + spec.rear_tire + ' applied.');
+      }
+    }
+
+    notes.push('Sprocket counts not in API — enter manually.');
+    showLookupStatus(container, (spec.make || '') + ' ' + (spec.model || '') + ' ' + (spec.year || '') + ' — ' + notes.join(' '), 'success');
+  });
+
+  window.tsCalculate = function () {
+    var primary = parseFloat(document.getElementById('ts-primary').value);
+    var frontS = parseFloat(document.getElementById('ts-front-sprocket').value);
+    var rearS = parseFloat(document.getElementById('ts-rear-sprocket').value);
+    var width = parseFloat(document.getElementById('ts-tyre-width').value);
+    var aspect = parseFloat(document.getElementById('ts-aspect').value);
+    var rim = parseFloat(document.getElementById('ts-rim').value);
+    var redline = parseFloat(document.getElementById('ts-redline').value);
+    var gearCount = parseInt(document.getElementById('ts-gear-count').value);
+
+    if (!primary || !frontS || !rearS || !width || !aspect || !rim || !redline) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    var tyreDiameterM = (width * (aspect / 100) * 2 + rim * 25.4) / 1000;
+    var finalDrive = rearS / frontS;
+    var tbody = document.getElementById('ts-tbody');
+    tbody.innerHTML = '';
+
+    var maxSpeed = 0;
+    var maxGear = 1;
+    var rows = [];
+
+    for (var g = 1; g <= gearCount; g++) {
+      var gr = parseFloat(document.getElementById('ts-gr-' + g).value);
+      var speedKmh = (redline * Math.PI * tyreDiameterM * 60) / (gr * primary * finalDrive * 1000);
+      rows.push({ gear: g, ratio: gr, kmh: speedKmh });
+      if (speedKmh > maxSpeed) { maxSpeed = speedKmh; maxGear = g; }
+    }
+
+    rows.forEach(function (row) {
+      var tr = document.createElement('tr');
+      if (row.gear === maxGear) tr.className = 'top-speed-row';
+      tr.innerHTML = '<td>Gear ' + row.gear + (row.gear === maxGear ? ' ★' : '') + '</td>' +
+        '<td>' + row.ratio.toFixed(3) + '</td>' +
+        '<td>' + row.kmh.toFixed(1) + '</td>' +
+        '<td>' + (row.kmh * 0.621371).toFixed(1) + '</td>';
+      tbody.appendChild(tr);
+    });
+
+    var resultsEl = document.getElementById('ts-results');
+    resultsEl.style.display = '';
+    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+}());
+</script>

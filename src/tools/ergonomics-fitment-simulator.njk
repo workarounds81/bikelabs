@@ -1,0 +1,235 @@
+---
+layout: base.njk
+title: "Motorcycle Ergonomics & Fitment Simulator"
+description: "Find out if a motorcycle fits you. Enter rider inseam, height, and seat height to get an instant comfort classification and gap analysis."
+permalink: /tools/ergonomics-fitment-simulator/
+---
+<script src="{{ '/js/bike-lookup.js' | url }}"></script>
+
+<style>
+.tool-page{padding:3rem 0}.tool-page h1{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px;margin:0 auto 2rem}
+.tool-layout{display:grid;grid-template-columns:160px minmax(0,1200px) 160px;gap:1.5rem;align-items:start;justify-content:center;padding:0 1rem}
+.tool-main{}.tool-sidebar{position:sticky;top:1rem}
+.ad-slot{background:#1a1a1a;border:1px dashed #2a2a2a;border-radius:8px;min-height:600px;display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;text-align:center}
+@media(max-width:1000px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{display:none}}
+.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}
+.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
+.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
+.btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
+.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00;color:#fff}
+.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}
+.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}
+.bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}.bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
+@keyframes bl-spin{to{transform:rotate(360deg)}}
+.bl-status{display:none;padding:.6rem 1rem;border-radius:6px;font-size:.88rem;margin-top:.75rem}.bl-status--success{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}.bl-status--warn{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:#fdba74}.bl-status--error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5}
+.fitment-result{border-radius:8px;padding:1.5rem;margin-top:1rem}
+.fitment-result--green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3)}
+.fitment-result--orange{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3)}
+.fitment-result--red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3)}
+.fitment-result__label{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
+.fitment-result--green .fitment-result__label{color:#86efac}
+.fitment-result--orange .fitment-result__label{color:#fdba74}
+.fitment-result--red .fitment-result__label{color:#fca5a5}
+.fitment-result__details{color:#ccc;font-size:.95rem;line-height:1.7}
+.comfort-bar-wrap{margin:1.25rem 0 .5rem}
+.comfort-bar-track{background:#2a2a2a;border-radius:4px;height:12px;overflow:hidden}
+.comfort-bar-fill{height:100%;border-radius:4px;transition:width .4s ease}
+.comfort-bar-fill--green{background:linear-gradient(90deg,#22c55e,#86efac)}
+.comfort-bar-fill--orange{background:linear-gradient(90deg,#FF6B00,#fdba74)}
+.comfort-bar-fill--red{background:linear-gradient(90deg,#ef4444,#fca5a5)}
+.comfort-bar-label{font-size:.8rem;color:#aaa;margin-top:.4rem}
+.gap-stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1rem}
+.gap-stat{text-align:center}
+.gap-stat__val{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;color:#f0f0f0;font-weight:700}
+.gap-stat__unit{font-size:.8rem;color:#aaa;display:block;margin-top:.15rem}
+</style>
+
+<div class="tool-page">
+  <div>
+    <h1>Ergonomics &amp; Fitment Simulator</h1>
+    <p class="tool-intro" style="text-align:center">Enter your rider measurements and a bike's seat height to find out how well it fits — before you sit on it.</p>
+    <div class="tool-layout">
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+      <div class="tool-main">
+        <div class="tool-card">
+
+          <h2>Find Your Bike</h2>
+          <div id="bike-finder-erg" class="api-lookup-block"></div>
+
+          <h2>Bike Dimensions</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="erg-seat-height">Seat Height (mm)</label>
+              <input type="number" id="erg-seat-height" value="820" min="600" max="1100" step="1" oninput="ergAutoCalc()">
+            </div>
+          </div>
+
+          <h2>Rider Measurements</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="erg-inseam-cm">Inseam (cm)</label>
+              <input type="number" id="erg-inseam-cm" value="82" min="50" max="120" step="0.5" oninput="ergSyncInseam('cm')">
+            </div>
+            <div class="form-group">
+              <label for="erg-inseam-in">Inseam (inches)</label>
+              <input type="number" id="erg-inseam-in" value="32.3" min="20" max="48" step="0.1" oninput="ergSyncInseam('in')">
+            </div>
+            <div class="form-group">
+              <label for="erg-height-cm">Rider Height (cm)</label>
+              <input type="number" id="erg-height-cm" value="178" min="140" max="220" step="1" oninput="ergAutoCalc()">
+            </div>
+          </div>
+
+          <button class="btn-calculate" onclick="ergCalculate()">Check Fitment</button>
+
+          <div class="results" id="erg-results" style="display:none">
+            <div id="erg-result-card" class="fitment-result">
+              <div class="fitment-result__label" id="erg-classification"></div>
+              <div class="fitment-result__details" id="erg-details"></div>
+              <div class="comfort-bar-wrap">
+                <div class="comfort-bar-track"><div class="comfort-bar-fill" id="erg-bar" style="width:0%"></div></div>
+                <div class="comfort-bar-label" id="erg-bar-label"></div>
+              </div>
+              <div class="gap-stats">
+                <div class="gap-stat">
+                  <div class="gap-stat__val" id="erg-gap-mm">—</div>
+                  <span class="gap-stat__unit">gap (mm)</span>
+                </div>
+                <div class="gap-stat">
+                  <div class="gap-stat__val" id="erg-gap-in">—</div>
+                  <span class="gap-stat__unit">gap (inches)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tool-seo">
+          <h2>How Seat Height Affects Fitment</h2>
+          <p>Seat height is one of the most important factors when choosing a motorcycle, yet it's rarely the whole story. A rider's inseam length determines how much of their foot reaches the ground. The "gap" — the difference between seat height and inseam (converted to mm) — tells you whether you'll be flat-footed, on the balls of your feet, or tiptoe-ing at a stop.</p>
+          <h2>Understanding the Classifications</h2>
+          <p>Flat-Foot Comfortable means both feet rest completely on the ground with knees slightly bent — ideal for new riders and urban commuters. Ball-of-Foot Contact is the most common scenario for experienced riders: only the front of the foot touches down, but control is maintained easily. Split-Heel or Tiptoe situations require more care at slow speed and in car parks. High-Risk Tiptoe means only one foot can reach the ground comfortably — this is manageable for experienced riders but can be dangerous for beginners.</p>
+          <h2>Seat Height vs Inseam: Not Always a Dealbreaker</h2>
+          <p>A tall bike doesn't automatically mean a bad fit. Suspension sag, lowering links, seat shaping options, and boot heel height all affect real-world reach. Use this tool as a starting guide, not the final word — always sit on a bike before buying.</p>
+        </div>
+      </div>
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  BikeFinder.init('bike-finder-erg', function (spec) {
+    var container = document.getElementById('bike-finder-erg');
+    var notes = [];
+
+    if (spec.seat_height) {
+      var raw = spec.seat_height;
+      var mmMatch = raw.match(/(\d{3,4})\s*mm/i);
+      var cmMatch = raw.match(/([\d.]+)\s*cm/i);
+      var inMatch = raw.match(/([\d.]+)\s*in/i);
+      var seatMM = null;
+
+      if (mmMatch) {
+        seatMM = parseFloat(mmMatch[1]);
+      } else if (cmMatch) {
+        seatMM = parseFloat(cmMatch[1]) * 10;
+      } else if (inMatch) {
+        seatMM = parseFloat(inMatch[1]) * 25.4;
+      } else {
+        // bare number — if > 200 assume mm, else assume cm
+        var bare = parseFloat(raw);
+        if (!isNaN(bare)) seatMM = bare > 200 ? bare : bare * 10;
+      }
+
+      if (seatMM !== null) {
+        document.getElementById('erg-seat-height').value = Math.round(seatMM);
+        notes.push('Seat height ' + Math.round(seatMM) + ' mm applied.');
+      } else {
+        notes.push('Seat height format unrecognised — enter manually.');
+      }
+    } else {
+      notes.push('Seat height not in API data — enter manually.');
+    }
+
+    showLookupStatus(container, (spec.make || '') + ' ' + (spec.model || '') + ' ' + (spec.year || '') + ' — ' + notes.join(' '), 'success');
+    ergAutoCalc();
+  });
+
+  window.ergSyncInseam = function (source) {
+    if (source === 'cm') {
+      var cm = parseFloat(document.getElementById('erg-inseam-cm').value);
+      if (!isNaN(cm)) document.getElementById('erg-inseam-in').value = (cm / 2.54).toFixed(1);
+    } else {
+      var inches = parseFloat(document.getElementById('erg-inseam-in').value);
+      if (!isNaN(inches)) document.getElementById('erg-inseam-cm').value = (inches * 2.54).toFixed(1);
+    }
+    ergAutoCalc();
+  };
+
+  window.ergAutoCalc = function () {
+    var seat = parseFloat(document.getElementById('erg-seat-height').value);
+    var inseam = parseFloat(document.getElementById('erg-inseam-cm').value);
+    if (!isNaN(seat) && !isNaN(inseam) && seat > 0 && inseam > 0) {
+      ergCalculate();
+    }
+  };
+
+  window.ergCalculate = function () {
+    var seatMM = parseFloat(document.getElementById('erg-seat-height').value);
+    var inseamCM = parseFloat(document.getElementById('erg-inseam-cm').value);
+
+    if (isNaN(seatMM) || isNaN(inseamCM) || seatMM <= 0 || inseamCM <= 0) {
+      alert('Please enter seat height and inseam.');
+      return;
+    }
+
+    var gapMM = seatMM - (inseamCM * 10);
+    var gapIn = (gapMM / 25.4).toFixed(1);
+
+    var classification, theme, details, scorePercent;
+
+    if (gapMM <= 0) {
+      classification = 'Flat-Foot Comfortable';
+      theme = 'green';
+      details = 'Both feet rest flat on the ground with room to spare. Ideal for new riders, urban commuting, and stop-start traffic.';
+      scorePercent = 100;
+    } else if (gapMM <= 50) {
+      classification = 'Ball-of-Foot Contact';
+      theme = 'orange';
+      details = 'The front portion of both feet reaches the ground. Comfortable for most experienced riders — very manageable in traffic.';
+      scorePercent = 75;
+    } else if (gapMM <= 75) {
+      classification = 'Split-Heel / Tiptoe';
+      theme = 'orange';
+      details = 'Only one foot reaches down comfortably, or both feet are on tiptoe. Requires more care at low speed and in car parks.';
+      scorePercent = 45;
+    } else {
+      classification = 'High-Risk Tiptoe';
+      theme = 'red';
+      details = 'Significant reach gap. Not recommended for less experienced riders. Consider seat lowering options, lowering links, or a different model.';
+      scorePercent = 15;
+    }
+
+    var card = document.getElementById('erg-result-card');
+    card.className = 'fitment-result fitment-result--' + theme;
+
+    document.getElementById('erg-classification').textContent = classification;
+    document.getElementById('erg-details').textContent = details;
+
+    var bar = document.getElementById('erg-bar');
+    bar.className = 'comfort-bar-fill comfort-bar-fill--' + theme;
+    bar.style.width = scorePercent + '%';
+    document.getElementById('erg-bar-label').textContent = 'Comfort score: ' + scorePercent + '%';
+
+    document.getElementById('erg-gap-mm').textContent = (gapMM >= 0 ? '+' : '') + Math.round(gapMM);
+    document.getElementById('erg-gap-in').textContent = (parseFloat(gapIn) >= 0 ? '+' : '') + gapIn;
+
+    var resultsEl = document.getElementById('erg-results');
+    resultsEl.style.display = '';
+  };
+}());
+</script>

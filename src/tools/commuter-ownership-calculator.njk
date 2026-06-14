@@ -1,0 +1,240 @@
+---
+layout: base.njk
+title: "Motorcycle Commuter Ownership Cost Calculator"
+description: "Calculate the true annual cost of commuting by motorcycle vs car. Compare fuel, tyres, and servicing costs to see your real yearly savings."
+permalink: /tools/commuter-ownership-calculator/
+---
+<script src="{{ '/js/bike-lookup.js' | url }}"></script>
+
+<style>
+.tool-page{padding:3rem 0}.tool-page h1{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px;margin:0 auto 2rem}
+.tool-layout{display:grid;grid-template-columns:160px minmax(0,1200px) 160px;gap:1.5rem;align-items:start;justify-content:center;padding:0 1rem}
+.tool-main{}.tool-sidebar{position:sticky;top:1rem}
+.ad-slot{background:#1a1a1a;border:1px dashed #2a2a2a;border-radius:8px;min-height:600px;display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;text-align:center}
+@media(max-width:1000px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{display:none}}
+.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}
+.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
+.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
+.btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
+.btn-load{background:#FF6B00;color:#fff;border-color:#FF6B00}.btn-load:hover{background:#e55a00;color:#fff}
+.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}
+.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}.bf-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;align-items:flex-end}
+.bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}.bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
+@keyframes bl-spin{to{transform:rotate(360deg)}}
+.bl-status{display:none;padding:.6rem 1rem;border-radius:6px;font-size:.88rem;margin-top:.75rem}.bl-status--success{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}.bl-status--warn{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:#fdba74}.bl-status--error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5}
+.cost-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:600px){.cost-grid{grid-template-columns:1fr}}
+.cost-col{background:#161616;border-radius:8px;padding:1.25rem;border:1px solid #2a2a2a}
+.cost-col__title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.cost-col--bike .cost-col__title{color:#FF6B00}
+.cost-col--car .cost-col__title{color:#aaa}
+.cost-line{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid #222;font-size:.9rem;color:#ccc}
+.cost-line:last-child{border-bottom:none}
+.cost-line__label{color:#aaa}
+.cost-line__val{font-weight:600;color:#f0f0f0}
+.cost-total{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0 0;margin-top:.5rem;border-top:2px solid #3a3a3a;font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700}
+.cost-col--bike .cost-total__val{color:#FF6B00}
+.cost-col--car .cost-total__val{color:#aaa}
+.saving-banner{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;padding:1.25rem 1.5rem;margin-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.saving-banner__label{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:#86efac;font-weight:700}
+.saving-banner__val{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;color:#86efac;font-weight:700}
+.payback-note{color:#aaa;font-size:.88rem;margin-top:.5rem}
+</style>
+
+<div class="tool-page">
+  <div>
+    <h1>Commuter Ownership Calculator</h1>
+    <p class="tool-intro" style="text-align:center">Compare the true annual running cost of commuting by motorcycle versus car — fuel, tyres, and servicing included.</p>
+    <div class="tool-layout">
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+      <div class="tool-main">
+        <div class="tool-card">
+
+          <h2>Find Your Bike</h2>
+          <div id="bike-finder-co" class="api-lookup-block"></div>
+
+          <h2>Bike Setup</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="co-engine-cc">Engine Size (cc)</label>
+              <input type="number" id="co-engine-cc" value="650" min="50" max="2500" step="1" oninput="coUpdateFuelEstimate()">
+            </div>
+            <div class="form-group">
+              <label for="co-fuel-use">Fuel Consumption (L/100km)</label>
+              <input type="number" id="co-fuel-use" value="5.5" min="2" max="15" step="0.1">
+            </div>
+          </div>
+
+          <h2>Commute &amp; Costs</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="co-weekly-km">Weekly Commute (km)</label>
+              <input type="number" id="co-weekly-km" value="150" min="10" max="2000" step="5">
+            </div>
+            <div class="form-group">
+              <label for="co-fuel-price">Fuel Price (£/litre)</label>
+              <input type="number" id="co-fuel-price" value="1.85" min="0.5" max="5" step="0.01">
+            </div>
+            <div class="form-group">
+              <label for="co-weeks">Weeks Ridden Per Year</label>
+              <input type="number" id="co-weeks" value="48" min="1" max="52" step="1">
+            </div>
+          </div>
+
+          <h2>Optional: Purchase Price</h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="co-purchase">Bike Purchase Price (£, optional)</label>
+              <input type="number" id="co-purchase" placeholder="e.g. 5500" min="0" max="100000" step="100">
+            </div>
+          </div>
+
+          <button class="btn-calculate" onclick="coCalculate()">Calculate Costs</button>
+
+          <div class="results" id="co-results" style="display:none">
+            <div class="cost-grid">
+              <div class="cost-col cost-col--bike">
+                <div class="cost-col__title">Motorcycle</div>
+                <div class="cost-line"><span class="cost-line__label">Fuel</span><span class="cost-line__val" id="co-bike-fuel">—</span></div>
+                <div class="cost-line"><span class="cost-line__label">Tyres</span><span class="cost-line__val" id="co-bike-tyres">—</span></div>
+                <div class="cost-line"><span class="cost-line__label">Oil / Service</span><span class="cost-line__val" id="co-bike-oil">—</span></div>
+                <div class="cost-total"><span>Annual Total</span><span class="cost-total__val" id="co-bike-total">—</span></div>
+              </div>
+              <div class="cost-col cost-col--car">
+                <div class="cost-col__title">Car (9.0 L/100km)</div>
+                <div class="cost-line"><span class="cost-line__label">Fuel</span><span class="cost-line__val" id="co-car-fuel">—</span></div>
+                <div class="cost-line"><span class="cost-line__label">Tyres</span><span class="cost-line__val" id="co-car-tyres">—</span></div>
+                <div class="cost-line"><span class="cost-line__label">Oil / Service</span><span class="cost-line__val" id="co-car-oil">—</span></div>
+                <div class="cost-total"><span>Annual Total</span><span class="cost-total__val" id="co-car-total">—</span></div>
+              </div>
+            </div>
+            <div class="saving-banner">
+              <div>
+                <div class="saving-banner__label">Annual Saving vs Car</div>
+                <div class="payback-note" id="co-payback"></div>
+              </div>
+              <div class="saving-banner__val" id="co-saving">—</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tool-seo">
+          <h2>The True Cost of Motorcycle Commuting</h2>
+          <p>Motorcycles are significantly cheaper to run than cars, but the full picture includes more than just fuel. Tyres wear faster under hard use, oil changes are more frequent per kilometre, and consumables add up over a year. This calculator combines all three major running costs into a realistic annual figure you can compare directly against car ownership.</p>
+          <h2>How Costs Are Estimated</h2>
+          <p>Fuel cost is calculated from your weekly distance, consumption figure, and fuel price. Tyre cost is based on typical replacement intervals by engine size: smaller bikes wear tyres more slowly, while large-displacement machines need replacement more often. Oil and servicing is estimated at one change per 5,000 km at £35 per service.</p>
+          <h2>Car Comparison Assumptions</h2>
+          <p>The car comparison uses a fixed consumption of 9.0 L/100km — a reasonable average for a medium family car. Car tyres are estimated at £280 per set every 30,000 km, with oil at £60 per 10,000 km. Adjust your inputs to reflect your actual car if you want a more precise comparison.</p>
+        </div>
+      </div>
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  function fuelEstimateForCC(cc) {
+    if (cc < 250) return 3.5;
+    if (cc < 500) return 4.5;
+    if (cc < 750) return 5.5;
+    if (cc < 1000) return 6.5;
+    return 7.5;
+  }
+
+  function tyreDataForCC(cc) {
+    if (cc < 500) return { cost: 120, interval: 8000 };
+    if (cc <= 1000) return { cost: 180, interval: 6000 };
+    return { cost: 240, interval: 5000 };
+  }
+
+  BikeFinder.init('bike-finder-co', function (spec) {
+    var container = document.getElementById('bike-finder-co');
+    var notes = [];
+
+    if (spec.displacement) {
+      var ccMatch = spec.displacement.match(/(\d+)\s*cc/i);
+      if (!ccMatch) ccMatch = spec.displacement.match(/(\d+)/);
+      if (ccMatch) {
+        var cc = parseInt(ccMatch[1]);
+        document.getElementById('co-engine-cc').value = cc;
+        var est = fuelEstimateForCC(cc);
+        document.getElementById('co-fuel-use').value = est;
+        notes.push(cc + 'cc detected. Fuel estimate set to ' + est + ' L/100km.');
+      }
+    } else {
+      notes.push('Displacement not in API — enter engine size manually.');
+    }
+
+    showLookupStatus(container, (spec.make || '') + ' ' + (spec.model || '') + ' ' + (spec.year || '') + ' — ' + notes.join(' '), 'success');
+  });
+
+  window.coUpdateFuelEstimate = function () {
+    var cc = parseFloat(document.getElementById('co-engine-cc').value);
+    if (!isNaN(cc) && cc > 0) {
+      document.getElementById('co-fuel-use').value = fuelEstimateForCC(cc);
+    }
+  };
+
+  function fmt(val) {
+    return '£' + val.toFixed(2);
+  }
+
+  window.coCalculate = function () {
+    var cc = parseFloat(document.getElementById('co-engine-cc').value);
+    var bikeFuel = parseFloat(document.getElementById('co-fuel-use').value);
+    var weeklyKm = parseFloat(document.getElementById('co-weekly-km').value);
+    var fuelPrice = parseFloat(document.getElementById('co-fuel-price').value);
+    var weeks = parseFloat(document.getElementById('co-weeks').value);
+    var purchasePrice = parseFloat(document.getElementById('co-purchase').value) || 0;
+
+    if (!cc || !bikeFuel || !weeklyKm || !fuelPrice || !weeks) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    var annualKm = weeklyKm * weeks;
+
+    // Motorcycle costs
+    var bikeFuelCost = (annualKm / 100) * bikeFuel * fuelPrice;
+    var tyreData = tyreDataForCC(cc);
+    var bikeTyreCost = (annualKm / tyreData.interval) * tyreData.cost;
+    var bikeOilCost = (annualKm / 5000) * 35;
+    var bikeTotal = bikeFuelCost + bikeTyreCost + bikeOilCost;
+
+    // Car costs (fixed 9 L/100km, tyres £280/30000km, oil £60/10000km)
+    var carFuelCost = (annualKm / 100) * 9.0 * fuelPrice;
+    var carTyreCost = (annualKm / 30000) * 280;
+    var carOilCost = (annualKm / 10000) * 60;
+    var carTotal = carFuelCost + carTyreCost + carOilCost;
+
+    var saving = carTotal - bikeTotal;
+
+    document.getElementById('co-bike-fuel').textContent = fmt(bikeFuelCost);
+    document.getElementById('co-bike-tyres').textContent = fmt(bikeTyreCost);
+    document.getElementById('co-bike-oil').textContent = fmt(bikeOilCost);
+    document.getElementById('co-bike-total').textContent = fmt(bikeTotal);
+
+    document.getElementById('co-car-fuel').textContent = fmt(carFuelCost);
+    document.getElementById('co-car-tyres').textContent = fmt(carTyreCost);
+    document.getElementById('co-car-oil').textContent = fmt(carOilCost);
+    document.getElementById('co-car-total').textContent = fmt(carTotal);
+
+    document.getElementById('co-saving').textContent = (saving >= 0 ? '+' : '') + fmt(saving);
+
+    var paybackEl = document.getElementById('co-payback');
+    if (purchasePrice > 0 && saving > 0) {
+      var paybackYears = (purchasePrice / saving).toFixed(1);
+      paybackEl.textContent = 'Purchase price £' + purchasePrice.toLocaleString() + ' paid back in approx. ' + paybackYears + ' year' + (paybackYears === '1.0' ? '' : 's') + ' of commuting savings.';
+    } else {
+      paybackEl.textContent = 'Enter a purchase price above to calculate payback period.';
+    }
+
+    var resultsEl = document.getElementById('co-results');
+    resultsEl.style.display = '';
+    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+}());
+</script>
