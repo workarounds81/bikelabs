@@ -12,74 +12,71 @@ permalink: /tools/tyre-size-calculator/
     <p class="tool-intro">Look up your bike to auto-fill OEM tyre sizes, or enter any size manually. Compare two sizes and see exactly how a swap affects your speedo reading.</p>
 
     <div class="tool-layout">
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
       <div class="tool-main">
         <div class="tool-card">
-      <!-- LIVE API LOOKUP -->
-      <h2>Find Your Bike</h2>
-      <div id="bike-finder-tyre" class="api-lookup-block"></div>
-      <div class="selector-row" style="margin-bottom:1rem;">
-        <div class="form-group">
-          <label>Position</label>
-          <select id="api-tyre-pos">
-            <option value="rear" selected>Rear → Current</option>
-            <option value="front">Front → Current</option>
-          </select>
-        </div>
-      </div>
-
-      <h2>Current Tyre</h2>
-      <div class="selector-row">
-        <div class="form-group"><label>Width (mm)</label><input type="number" id="w1" value="160" min="60" max="300"></div>
-        <div class="form-group"><label>Aspect Ratio (%)</label><input type="number" id="a1" value="60" min="30" max="90"></div>
-        <div class="form-group"><label>Rim (inches)</label><input type="number" id="r1" value="17" min="10" max="21"></div>
-      </div>
-
-      <h2>Alternative Tyre</h2>
-      <div class="selector-row">
-        <div class="form-group"><label>Width (mm)</label><input type="number" id="w2" value="170" min="60" max="300"></div>
-        <div class="form-group"><label>Aspect Ratio (%)</label><input type="number" id="a2" value="60" min="30" max="90"></div>
-        <div class="form-group"><label>Rim (inches)</label><input type="number" id="r2" value="17" min="10" max="21"></div>
-      </div>
-
-      <button class="btn-calculate" onclick="calcTyre()">Calculate</button>
-
-      <div id="results" class="results" style="display:none">
-        <h2>Results</h2>
-        <div class="results-grid">
-          <div>
-            <h3>Current Tyre</h3>
-            <table class="results-table">
-              <tr><td>Sidewall Height</td><td id="s1"></td></tr>
-              <tr><td>Overall Diameter</td><td id="d1"></td></tr>
-              <tr><td>Circumference</td><td id="c1"></td></tr>
-            </table>
+          <!-- LIVE API LOOKUP -->
+          <h2>Find Your Bike</h2>
+          <div id="bike-finder-tyre" class="api-lookup-block"></div>
+          <div class="selector-row" style="margin-bottom:1rem;">
+            <div class="form-group">
+              <label>Position</label>
+              <select id="api-tyre-pos">
+                <option value="rear" selected>Rear → Current</option>
+                <option value="front">Front → Current</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <h3>Alternative Tyre</h3>
-            <table class="results-table">
-              <tr><td>Sidewall Height</td><td id="s2"></td></tr>
-              <tr><td>Overall Diameter</td><td id="d2"></td></tr>
-              <tr><td>Circumference</td><td id="c2"></td></tr>
-            </table>
+
+          <h2>Current Tyre</h2>
+          <div class="selector-row">
+            <div class="form-group"><label>Width (mm)</label><input type="number" id="w1" value="160" min="60" max="300"></div>
+            <div class="form-group"><label>Aspect Ratio (%)</label><input type="number" id="a1" value="60" min="30" max="90"></div>
+            <div class="form-group"><label>Rim (inches)</label><input type="number" id="r1" value="17" min="10" max="21"></div>
+          </div>
+
+          <h2>Alternative Tyre</h2>
+          <div class="selector-row">
+            <div class="form-group"><label>Width (mm)</label><input type="number" id="w2" value="170" min="60" max="300"></div>
+            <div class="form-group"><label>Aspect Ratio (%)</label><input type="number" id="a2" value="60" min="30" max="90"></div>
+            <div class="form-group"><label>Rim (inches)</label><input type="number" id="r2" value="17" min="10" max="21"></div>
+          </div>
+
+          <button class="btn-calculate" onclick="calcTyre()">Calculate</button>
+
+          <div id="results" class="results" style="display:none">
+            <h2>Results</h2>
+            <div class="results-grid">
+              <div>
+                <h3>Current Tyre</h3>
+                <table class="results-table">
+                  <tr><td>Sidewall Height</td><td id="s1"></td></tr>
+                  <tr><td>Overall Diameter</td><td id="d1"></td></tr>
+                  <tr><td>Circumference</td><td id="c1"></td></tr>
+                </table>
+              </div>
+              <div>
+                <h3>Alternative Tyre</h3>
+                <table class="results-table">
+                  <tr><td>Sidewall Height</td><td id="s2"></td></tr>
+                  <tr><td>Overall Diameter</td><td id="d2"></td></tr>
+                  <tr><td>Circumference</td><td id="c2"></td></tr>
+                </table>
+              </div>
+            </div>
+            <div class="result-highlight" id="speedo-note"></div>
           </div>
         </div>
-        <div class="result-highlight" id="speedo-note"></div>
-      </div>
-    </div>
 
-    <div class="tool-seo">
-      <h2>How to Read a Motorcycle Tyre Size Code</h2>
-      <p>A tyre code like <strong>160/60/17</strong> breaks down simply. The first number (160) is the tyre width in millimetres. The second (60) is the aspect ratio — the sidewall height as a percentage of the width. The third (17) is the rim diameter in inches.</p>
-      <h2>Does Tyre Size Affect Speedo Reading?</h2>
-      <p>Yes. A larger overall diameter means the wheel covers more ground per revolution, so your speedo reads lower than your actual speed. A smaller diameter makes the speedo over-read. This tool shows the exact percentage difference so you know what to expect after a tyre swap.</p>
-    </div>
-      </div>{# end tool-main #}
-      <aside class="tool-sidebar">
-        <div class="ad-slot">
-          <!-- AdSense 300×600 -->
+        <div class="tool-seo">
+          <h2>How to Read a Motorcycle Tyre Size Code</h2>
+          <p>A tyre code like <strong>160/60/17</strong> breaks down simply. The first number (160) is the tyre width in millimetres. The second (60) is the aspect ratio — the sidewall height as a percentage of the width. The third (17) is the rim diameter in inches.</p>
+          <h2>Does Tyre Size Affect Speedo Reading?</h2>
+          <p>Yes. A larger overall diameter means the wheel covers more ground per revolution, so your speedo reads lower than your actual speed. A smaller diameter makes the speedo over-read. This tool shows the exact percentage difference so you know what to expect after a tyre swap.</p>
         </div>
-      </aside>
-    </div>{# end tool-layout #}
+      </div>
+      <aside class="tool-sidebar"><div class="ad-slot"><!-- AdSense 160×600 --></div></aside>
+    </div>
   </div>
 </div>
 
