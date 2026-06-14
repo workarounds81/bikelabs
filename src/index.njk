@@ -128,87 +128,45 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
 </section>
 {% endif %}
 
-<!-- Shop Picks -->
-<section class="section shop-picks">
-  <div style="max-width:var(--max-site);margin:0 auto;">
-    <div class="section-header">
-      <h2 class="section-title">Shop Picks</h2>
-      <a href="{{ '/shop/' | url }}" class="section-link">Visit Shop &rarr;</a>
-    </div>
-    <div class="card-grid">
-
-      <div class="product-card">
-        <div class="card-img-placeholder" style="aspect-ratio:1/1;"><span>Helmet</span></div>
-        <div class="product-info">
-          <span class="product-category">Helmets</span>
-          <h3 class="product-name">Shoei RF-1400</h3>
-          <p class="product-verdict">The benchmark full-face helmet. Exceptional ventilation, quiet at speed, and a fit that actually works long-distance.</p>
-          <div class="product-actions">
-            <a href="{{ '/shop/' | url }}" class="btn-buy">Check Price on Amazon &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="card-img-placeholder" style="aspect-ratio:1/1;"><span>Jacket</span></div>
-        <div class="product-info">
-          <span class="product-category">Jackets</span>
-          <h3 class="product-name">Alpinestars T-GP Plus R v3</h3>
-          <p class="product-verdict">The best textile jacket for hot-weather riding. CE Level 2 armour, excellent airflow, built for actual riding conditions.</p>
-          <div class="product-actions">
-            <a href="{{ '/shop/' | url }}" class="btn-buy">Check Price on Amazon &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="card-img-placeholder" style="aspect-ratio:1/1;"><span>Gloves</span></div>
-        <div class="product-info">
-          <span class="product-category">Gloves</span>
-          <h3 class="product-name">Dainese Air Master Gloves</h3>
-          <p class="product-verdict">Full-knuckle protection with a mesh back that actually breathes. Our go-to for commuting in warm climates.</p>
-          <div class="product-actions">
-            <a href="{{ '/shop/' | url }}" class="btn-buy">Check Price on Amazon &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- Tools Section -->
 <section class="section tools-section">
   <div style="max-width:var(--max-site);margin:0 auto;padding:0 1rem;">
     <div class="section-header">
-      <h2 class="section-title">Motorcycle Calculators</h2>
-      <span style="color:#aaa;font-size:.95rem;">Pick your bike. Get your numbers.</span>
+      <h2 class="section-title">Online Tools</h2>
     </div>
-    <div class="card-grid-2x2">
-      <div class="tool-card-home">
-        <div class="tool-icon">⚙️</div>
-        <h3>Gear Ratio &amp; Sprocket Calculator</h3>
-        <p>See how sprocket changes affect top speed per gear. Essential before any gearing mod.</p>
-        <a href="{{ '/tools/gear-ratio-calculator/' | url }}" class="btn-tool">Use Calculator →</a>
-      </div>
-      <div class="tool-card-home">
-        <div class="tool-icon">🔵</div>
-        <h3>Tyre Size Calculator</h3>
-        <p>Decode any tyre code. Compare OEM vs aftermarket sizing and see the speedo impact.</p>
-        <a href="{{ '/tools/tyre-size-calculator/' | url }}" class="btn-tool">Use Calculator →</a>
-      </div>
-      <div class="tool-card-home">
-        <div class="tool-icon">⛽</div>
-        <h3>Fuel Range Calculator</h3>
-        <p>Know exactly how far you can ride before hitting reserve. Plan every long trip with confidence.</p>
-        <a href="{{ '/tools/fuel-range-calculator/' | url }}" class="btn-tool">Use Calculator →</a>
-      </div>
-      <div class="tool-card-home">
-        <div class="tool-icon">⚡</div>
-        <h3>Power-to-Weight Calculator</h3>
-        <p>Find out where your bike sits — learner to hyperbike — and compare to 100+ bikes in our database.</p>
-        <a href="{{ '/tools/power-weight-calculator/' | url }}" class="btn-tool">Use Calculator →</a>
-      </div>
+    <div class="card-grid-tools">
+      <a href="{{ '/tools/gear-ratio-calculator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">⚙️</span>
+        <span>Gear Ratio Calculator</span>
+      </a>
+      <a href="{{ '/tools/tyre-size-calculator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">🛞</span>
+        <span>Tyre Size Calculator</span>
+      </a>
+      <a href="{{ '/tools/fuel-range-calculator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">⛽</span>
+        <span>Fuel Range Calculator</span>
+      </a>
+      <a href="{{ '/tools/power-weight-calculator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">⚡</span>
+        <span>Power-to-Weight Calculator</span>
+      </a>
+      <a href="{{ '/tools/top-speed-calculator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">🏁</span>
+        <span>Top Speed Calculator</span>
+      </a>
+      <a href="{{ '/tools/ergonomics-fitment-simulator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">🧍</span>
+        <span>Ergonomics Simulator</span>
+      </a>
+      <a href="{{ '/tools/commuter-ownership-calculator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">💰</span>
+        <span>Commuter Cost Calculator</span>
+      </a>
+      <a href="{{ '/tools/suspension-geometry-calculator/' | url }}" class="tool-card-mini">
+        <span class="tool-icon-mini">📐</span>
+        <span>Suspension Geometry</span>
+      </a>
     </div>
   </div>
 </section>
