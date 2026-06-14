@@ -6,7 +6,7 @@ category: maintenance
 tags: [helmet, cleaning, maintenance, how-to]
 description: "How to clean a motorcycle helmet the right way — visor, liner, shell, and what products will damage it. Takes 20 minutes and extends helmet life significantly."
 affiliate: true
-image: https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/cleaningmotorcyclehelmet.jpg
 layout: article.njk
 permalink: /how-to/how-to-clean-motorcycle-helmet/
 ---

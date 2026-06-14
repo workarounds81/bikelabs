@@ -6,7 +6,7 @@ category: community
 tags: [group riding, safety, community, formation, culture]
 description: "The psychology of riding in a pack, the safety rules that keep everyone alive, and the unwritten code every rider should know before joining their first group."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/groupride.jpg
 layout: culture.njk
 permalink: /culture/unwritten-rules-motorcycle-group-riding/
 ---

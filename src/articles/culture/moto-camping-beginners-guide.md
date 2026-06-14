@@ -6,7 +6,7 @@ category: travel
 tags: [camping, travel, adventure, beginner]
 description: "A beginner's guide to moto camping — what gear you actually need, how to pack it on a bike, and why it changes the way you ride."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618047-3c8d3196f0e5?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/motocamping.jpg
 layout: culture.njk
 permalink: /culture/moto-camping-beginners-guide/
 ---

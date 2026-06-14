@@ -6,7 +6,7 @@ category: travel
 tags: [travel, etiquette, culture, international, touring]
 description: "What every cross-border motorcycle traveller needs to know about road culture, communication, and respect — from Southeast Asia to South America to Eastern Europe."
 affiliate: false
-image: https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/crossbordernomad.jpg
 layout: culture.njk
 permalink: /culture/motorcycle-riding-etiquette-cross-border-nomad/
 ---

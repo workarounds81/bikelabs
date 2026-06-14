@@ -6,7 +6,7 @@ category: electronics
 tags: [intercom, bluetooth, cardo, packtalk, communication, review]
 description: "A real-world test of the Cardo Packtalk Edge — mesh network stability in a 15-rider group, JBL audio at highway speeds, and the magnetic Air Mount system."
 affiliate: true
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/cardopacktalk.jpg
 layout: article.njk
 permalink: /reviews/cardo-packtalk-edge-intercom-review/
 ---

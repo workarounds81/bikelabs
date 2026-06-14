@@ -3,7 +3,7 @@ layout: article.njk
 permalink: /how-to/diy-motorcycle-oil-and-filter-change/
 title: "The DIY Engine Oil and Filter Change Playbook"
 description: "A foolproof garage guide to executing a clean motorcycle oil change — without stripping your drain plug, wrecking your wet clutch, or guessing on torque specs."
-image: https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1200&q=80
+image: /img/articles/engineoil.jpg
 date: 2026-06-13
 section: how-to
 tags:

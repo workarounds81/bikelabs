@@ -6,7 +6,7 @@ category: scrambler
 tags: [scrambler, neo-retro, custom, off-road, Ducati, Triumph, Royal Enfield]
 description: "Analysing the explosive scrambler segment — how 1960s desert-sled styling married modern chassis technology, who makes them best, and what they can actually do off-road."
 affiliate: false
-image: https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/Neo retro scrambler.jpg
 layout: article.njk
 permalink: /bikes/neo-retro-scrambler-motorcycles-guide/
 ---

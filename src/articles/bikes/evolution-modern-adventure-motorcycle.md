@@ -6,7 +6,7 @@ category: history
 tags: [ADV, adventure, history, dual-sport, BMW, KTM, touring]
 description: "Tracing the ADV category from its Paris-Dakar origins to the high-tech, multi-cylinder touring giants of today — and what changed along the way."
 affiliate: false
-image: https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/ADV motorcycle.jpg
 layout: article.njk
 permalink: /bikes/evolution-modern-adventure-motorcycle/
 ---

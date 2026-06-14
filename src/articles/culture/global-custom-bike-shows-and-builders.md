@@ -6,7 +6,7 @@ category: custom
 tags: [custom, shows, builders, culture, events]
 description: "From the Handbuilt Show in Austin to Wheels & Waves in Biarritz — the international calendar of custom motorcycle culture, and the workshops driving it forward."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/custommotorcycleshows.jpg
 layout: culture.njk
 permalink: /culture/global-custom-bike-shows-and-builders/
 ---

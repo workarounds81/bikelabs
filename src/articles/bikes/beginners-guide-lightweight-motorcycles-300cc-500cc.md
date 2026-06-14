@@ -6,7 +6,7 @@ category: beginner
 tags: [beginner, 300cc, 400cc, 500cc, lightweight, A2, starter]
 description: "Dismantling the myth that bigger is always better — why modern small-displacement machines build faster skills, cost less to run, and are more capable than most riders expect."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/lightweightmotorcycles.jpg
 layout: article.njk
 permalink: /bikes/beginners-guide-lightweight-motorcycles-300cc-500cc/
 ---

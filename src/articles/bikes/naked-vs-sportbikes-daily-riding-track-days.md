@@ -6,7 +6,7 @@ category: comparison
 tags: [naked, sportbike, comparison, ergonomics, track, daily]
 description: "A comprehensive mechanical and ergonomic comparison between fully faired sportbikes and stripped-down hyper-nakeds — what each does better and why it matters."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/nakedvssportsbikes.jpg
 layout: article.njk
 permalink: /bikes/naked-vs-sportbikes-daily-riding-track-days/
 ---

@@ -6,7 +6,7 @@ category: helmets
 tags: [helmets, budget, safety]
 description: "The best motorcycle helmets under $150 that don't compromise on safety — ECE 22.06 certified, properly tested, and worth buying."
 affiliate: true
-image: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop&crop=entropy
+image: /img/articles/Best budget helmets.jpg
 layout: article.njk
 permalink: /reviews/best-budget-motorcycle-helmets/
 ---

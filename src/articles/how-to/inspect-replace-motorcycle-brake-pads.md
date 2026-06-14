@@ -3,7 +3,7 @@ layout: article.njk
 permalink: /how-to/inspect-replace-motorcycle-brake-pads/
 title: "How to Inspect and Replace Front and Rear Brake Pads"
 description: "A critical safety checklist for identifying worn brake pads before they score expensive rotors — including caliper removal, piston compression, and the bedding-in process."
-image: https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1200&q=80
+image: /img/articles/Brakepads.jpg
 date: 2026-06-13
 section: how-to
 tags:

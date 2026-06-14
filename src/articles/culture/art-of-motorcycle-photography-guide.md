@@ -6,7 +6,7 @@ category: photography
 tags: [photography, gear, creative, tips, culture]
 description: "From location scouting to camera settings, lighting and composition — a practical guide to photographing motorcycles in a way that does justice to the machine."
 affiliate: false
-image: https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/motorcyclephotography.jpg
 layout: culture.njk
 permalink: /culture/art-of-motorcycle-photography-guide/
 ---

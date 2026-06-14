@@ -59,7 +59,7 @@ ogType: article
           <a href="{{ article.url | url }}">
             {% if article.data.image %}
             <div class="card-img-wrap">
-              <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+              <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
             </div>
             {% else %}
             <div class="card-img-placeholder"><span>Culture</span></div>

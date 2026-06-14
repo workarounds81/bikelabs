@@ -11,7 +11,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
 <div class="hero-wrap">
 <section class="hero">
   {% if featured.data.image %}
-  <img class="hero-img" src="{{ featured.data.image }}" alt="{{ featured.data.title }}" fetchpriority="high" decoding="async">
+  <img class="hero-img" src="{{ featured.data.image | url }}" alt="{{ featured.data.title }}" fetchpriority="high" decoding="async">
   {% else %}
   <div style="background:#1e1e1e;aspect-ratio:16/9;width:100%;display:flex;align-items:center;justify-content:center;">
     <span style="font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:700;color:#FF6B00;opacity:0.2;text-transform:uppercase;">BikeLabs</span>
@@ -46,7 +46,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
       <a href="{{ article.url | url }}">
         {% if article.data.image %}
         <div class="card-img-wrap">
-          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+          <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
         </div>
         {% else %}
         <div class="card-img-placeholder"><span>{{ article.data.category or "Review" }}</span></div>
@@ -79,7 +79,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
       <a href="{{ article.url | url }}">
         {% if article.data.image %}
         <div class="card-img-wrap">
-          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+          <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
         </div>
         {% else %}
         <div class="card-img-placeholder"><span>Bikes</span></div>
@@ -110,7 +110,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
       <a href="{{ article.url | url }}">
         {% if article.data.image %}
         <div class="card-img-wrap">
-          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+          <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
         </div>
         {% else %}
         <div class="card-img-placeholder"><span>Culture</span></div>

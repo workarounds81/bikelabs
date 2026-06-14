@@ -6,7 +6,7 @@ category: travel
 tags: [adventure, touring, travel, ADV, long distance, culture]
 description: "What drives riders to cross borders and continents on two wheels — and the practical philosophy behind doing it without breaking down, burning out, or going broke."
 affiliate: false
-image: https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/Longdistancemototouring.jpg
 layout: culture.njk
 permalink: /culture/guide-long-distance-moto-touring-adventure/
 ---

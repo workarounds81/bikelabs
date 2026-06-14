@@ -6,7 +6,7 @@ category: history
 tags: [cafe racer, custom, history, culture, british]
 description: "From the Ace Café to the workshop floors of modern custom builders — how a post-war British subculture became one of the most influential movements in motorcycle history."
 affiliate: false
-image: https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=1200&q=80&auto=format&fit=crop
+image: /img/articles/caferacerculture.jpg
 layout: culture.njk
 permalink: /culture/evolution-cafe-racer-culture/
 ---
