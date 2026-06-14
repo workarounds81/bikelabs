@@ -13,7 +13,6 @@ tags:
   - maintenance
 ---
 
-<img src="/assets/images/placeholder-tyre-header.jpg" alt="Aggressive sportbike rear tyre tread pattern in sharp focus, lean angle visible on tread edge" data-prompt="Photorealistic close-up of a high-performance sportbike rear tyre showing aggressive tread pattern, shot from a low angle at tarmac level. The tyre edge shows distinct wear from cornering, the tread blocks are sharply detailed, warm afternoon side lighting casts shadows in the grooves, background shows blurred tarmac and garage floor, ultra-sharp detail, professional photography">
 
 Your tyres are the only contact point between your motorcycle and the road. Every braking force, cornering force, and acceleration input passes through a contact patch roughly the size of your palm. Understanding how to read tyre wear, maintain correct pressure, and identify when a tyre has expired is one of the most important skills a motorcyclist can develop.
 
@@ -52,7 +51,6 @@ Adjust slightly upward (2–4 PSI) when carrying a passenger or luggage.
 
 ## Reading the DOT Date Code
 
-<img src="/assets/images/placeholder-tyre-sidewall-diagram.jpg" alt="Infographic showing a motorcycle tyre sidewall with arrows pointing to the DOT date code and tread wear indicator locations" data-prompt="Clean infographic illustration of a motorcycle tyre sidewall. Red annotation arrows point to two specific locations: (1) The DOT date code stamped into the rubber, with a callout box showing 'DOT XXXX 2319' explained as 'Week 23, Year 2019'. (2) The tread wear indicator (TWI) location with a small triangle symbol on the tyre sidewall. Additional labels identify the tyre width, aspect ratio, and rim size codes. White background, clean modern infographic design, bold typography, colour-coded sections">
 
 Every motorcycle tyre sold in markets governed by DOT (Department of Transportation) standards carries a date code stamped into the sidewall. It consists of four digits at the end of the DOT string.
 

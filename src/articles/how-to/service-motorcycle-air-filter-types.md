@@ -13,7 +13,6 @@ tags:
   - air filter
 ---
 
-<img src="/assets/images/placeholder-air-filter-header.jpg" alt="Clean high-flow air filter with pleated cotton gauze element in sharp focus against a dark background" data-prompt="Photorealistic close-up of a high-flow aftermarket air filter with red cotton gauze pleats over a chrome wire mesh frame. Shot against a dark studio background, sharp detail on the filter pleats showing the fine mesh texture, warm side lighting highlighting the cotton fibres, professional product photography, extreme sharpness and detail">
 
 Every cubic centimetre of air your engine breathes passes through the air filter first. A clean filter delivers unrestricted airflow for complete combustion, sharp throttle response, and optimal fuel economy. A clogged filter does the opposite — restricting intake, richening the fuel mixture, and robbing the engine of power while increasing fuel consumption.
 
@@ -36,7 +35,6 @@ A compromised air filter is one of the leading causes of premature engine wear i
 
 ## Understanding the Three Filter Types
 
-<img src="/assets/images/placeholder-air-filter-comparison.jpg" alt="Side-by-side comparison of a heavily clogged dirty air filter next to a freshly cleaned and re-oiled filter" data-prompt="Clean product photography split-image showing two identical motorcycle air filters side by side. LEFT: A heavily clogged paper air filter with dark brown/black dust buildup visible in all pleats, visibly dirty and deteriorated. RIGHT: The same filter type but freshly serviced — clean white pleats or re-oiled cotton gauze in clean red colour. White background, even lighting, high contrast between dirty and clean states, professional studio product photography">
 
 ### Type 1: Paper/Dry Element Filters
 

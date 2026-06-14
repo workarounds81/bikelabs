@@ -11,7 +11,6 @@ layout: article.njk
 permalink: /bikes/naked-vs-sportbikes-daily-riding-track-days/
 ---
 
-<img src="/assets/images/placeholder-naked-vs-sport-header.jpg" alt="A Yamaha R6 sportbike and a Yamaha MT-09 naked bike parked side by side on a track pit lane" data-prompt="Crisp wide-angle photograph of two motorcycles parked side by side on a race track pit lane. Left side: a fully faired 600cc supersport in blue and white — Yamaha R6 or Honda CBR600RR style. Right side: a modern 1000cc naked hyper-streetfighter in dark grey — Yamaha MT-09 or Kawasaki Z H2 style. Clean concrete background, pit lane white markings, professional commercial motorcycle photography, morning light, high detail">
 
 Two philosophies. One engine category. Completely different experiences. The question of whether to buy a naked or a sportbike is one of the most debated in motorcycling — and the answer depends entirely on what you actually do with your riding, not what you imagine you might do.
 
@@ -42,7 +41,6 @@ Modern hyper-nakeds like the BMW M 1000 R, Ducati Streetfighter V4, and Kawasaki
 
 ## Ergonomics: The Rider Triangle
 
-<img src="/assets/images/placeholder-rider-triangle.jpg" alt="Technical diagram comparing the rider triangle geometry of a sportbike vs a naked motorcycle showing hip knee and handlebar angles" data-prompt="Clean professional technical infographic on a dark background showing two motorcycle side-profile silhouettes side by side. Left silhouette: a fully faired sportbike with a rider in a tucked-forward aggressive position. Right silhouette: a naked/streetfighter motorcycle with a rider in an upright-aggressive position. Orange dotted lines connect hip point, knee point, and handlebar grip to form the 'rider triangle' for each position. Angle values labelled for torso lean, knee bend, and arm reach. White annotation text on dark grey background, clean engineering diagram style">
 
 The rider triangle — the relationship between hands, hips, and feet — is fundamentally different between the two categories.
 

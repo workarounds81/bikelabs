@@ -35,17 +35,13 @@ ogType: article
 {% endblock %}
 
 {% block content %}
-<div class="article-layout">
+<div class="article-page">
   <div class="article-main">
-
-    {% if image %}
-    <img class="article-hero" src="{{ image }}" alt="{{ title }}" fetchpriority="high" decoding="async">
-    {% endif %}
 
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="{{ '/' | url }}">Home</a>
       <span>&rsaquo;</span>
-      <a href="/{{ section }}/">{{ section | capitalize }}</a>
+      <a href="{{ ('/' + section + '/') | url }}">{{ section | capitalize }}</a>
       <span>&rsaquo;</span>
       <span>{{ title }}</span>
     </nav>
@@ -59,6 +55,10 @@ ogType: article
         <span>{{ content | readingTime }}</span>
       </div>
     </header>
+
+    {% if image %}
+    <img class="article-hero" src="{{ image | url }}" alt="{{ title }}" fetchpriority="high" decoding="async">
+    {% endif %}
 
     {% if affiliate %}
     <div class="affiliate-disclosure">
@@ -103,9 +103,5 @@ ogType: article
     {% endif %}
 
   </div>
-
-  <aside class="article-sidebar">
-    {% include "partials/ad-slot.njk" %}
-  </aside>
 </div>
 {% endblock %}

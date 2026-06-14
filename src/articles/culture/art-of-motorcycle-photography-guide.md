@@ -11,7 +11,6 @@ layout: culture.njk
 permalink: /culture/art-of-motorcycle-photography-guide/
 ---
 
-<img src="/assets/images/placeholder-moto-photo-header.jpg" alt="Photographer crouching low to shoot a motorcycle on a mountain road at golden hour" data-prompt="Cinematic wide-angle photograph of a professional photographer crouching at road level to shoot a parked motorcycle on an empty winding mountain road. Golden hour light. The motorcycle is a naked streetfighter, lit from the side by warm orange sun. The photographer has a mirrorless camera on a low tripod. Sharp bike in foreground, blurred mountain range behind. Dramatic, moody, professional photography-about-photography composition">
 
 A well-shot motorcycle photograph does something a spec sheet cannot. It communicates how a machine feels — its mass, its aggression, its character. The difference between a photo that looks like a classified listing and one that looks like an editorial spread is almost never the camera. It is always the photographer's understanding of light, composition, and timing.
 
@@ -41,7 +40,6 @@ Studio-style shooting with flash or LED panels gives you total control over dire
 
 ## Location and Context
 
-<img src="/assets/images/placeholder-moto-photo-location.jpg" alt="Vintage motorcycle parked in front of weathered industrial wall with dramatic light and texture contrast" data-prompt="Street photography composition of a classic motorcycle — Triumph Bonneville or similar — parked against a heavily textured, weathered industrial brick wall with peeling paint and rust stains. Late afternoon side-light. The bike is polished, the wall is rough — deliberate contrast between machine and texture. Shallow depth of field, 50mm lens style, documentary photography aesthetic, warm film tones">
 
 The location is not a background. It is a character in the image.
 

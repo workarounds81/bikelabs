@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /reviews/klim-marrakesh-jacket-review/
 ---
 
-<img src="/assets/images/placeholder-klim-marrakesh-header.jpg" alt="Black Klim Marrakesh motorcycle jacket resting over a motorcycle fuel tank showing its clean civilian-cut non-bulky styling" data-prompt="Clean urban-style product photograph of a black Klim Marrakesh motorcycle jacket draped casually over the fuel tank of a motorcycle — naked bike or scrambler style. The jacket's clean, non-bulky, civilian styling is emphasised — it looks like a high-quality casual jacket rather than traditional motorcycle gear. Natural urban lighting, the jacket's subtle perforated mesh structure visible at close range. Editorial product photography aesthetic, warm city environment background slightly blurred">
 
-<img src="/assets/images/placeholder-klim-marrakesh-mesh.jpg" alt="Macro textile close-up of the Klim Marrakesh Karbonite Micromesh fabric showing the micropores enabling maximum airflow" data-prompt="Extreme macro textile photography of the Klim Marrakesh jacket's Karbonite Micromesh fabric surface. Shot at very close range with a macro lens, the individual micropores of the mesh weave are clearly visible — tiny regular hexagonal or square openings in a structured textile matrix. Warm side-lighting creates fine shadow detail revealing the three-dimensional texture of the mesh construction. Clean scientific/product macro photography style, sharp central focus, slight depth-of-field fall-off at edges">
 
 Klim operates in the space where motorcycling meets professional outdoor performance equipment — products that justify premium pricing through genuine material and engineering advancement rather than brand premium alone. The Marrakesh jacket positions itself as the answer to a specific and common problem: how to ride in hot weather with CE Level 2 protection without dying of heat exhaustion or looking like you're wearing body armour to the coffee shop.
 

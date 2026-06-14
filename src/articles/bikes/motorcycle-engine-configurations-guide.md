@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /bikes/motorcycle-engine-configurations-guide/
 ---
 
-<img src="/assets/images/placeholder-engine-configs-header.jpg" alt="Technical 3D transparent render cutaway showing four different motorcycle engine configurations side by side" data-prompt="Highly technical, clean engineering graphic showing four transparent 3D render cutaway illustrations of different motorcycle engine types arranged in a 2x2 grid on a dark background. Top-left: single cylinder thumper engine with visible piston and crankshaft. Top-right: V-twin engine showing 90-degree cylinder angle. Bottom-left: inline-triple cylinder engine. Bottom-right: inline-four cylinder engine with visible valve train. Each engine is labelled in clean white text. Professional CAD-render style, orange accent highlights on moving parts, dark grey background">
 
-<img src="/assets/images/placeholder-torque-curves.jpg" alt="Comparative torque curve chart showing V-Twin low-RPM torque versus Inline-Four high-RPM power delivery" data-prompt="Clean professional data visualization chart on a dark background showing two overlapping torque/power curves. X-axis: RPM scale from 1,000 to 14,000. Y-axis: Torque (Nm). Orange curve: V-Twin torque curve — high plateau from 3,000–7,000 RPM then gradual decline. Blue curve: Inline-Four torque curve — lower at low RPM, rises steeply from 7,000 RPM, peaks at 11,000 RPM. Clear intersection point visible around 6,500 RPM. White gridlines, labelled axes, legend identifying each curve. Engineering-quality data presentation style">
 
 Every motorcycle engine is an architecture with a personality. The same displacement can feel lumbering or electric, lazy or surgical, mechanical or symphonic — depending entirely on how the cylinders are arranged and how they fire. This guide breaks down the four fundamental configurations and explains why each produces a fundamentally different riding experience.
 

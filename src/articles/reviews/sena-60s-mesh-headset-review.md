@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /reviews/sena-60s-mesh-headset-review/
 ---
 
-<img src="/assets/images/placeholder-sena-60s-header.jpg" alt="Rider wearing gloves operating the button interface of a Sena 60S headset mounted on a full-face helmet" data-prompt="High-contrast action product photograph of a motorcyclist's gloved hand operating the button interface of a Sena 60S headset. The unit is mounted on the left side of a dark grey full-face helmet. The shot is tightly framed on the gloved hand and device — thumb visible on the main button. Shallow depth of field, dark moody background, studio-quality lighting on the device and glove texture, Sena branding visible on the unit">
 
-<img src="/assets/images/placeholder-sena-60s-wave.jpg" alt="Infographic diagram showing how the Sena 60S bridges local mesh radio frequencies with global cellular network infrastructure" data-prompt="Clean professional infographic on a dark background illustrating the Sena WAVE technology network diagram. Shows: a motorcycle icon on the left with a Sena 60S unit, connected via a local mesh radio wave icon to a second nearby motorcycle; the second motorcycle connects via cellular towers (illustrated as 4G/5G tower icons) to a cloud/server icon; a third motorcycle icon on the far right connects from the cloud. Arrows show bidirectional data flow. Text labels: 'Local Mesh (up to 2km)', 'Cellular Network', 'WAVE Server', 'Unlimited Range'. Clean icon-based infographic style, white and orange text on dark background">
 
 The fundamental limitation of every motorcycle intercom system has always been range. Bluetooth struggles beyond 1.2 km. Mesh radio extends this to 2 km in ideal conditions. Both figures become academic when a riding group spreads across a mountain pass or one rider turns the wrong way at a junction.
 

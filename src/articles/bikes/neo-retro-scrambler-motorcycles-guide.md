@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /bikes/neo-retro-scrambler-motorcycles-guide/
 ---
 
-<img src="/assets/images/placeholder-scrambler-beach.jpg" alt="Modern scrambler motorcycle parked on a rugged sandy beach at dusk with warm golden light" data-prompt="Stylish cinematic photograph of a modern scrambler motorcycle — Ducati Scrambler or Triumph Scrambler 1200 style — parked on a rugged sandy beach at dusk. Warm golden-hour light casting long shadows. The bike has high-mount exhaust pipes, spoked wheels, knobby dual-sport tyres, and a classic teardrop tank. Waves visible in background, sandy foreground texture, rich warm colour tones, shallow depth of field, editorial style motorcycle photography">
 
-<img src="/assets/images/placeholder-scrambler-exhaust.jpg" alt="Close-up detail of a high-mount scrambler exhaust system with dual-sport knobby tire in foreground" data-prompt="Detailed close-up product photograph of a scrambler motorcycle's high-mounted exhaust system. The exhaust pipe sweeps upward from the engine header in a classic scrambler style, with brushed stainless finish. In the foreground, a knobby dual-sport tyre fills the lower third of the frame. Shallow depth of field, warm studio side-lighting, black and chrome tones, cinematic quality, fine mechanical detail visible on exhaust clamps and welds">
 
 In 1960s California, motorcycle racers stripped production bikes down to bare essentials, raised the exhaust pipes to clear desert terrain, fitted knobbly tyres, and went racing across the high desert. The machines they built — scramblers — were honest, purpose-built, and beautiful in the way that functional things become beautiful when every element serves a reason.
 

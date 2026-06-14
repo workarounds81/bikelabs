@@ -11,7 +11,6 @@ layout: culture.njk
 permalink: /culture/guide-long-distance-moto-touring-adventure/
 ---
 
-<img src="/assets/images/placeholder-adv-touring-header.jpg" alt="Mud-splattered adventure motorcycle loaded with soft luggage panniers parked against a vast desert mountain horizon at sunset" data-prompt="Breathtaking photorealistic image of a heavily loaded adventure motorcycle — BMW GS or KTM Adventure style — parked on a dirt track in a vast high-altitude desert landscape. The bike is mud-splattered, with soft luggage panniers and a dry bag on top. The rider stands beside it looking at the horizon. Dramatic sunset sky with orange and purple tones, distant mountain range, dust in the air, cinematic wide-angle composition, raw and authentic adventure travel photography">
 
 In 1973, a British adventurer named Ted Simon set off from London on a Triumph Tiger 100. Four years and 78 countries later, he returned having covered 78,000 miles — a journey that became the book *Jupiter's Travels* and inspired a generation of riders to ask: what if I just kept going?
 
@@ -33,7 +32,6 @@ Adventure riding attracts a specific type of person — not defined by age, inco
 
 ## The Minimalist Philosophy of Packing
 
-<img src="/assets/images/placeholder-adv-packing-layout.jpg" alt="Flat-lay gear layout for a long-distance motorcycle tour showing minimalist packing with panniers, dry bags, tools and clothing" data-prompt="Clean flat-lay photograph from directly above showing the complete packing layout for an extended motorcycle tour. Items are arranged on a grey concrete floor: two medium soft panniers, one top bag, one dry bag, a small tool roll, a first aid kit, a camping hammock, a lightweight down jacket, two riding base layers, one pair of waterproof overpants, a water filter, a tablet device with maps, a multi-tool, tire repair kit, cable locks. Clean product photography style, all items labelled with small white text tags, professional and organised layout">
 
 The greatest mistake first-time touring riders make is overpacking. The temptation to prepare for every scenario results in a bike so heavily loaded it handles poorly, and luggage so dense that finding anything requires unpacking everything.
 

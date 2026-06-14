@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /bikes/beginners-guide-lightweight-motorcycles-300cc-500cc/
 ---
 
-<img src="/assets/images/placeholder-lightweight-canyon.jpg" alt="Rider smoothly cornering a lightweight 400cc sport motorcycle on a winding canyon road with confidence" data-prompt="Energetic photorealistic photograph of a rider in full gear confidently cornering a lightweight sportbike — Honda CBR400R or Kawasaki Ninja 400 style — on a winding canyon road. The bike is leaned over at a committed angle, knee close to the road. Warm afternoon light through canyon walls, smooth tarmac, slight motion blur on background to convey speed. Dynamic composition, wide-angle action shot from a low camera position at road level">
 
-<img src="/assets/images/placeholder-lightweight-lineup.jpg" alt="Three popular entry-level sub-500cc motorcycles displayed side by side in a studio product showcase" data-prompt="Clean commercial product photography of three popular small-displacement motorcycles arranged in a slight arc on a polished dark grey studio floor. Left: Honda CBR500R in red/black. Centre: Kawasaki Ninja 400 in green/black. Right: Yamaha MT-03 in dark grey. Studio lighting from above and sides, reflections on polished floor, each bike in pristine condition, slight 3/4 front angle. Professional product photography, dark background, clean minimalist setup">
 
 There is a persistent myth in motorcycle culture that beginners should start small only until they can "upgrade" to a real bike. This framing implies that small-displacement machines are a temporary inconvenience — something to endure before reaching the destination of a large-displacement motorcycle.
 

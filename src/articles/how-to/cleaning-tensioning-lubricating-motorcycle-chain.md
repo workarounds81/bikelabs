@@ -12,7 +12,6 @@ tags:
   - chain
 ---
 
-<img src="/assets/images/placeholder-chain-header.jpg" alt="Close-up of a clean, well-lubricated motorcycle drive chain on a rear sprocket" data-prompt="Photorealistic close-up of a spotlessly clean and freshly lubricated motorcycle drive chain wrapped around a rear sprocket. Shot in a professional garage, warm workshop lighting, chain links gleaming with fresh lube, dark background, shallow depth of field, ultra-high detail">
 
 Your drive chain is one of the hardest-working components on your motorcycle. Every revolution of the engine passes through it. Neglect it and you'll face accelerated wear on sprockets, snatchy power delivery, and — in worst-case scenarios — a catastrophic mid-ride snap. The good news: a proper chain service takes under 30 minutes and costs almost nothing.
 
@@ -35,7 +34,6 @@ A worn or poorly maintained chain doesn't just fail suddenly — it degrades gra
 
 Chain slack is the amount of vertical movement in the chain at its midpoint — typically measured at the tightest point in the chain's rotation.
 
-<img src="/assets/images/placeholder-chain-slack-diagram.jpg" alt="Technical diagram showing how to measure motorcycle chain slack with a ruler at the midpoint of the chain run" data-prompt="Clean technical diagram on a white background showing the underside of a motorcycle swingarm with a drive chain. A ruler is positioned vertically against the chain at the midpoint between the front and rear sprockets, with measurement arrows indicating the correct slack measurement zone. Labels indicate 'measure here', 'tight spot', and 'slack measurement'. Engineering diagram style, high contrast, precise line work">
 
 **The sweet spot is typically 25–35mm (1–1.5 inches) of free vertical play.** Always check your owner's manual — adventure bikes and cruisers often run slightly more slack than sportbikes due to suspension travel.
 

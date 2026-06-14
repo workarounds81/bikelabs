@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /reviews/shoei-rf1400-helmet-review/
 ---
 
-<img src="/assets/images/placeholder-shoei-rf1400-header.jpg" alt="Glossy black Shoei RF-1400 full-face motorcycle helmet reflecting clean minimalist studio lights" data-prompt="Sleek professional product photography of a gloss black Shoei RF-1400 motorcycle helmet on a dark reflective surface. Studio lighting from two sides creates clean highlights along the aerodynamic shell. The visor is down, showing the mirrored or smoke shield. White light reflections along the chin bar and crown. Minimalist dark grey background, slight ground reflection, high-end helmet catalogue photography, sharp detail on the ventilation ports and Shoei branding">
 
-<img src="/assets/images/placeholder-shoei-rf1400-liner.jpg" alt="Macro cross-section diagram of the Shoei RF-1400 multi-density EPS foam liner and emergency quick-release cheek pad tabs" data-prompt="Detailed macro product cutaway photograph of the interior of a premium full-face motorcycle helmet. Shows multi-density EPS foam liner in orange and white layers, plush moisture-wicking cheek pads with bright orange emergency release tabs clearly labelled, emergency pull-strap at the back of the neck roll, and the emergency cheek pad removal system. Technical product photography style, clean white background, fine detail on foam texture and fabric stitching, professional studio lighting">
 
 Shoei has occupied the upper tier of motorcycle helmet manufacturing for decades. The RF-1400 — the direct successor to the RF-SR — arrived carrying that reputation and the weight of expectations from riders accustomed to treating Shoei helmets as the default answer to the question: what is the best full-face street helmet available?
 

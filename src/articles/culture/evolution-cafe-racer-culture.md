@@ -11,7 +11,6 @@ layout: culture.njk
 permalink: /culture/evolution-cafe-racer-culture/
 ---
 
-<img src="/assets/images/placeholder-cafe-racer-header.jpg" alt="Classic vintage café racer motorcycle parked outside an industrial brick café on a moody London evening" data-prompt="Cinematic, gritty photograph of a classic 1960s British café racer motorcycle — Norton Commando or BSA Gold Star style — parked on wet cobblestones outside an industrial red-brick café at dusk. Neon café signage reflects off the wet ground, the bike is polished chrome and dark paint, low ambient light, slight film grain, cinematic widescreen composition, moody atmospheric lighting, shallow depth of field">
 
 There is no motorcycle subculture quite as visually pure as the café racer. The low bars. The cropped seat. The stripped-back philosophy that says if it doesn't make the bike faster or lighter, it comes off. Born from post-war austerity and amplified by rock 'n' roll, the café racer movement produced some of the most influential machines ever built — and its DNA runs through virtually every custom scene that followed.
 
@@ -21,7 +20,6 @@ There is no motorcycle subculture quite as visually pure as the café racer. The
 
 The story starts on a stretch of North Circular Road in London. The Ace Café opened in 1938 as a roadside transport café — a utilitarian stop for lorry drivers. Post-war, it became something else entirely.
 
-<img src="/assets/images/placeholder-cafe-racer-bw.jpg" alt="Black and white photograph of mid-century Ton-Up Boys gathered outside the Ace Café in London with their motorcycles" data-prompt="High-quality black and white period photograph style image of young British men in leather jackets gathered outside a 1950s roadside café with their motorcycles. The bikes are British singles and twins — BSA, Triumph, Norton. The riders wear leather jackets, some with scarves, all with an air of defiance. Café windows glow behind them. Film grain, period-accurate documentary photography style, circa 1958">
 
 By the early 1950s, the Ace had become the gravitational centre of a new tribe: young, working-class men and women with surplus military motorcycles, a taste for American rock 'n' roll playing on the café jukebox, and a shared obsession with speed.
 

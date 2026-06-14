@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /bikes/how-to-inspect-used-motorcycle-buyers-checklist/
 ---
 
-<img src="/assets/images/placeholder-used-bike-inspection.jpg" alt="Mechanic using a flashlight to closely inspect a motorcycle's front fork seals and brake calipers during a pre-purchase inspection" data-prompt="Bright, technical studio-quality photograph of a mechanic in a workshop performing a detailed inspection of a motorcycle's front end. The mechanic is crouching at fork level with a powerful LED flashlight pointing at the front fork tube, examining the fork seal area closely. The motorcycle is a naked/roadster style. Workshop background with tools visible. High-resolution detail, professional lighting, sharp technical photography. The mechanic wears clean work clothes and is focused and methodical">
 
-<img src="/assets/images/placeholder-inspection-diagram.jpg" alt="Annotated infographic diagram highlighting the top 10 critical inspection areas on a used motorcycle frame and components" data-prompt="Professional technical infographic on a dark background showing a side-profile silhouette of a motorcycle with 10 numbered orange annotation arrows pointing to critical inspection zones. Each annotation has a short label: 1=Frame neck/steering head, 2=Fork seals, 3=Front brake rotor, 4=Tyre sidewall date codes, 5=Chain and sprockets, 6=Swing arm pivot, 7=Rear shock, 8=Frame welds near footpegs, 9=Exhaust header corrosion, 10=Tank rust inspection point. Clean engineering diagram style, white annotation text, orange accent arrows, dark grey background">
 
 A used motorcycle is the most efficient way to get onto your first bike — or your next bike. It is also one of the most reliable ways to acquire an expensive problem if the inspection is rushed or incomplete. Sellers are not obligated to disclose crash history, poor maintenance, or impending component failure. The buyer's only protection is knowledge.
 

@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /reviews/aoocci-c6pro-carplay-dashcam-review/
 ---
 
-<img src="/assets/images/placeholder-aoocci-header.jpg" alt="Aoocci C6 Pro touchscreen displaying Google Maps navigation mounted on a dual-sport motorcycle handlebar in bright sunlight" data-prompt="Bright outdoor product photograph of an Aoocci C6 Pro motorcycle display unit mounted on the handlebars of an adventure/dual-sport motorcycle. The 6.25-inch touchscreen clearly shows a Google Maps navigation view with route displayed. The photograph is taken in bright outdoor conditions to demonstrate screen visibility. Background shows a parking lot or road environment. Wide-angle composition showing the handlebar mount context, the display legibility, and part of the motorcycle cockpit. Realistic product-in-use photography">
 
-<img src="/assets/images/placeholder-aoocci-parts.jpg" alt="Product parts array showing the Aoocci C6 Pro IP67 display unit, handlebar mounting brackets, dual front and rear cameras, and TPMS valve stem sensors" data-prompt="Clean flat-lay commercial product photography of all Aoocci C6 Pro components arranged on a neutral dark background. Items clearly separated and lit: centre — the 6.25-inch main display unit face-up; top left — the front camera module with bracket; top right — the rear camera module; bottom left — two TPMS wireless valve stem sensor caps; bottom right — handlebar mounting bracket hardware; USB cables coiled neatly. Professional product photography style, even studio lighting, each component clearly visible">
 
 The category of all-in-one motorcycle dashboards is recent and growing rapidly. The value proposition is straightforward: instead of a separate sat-nav, separate dashcam, and separate TPMS monitor, a single unit handles all three — one mount, one power cable, one interface.
 

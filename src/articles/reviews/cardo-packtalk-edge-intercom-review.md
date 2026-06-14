@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /reviews/cardo-packtalk-edge-intercom-review/
 ---
 
-<img src="/assets/images/placeholder-cardo-edge-header.jpg" alt="Cardo Packtalk Edge intercom unit snapped onto a matte finish sport helmet showing the clean magnetic mount profile" data-prompt="Crisp commercial product photograph of a Cardo Packtalk Edge motorcycle intercom unit securely mounted to the left side of a matte black full-face helmet. The unit shows its clean design profile with the Cardo logo visible, the single jog-wheel interface prominent, and the speaker grilles facing the viewer. The helmet is positioned at a slight 3/4 angle. Bright, clean product photography with a white or light grey background, professional studio lighting, high detail on the device's surface texture and button layout">
 
-<img src="/assets/images/placeholder-cardo-edge-ports.jpg" alt="Technical product close-up of the Cardo Packtalk Edge showing USB-C charging port, roller wheel interface, and waterproof housing" data-prompt="Detailed macro product photograph of the Cardo Packtalk Edge intercom unit isolated on a clean white background. Close-up showing: the USB-C charging port on the bottom edge with its rubber waterproof cover, the single multi-function jog-wheel rotary controller on the face, the LED status indicator, and the textured waterproof housing. Technical product photography style, neutral background, even studio lighting, fine surface detail clearly resolved">
 
 The original Cardo Packtalk Bold established Dynamic Mesh Communication as the standard for group motorcycle intercoms. The Packtalk Edge is Cardo's complete rearchitecting of that product — new hardware, second-generation DMC, magnetic mounting, and JBL audio. The question is whether it justifies the step-up from an already excellent predecessor.
 

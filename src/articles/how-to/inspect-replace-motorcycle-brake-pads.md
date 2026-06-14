@@ -13,7 +13,6 @@ tags:
   - maintenance
 ---
 
-<img src="/assets/images/placeholder-brakes-header.jpg" alt="High-performance radial-mount motorcycle brake caliper with slotted rotor, close-up in sharp detail" data-prompt="Photorealistic close-up of a high-performance motorcycle radial-mount brake caliper in anodised gold finish, gripping a slotted and cross-drilled steel brake rotor. Shot from a low angle, dramatic side lighting highlighting the rotor slots and caliper pistons, blurred tyre and wheel spokes in background, ultra-sharp product photography, dark studio background">
 
 Brake pads are a consumable — they wear down by design. The danger isn't the wear itself, it's the failure to notice it in time. When brake pads wear through their friction material and the metal backing plate contacts the rotor, stopping distances increase dramatically, rotors score instantly, and repair costs multiply.
 
@@ -37,7 +36,6 @@ Unlike most mechanical failures that announce themselves with noise or vibration
 
 Most brake calipers have an inspection window — a gap between the caliper body and the disc — through which you can see the pad thickness without removing anything.
 
-<img src="/assets/images/placeholder-brake-pad-comparison.jpg" alt="Cross-section diagram comparing a worn brake pad at minimum thickness versus a new brake pad, with measurement annotations" data-prompt="Clean technical cross-section illustration showing two brake pads side by side. Left pad labelled 'WORN - 1mm remaining' shows nearly depleted friction material with the metal backing plate clearly visible and highlighted in red. Right pad labelled 'NEW - 10mm' shows full thick friction material in dark grey. White background, engineering diagram style, measurement arrows, colour-coded warning zones in red and green, professional workshop manual aesthetic">
 
 **Minimum acceptable pad thickness: 2mm of friction material.** Most manufacturers recommend replacement at 3mm to provide a safety margin. New pads typically start at 8–10mm.
 

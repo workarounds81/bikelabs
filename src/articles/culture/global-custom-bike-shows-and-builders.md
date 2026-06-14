@@ -11,7 +11,6 @@ layout: culture.njk
 permalink: /culture/global-custom-bike-shows-and-builders/
 ---
 
-<img src="/assets/images/placeholder-custom-show-header.jpg" alt="Packed custom motorcycle show with illuminated hand-built bikes on display and crowds of enthusiasts" data-prompt="Wide-angle photograph of a dramatic indoor custom motorcycle show. Carefully illuminated custom motorcycles on low plinths under dramatic spotlighting. Crowds of people in the background, all ages. The bikes are extraordinary — bobbers, trackers, café racers, radical one-offs. The venue is an industrial warehouse with exposed beams. Warm tungsten lighting on chrome and paint. Atmospheric, editorial, event photography style">
 
 There is a moment that happens at every serious custom motorcycle show. You push through the crowd, clear the last group of people blocking your line of sight, and find yourself face to face with a machine that genuinely stops you. Not because of its cost or its horsepower specification, but because another human being — with tools, time, and a specific vision — made something that did not exist before.
 
@@ -31,7 +30,6 @@ Custom shows are where this work is validated, critiqued, and celebrated. They a
 
 ## The Essential Events Calendar
 
-<img src="/assets/images/placeholder-custom-show-bikes.jpg" alt="Row of exceptional custom motorcycles at an outdoor show with crowds and coastal backdrop" data-prompt="Outdoor custom motorcycle show on a promenade by the sea. Late afternoon golden light. Six exceptional custom motorcycles lined up — a bobber, a tracker, a radical café racer, a touring custom, a scrambler, a neo-retro naked — all at a high level of craftsmanship. Crowds visible in the background. French Basque Country coastal scenery visible behind. Photojournalism style, candid, warm late-summer light">
 
 ### Wheels & Waves — Biarritz, France (June)
 

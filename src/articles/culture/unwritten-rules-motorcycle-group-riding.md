@@ -11,7 +11,6 @@ layout: culture.njk
 permalink: /culture/unwritten-rules-motorcycle-group-riding/
 ---
 
-<img src="/assets/images/placeholder-group-ride-header.jpg" alt="Wide-angle aerial shot of a structured group of motorcycles riding in staggered formation through a scenic mountain road" data-prompt="Breathtaking aerial wide-angle photograph of 12-15 motorcycles riding in perfect staggered formation through a winding mountain road surrounded by pine forests and dramatic peaks. Morning light, slight mist in the valleys below, the bikes are a mix of adventure tourers and naked bikes, the formation is clean and orderly, shot from a drone at 45-degree angle looking down, cinematic landscape photography, vibrant natural colours">
 
 There is something that happens when you ride in a group that cannot be replicated alone. The shared rhythm of the pack. The unspoken communication. The feeling that you are part of something larger than your solo commute. Group riding is where many riders discover that motorcycling is not just a mode of transport — it is a community.
 
@@ -37,7 +36,6 @@ Group rides also make individual riders better. Riding in formation requires a h
 
 ## Staggered Formation: The Foundation of Safe Group Riding
 
-<img src="/assets/images/placeholder-staggered-formation.jpg" alt="Clean infographic diagram showing staggered motorcycle formation with correct spacing intervals and position labels" data-prompt="Clean, professional infographic diagram on a dark background showing a group of 8 motorcycles in correct staggered formation viewed from above. The road is shown as a two-lane road with clear lane markings. Odd-numbered riders (1, 3, 5, 7) are positioned left of centre, even-numbered riders (2, 4, 6, 8) are positioned right of centre. Spacing arrows show 2-second following distance to the rider directly ahead, 1-second to the rider beside. Labels show Lead Rider, positions 1-8, and Tail Gunner. Clean technical infographic style, white annotation labels, colour-coded position indicators">
 
 The staggered formation is the standard configuration for group riding on open roads. It maximises visibility, maintains safe following distances, and allows each rider a full lane-width of emergency space.
 

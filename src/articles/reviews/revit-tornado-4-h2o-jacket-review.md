@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /reviews/revit-tornado-4-h2o-jacket-review/
 ---
 
-<img src="/assets/images/placeholder-revit-tornado-header.jpg" alt="Rider wearing the REV'IT! Tornado 4 H2O adventure jacket on a rugged mountain road in dramatic landscape" data-prompt="Dynamic wide-angle landscape photograph of a motorcyclist riding a loaded adventure motorcycle through a dramatic mountain landscape. The rider is wearing the REV'IT! Tornado 4 jacket in a bold colour — orange-black or grey-black. Mountains visible in the background, gravel road surface, mid-morning light. The jacket's venting panels and adventure styling are visible. Action photography style, slight motion, cinematic composition, rich outdoor colours">
 
-<img src="/assets/images/placeholder-revit-tornado-inner.jpg" alt="Close-up detail of the REV'IT! Tornado 4 H2O showing inner mesh structure, pocket configurations, and CE-certified armor inserts" data-prompt="Detailed product studio photography of the REV'IT! Tornado 4 H2O jacket laid flat or on a hanger, open to show the interior. Visible: the mesh inner liner structure with clearly visible weave pattern; a CE-certified shoulder armour insert removed and placed beside its pocket; an elbow armour pad; the internal pocket positions labelled; the Hydratex waterproof liner partially removed from its zip compartment. Clean studio photography, white background, professional product lighting, high detail on materials and stitching">
 
 The REV'IT! Tornado 4 H2O sits at the premium end of the adventure textile jacket market — positioned as a jacket that eliminates the traditional compromise between breathable summer riding and genuine wet-weather protection. REV'IT's claim is a jacket that manages extreme heat during the day and torrential downpours by afternoon without requiring a bag full of alternatives.
 

@@ -11,9 +11,7 @@ layout: article.njk
 permalink: /bikes/evolution-modern-adventure-motorcycle/
 ---
 
-<img src="/assets/images/placeholder-adv-mountain-pass.jpg" alt="Modern adventure flagship motorcycle on a rugged gravel mountain pass with dramatic mountain scenery" data-prompt="Sweeping wide-angle photorealistic photograph of a large modern adventure motorcycle — BMW R 1300 GS or KTM 1290 Super Adventure style — navigating a rugged gravel mountain pass at altitude. Dramatic cloudscape above, sharp mountain ridgelines in the background, dust kicked up from the rear wheel. The rider is in full ADV gear. Cinematic composition, late afternoon golden light, vast alpine landscape scale, high-end adventure travel photography">
 
-<img src="/assets/images/placeholder-adv-evolution-split.jpg" alt="Side-by-side comparison showing a 1980s Paris-Dakar rally motorcycle alongside a modern 2026 adventure flagship" data-prompt="Clean split-screen editorial photograph. Left half: a classic 1980s rally motorcycle in the style of the BMW R 80 G/S Paris-Dakar — simple air-cooled twin, high fenders, large tank, basic instrumentation, desert race livery. Right half: a 2026 BMW R 1300 GS or equivalent flagship ADV — full TFT dash, active suspension, aluminium panniers, LED lighting, modern styling. Both bikes in three-quarter front view on a neutral studio background. Professional comparative product photography, clean white/grey backdrop">
 
 Few motorcycle categories have transformed as dramatically as the adventure bike. In four decades, the ADV has evolved from a modified enduro racer stripped for desert crossing into a technological showpiece carrying cornering ABS, active suspension, satellite navigation, and heated grips as standard equipment. Understanding how this happened explains why the modern ADV is both the most capable and the most complex motorcycle category in the market.
 

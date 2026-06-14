@@ -11,7 +11,6 @@ layout: culture.njk
 permalink: /culture/motorcycle-riding-etiquette-cross-border-nomad/
 ---
 
-<img src="/assets/images/placeholder-crossborder-header.jpg" alt="Loaded touring motorcycle stopped at a remote mountain border crossing with a weathered checkpoint building" data-prompt="Cinematic wide-angle photograph of a loaded adventure motorcycle stopped at a remote mountain border crossing. A small weathered checkpoint building with a barrier arm. Late afternoon light, mountains visible on both sides of the border. The rider is standing beside the bike with helmet off, talking to a border official. Dust in the air. Central Asian or Balkan aesthetic. Authentic documentary travel photography, warm golden hour light, cinematic composition">
 
 Crossing a border on a motorcycle is not like crossing it in a car. You are exposed. Every official, every local, every other road user can see exactly what you are, where you are probably going, and how far from home you are. This vulnerability is, paradoxically, one of the reasons cross-border motorcycle travel creates such disproportionately vivid experiences.
 
@@ -39,7 +38,6 @@ But it is not universal in form. Understanding regional variations prevents the 
 
 ## How Road Rules Work When the Rulebook Doesn't Apply
 
-<img src="/assets/images/placeholder-crossborder-traffic.jpg" alt="Street-level view of chaotic but flowing city traffic in Southeast Asia with motorcycles navigating between vehicles" data-prompt="Street-level documentary photograph of urban traffic in a Southeast Asian city — Ho Chi Minh City or Bangkok style. Dozens of motorcycles, scooters, tuk-tuks, and cars in an apparent flow of managed chaos at a busy intersection. Afternoon light, humid haze, street market stalls visible on the pavement. The motorcycles occupy every available gap. Photojournalism style, slightly elevated vantage point, candid movement, vibrant colours">
 
 Every motorcycle traveller eventually encounters a road environment where the written rules are theoretical and the actual rules are communicated through behaviour, horns, and the physics of proximity.
 

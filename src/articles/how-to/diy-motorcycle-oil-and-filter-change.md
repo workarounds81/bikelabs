@@ -12,7 +12,6 @@ tags:
   - engine
 ---
 
-<img src="/assets/images/placeholder-oil-change-header.jpg" alt="Fresh golden motorcycle engine oil being poured through a funnel into an engine filler neck" data-prompt="Photorealistic close-up of fresh golden-amber motorcycle engine oil being poured from a branded bottle through a clean aluminium funnel into a motorcycle engine filler neck. Workshop environment, warm overhead lighting, oil catching the light with a translucent glow, engine fins visible in background, ultra-sharp focus, professional product photography style">
 
 Changing your motorcycle's engine oil is the single highest-return maintenance task you can perform. Fresh oil protects bearing surfaces, flushes metallic debris from internal galleries, and keeps operating temperatures stable. Most modern motorcycles need an oil change every 3,000–6,000 miles depending on oil type and riding conditions.
 
@@ -53,7 +52,6 @@ After warming up, shut the engine off and position your drain pan under the oil 
 
 ## Step 2: Choosing the Right Oil
 
-<img src="/assets/images/placeholder-oil-drain-diagram.jpg" alt="Underside diagram of a motorcycle engine showing the drain plug location, crush washer alignment, and oil filter position" data-prompt="Clean technical cutaway illustration of the underside of a four-cylinder motorcycle engine. Labels with arrows pointing to: oil drain plug with crush washer highlighted in red, oil filter canister on the side of the engine block, and oil gallery passages in cross-section. Engineering diagram style, white background, precise technical line art, colour-coded annotations, professional workshop manual aesthetic">
 
 ### Motorcycle-Specific Oil vs Car Oil
 

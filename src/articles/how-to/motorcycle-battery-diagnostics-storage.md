@@ -13,7 +13,6 @@ tags:
   - winter
 ---
 
-<img src="/assets/images/placeholder-battery-header.jpg" alt="Electronic smart battery tender connected to a motorcycle battery with red and black leads in a clean garage setting" data-prompt="Photorealistic image of a CTEK or Optimate branded smart battery tender/maintainer connected to a motorcycle battery via red and black alligator clips. The tender's LED indicator shows a green charging light. Clean garage workshop background, the motorcycle is partially visible with a cover draped over it, warm ambient lighting, professional product photography style, sharp focus on the tender and battery connection">
 
 A dead battery on a cold morning is an inconvenience. A battery that fails mid-ride, cutting power to your fuel injection, ignition, and lights, is a safety event. Modern motorcycles are more electrically demanding than ever — LED lighting, traction control, quickshifters, and heated grips all draw current, and all suffer when battery voltage drops below threshold.
 
@@ -39,7 +38,6 @@ A battery reading below 12.4V after sitting overnight indicates it's not holding
 
 ## Step 1: Using a Multimeter to Test Battery Health
 
-<img src="/assets/images/placeholder-multimeter-battery.jpg" alt="Digital multimeter showing 12.6V reading with red lead on positive terminal and black lead on negative terminal of a motorcycle battery" data-prompt="Photorealistic macro close-up of a digital multimeter in use on a motorcycle battery. The multimeter display clearly shows '12.6V'. The red probe is connected to the positive battery terminal (marked with + symbol), the black probe to the negative terminal (marked with - symbol). The battery terminals show clean copper connections. Shot from slightly above, sharp focus on the multimeter display and probe tips, workshop bench background, professional photography">
 
 ### What You Need:
 - Digital multimeter (any basic model works — no need to spend more than £15)
