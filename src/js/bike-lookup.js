@@ -5,7 +5,7 @@
  * Replace the placeholder below with your real API key.
  * Get one free at: https://api-ninjas.com/
  */
-const API_KEY = 'YOUR_API_KEY_HERE';
+const API_KEY = 'IF8GCTFrNmFBpzPfDvDX8m4i7KdjsoNxzK2E62at';
 
 /**
  * Fetch factory specs for a given make and model.
