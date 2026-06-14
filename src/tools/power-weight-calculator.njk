@@ -5,39 +5,29 @@ description: "Calculate your motorcycle's power-to-weight ratio. See where your 
 permalink: /tools/power-weight-calculator/
 ---
 <script src="{{ '/js/bike-lookup.js' | url }}"></script>
-<script>window.BIKES = {{ bikes | dump | safe }};</script>
 
 <div class="tool-page">
   <div class="container">
     <h1>Motorcycle Power-to-Weight Ratio Calculator</h1>
-    <p class="tool-intro">Power-to-weight ratio is the single best measure of a motorcycle's real-world performance. Select your bike or enter your numbers to see exactly where you stand.</p>
+    <p class="tool-intro">Power-to-weight ratio is the single best measure of a motorcycle's real-world performance. Look up your bike or enter your numbers to see exactly where you stand.</p>
 
     <div class="tool-card">
-      <!-- LOCAL DB SELECTOR -->
-      <h2>Select Your Bike (Local Database)</h2>
-      <div class="selector-row">
-        <div class="form-group"><label>Make</label><select id="make-select"><option value="">-- Select Make --</option></select></div>
-        <div class="form-group"><label>Model</label><select id="model-select" disabled><option value="">-- Select Model --</option></select></div>
-      </div>
-
       <!-- LIVE API LOOKUP -->
-      <h2>Or Search Live Factory Data</h2>
+      <h2>Find Your Bike</h2>
       <div id="api-lookup-pw" class="api-lookup-block">
         <div class="selector-row">
           <div class="form-group"><label>Make</label><input type="text" id="api-make-pw" placeholder="e.g. Ducati"></div>
           <div class="form-group"><label>Model</label><input type="text" id="api-model-pw" placeholder="e.g. Panigale V4"></div>
-          <div class="form-group" style="justify-content:flex-end;">
-            <label>&nbsp;</label>
-            <button class="btn-calculate btn-secondary" onclick="lookupPW()">Search API</button>
-          </div>
-        </div>
-        <div class="selector-row" style="margin-top:.75rem;">
           <div class="form-group">
-            <label>Weight unit preference</label>
+            <label>Weight unit</label>
             <select id="api-weight-unit">
               <option value="kg" selected>Kilograms (kg)</option>
               <option value="lbs">Pounds (lbs)</option>
             </select>
+          </div>
+          <div class="form-group" style="justify-content:flex-end;">
+            <label>&nbsp;</label>
+            <button class="btn-lookup" onclick="lookupPW()">Load Specs</button>
           </div>
         </div>
       </div>
@@ -69,14 +59,12 @@ permalink: /tools/power-weight-calculator/
             <tr id="b-hyper"><td>Hyperbike</td><td>&gt; 0.40</td><td>Kawasaki H2, Aprilia RSV4 Factory</td></tr>
           </tbody>
         </table>
-        <h3>5 Closest Bikes in Our Database</h3>
-        <div id="similar" class="similar-bikes"></div>
       </div>
     </div>
 
     <div class="tool-seo">
       <h2>What Is Motorcycle Power-to-Weight Ratio?</h2>
-      <p>The motorcycle power-to-weight ratio expresses how much power a bike produces relative to its mass — calculated by dividing engine output (hp or kW) by the bike's wet weight (kg). A higher ratio means quicker acceleration and better overall performance. Use this calculator to compare any bike in our 100+ model database or enter custom specs for any motorcycle.</p>
+      <p>The motorcycle power-to-weight ratio expresses how much power a bike produces relative to its mass — calculated by dividing engine output (hp or kW) by the bike's wet weight (kg). A higher ratio means quicker acceleration and better overall performance.</p>
       <h2>Wet Weight vs Dry Weight</h2>
       <p>Always use wet weight (with all fluids including fuel) for accurate comparisons. Manufacturers sometimes list dry weight which excludes fuel and oil — this flatters the ratio on paper but doesn't reflect real-world performance. When in doubt, add 15–20 kg to the dry weight figure.</p>
     </div>
@@ -84,9 +72,12 @@ permalink: /tools/power-weight-calculator/
 </div>
 
 <style>
-.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin:1.5rem 0 .75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}.btn-secondary{background:#2a2a2a;border:1px solid #3a3a3a;width:auto;margin-top:0;padding:.6rem 1.2rem;font-size:.9rem}.btn-secondary:hover{background:#3a3a3a}.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.pw-hero{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem}.pw-big{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:700;color:#f0f0f0;line-height:1}.pw-big.orange{color:#FF6B00}.pw-label{font-size:.85rem;color:#aaa;margin-top:.25rem}.pw-badge{background:#FF6B00;color:#fff;padding:.5rem 1.2rem;border-radius:20px;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700}.bench-table{width:100%;border-collapse:collapse;margin-bottom:1rem}.bench-table th{text-align:left;padding:.5rem;color:#aaa;font-size:.85rem;border-bottom:1px solid #3a3a3a}.bench-table td{padding:.5rem;color:#f0f0f0;border-bottom:1px solid #2a2a2a;font-size:.9rem}.bench-table tr.active td{background:rgba(255,107,0,.15);color:#FF6B00;font-weight:600}.similar-bikes{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem}.sim-card{background:#2a2a2a;border-radius:4px;padding:.75rem 1rem}.sim-name{font-weight:600;color:#f0f0f0;font-size:.9rem}.sim-ratio{color:#FF6B00;font-size:.85rem;margin-top:.2rem}.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-/* Shared API lookup */
-.api-lookup-block{background:#161616;border:1px dashed #3a3a3a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin:1.5rem 0 .75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
+.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
+.btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
+.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.pw-hero{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem}.pw-big{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:700;color:#f0f0f0;line-height:1}.pw-big.orange{color:#FF6B00}.pw-label{font-size:.85rem;color:#aaa;margin-top:.25rem}.pw-badge{background:#FF6B00;color:#fff;padding:.5rem 1.2rem;border-radius:20px;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700}.bench-table{width:100%;border-collapse:collapse;margin-bottom:1rem}.bench-table th{text-align:left;padding:.5rem;color:#aaa;font-size:.85rem;border-bottom:1px solid #3a3a3a}.bench-table td{padding:.5rem;color:#f0f0f0;border-bottom:1px solid #2a2a2a;font-size:.9rem}.bench-table tr.active td{background:rgba(255,107,0,.15);color:#FF6B00;font-weight:600}
+.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
 .bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
 .bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
 @keyframes bl-spin{to{transform:rotate(360deg)}}
@@ -97,137 +88,64 @@ permalink: /tools/power-weight-calculator/
 </style>
 
 <script>
-/* ── Local DB selector ── */
 (function(){
-  var bikes=window.BIKES||[];
-  var makes=[...new Set(bikes.map(b=>b.make))].sort();
-  var ms=document.getElementById('make-select'),mo=document.getElementById('model-select');
   var hpI=document.getElementById('hp'),kwI=document.getElementById('kw');
-  makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;ms.appendChild(o);});
-  ms.addEventListener('change',function(){
-    mo.innerHTML='<option value="">-- Select Model --</option>';mo.disabled=true;
-    if(!this.value)return;
-    bikes.filter(b=>b.make===this.value).forEach(function(b){
-      var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';
-      o.dataset.hp=b.power_hp;o.dataset.kw=b.power_kw;o.dataset.kg=b.weight_kg;mo.appendChild(o);
-    });
-    mo.disabled=false;
-  });
-  mo.addEventListener('change',function(){
-    var s=this.options[this.selectedIndex];
-    if(s.dataset.hp){hpI.value=s.dataset.hp;kwI.value=s.dataset.kw;document.getElementById('kg').value=s.dataset.kg;}
-  });
   hpI.addEventListener('input',function(){kwI.value=(+this.value*0.7457).toFixed(1);});
   kwI.addEventListener('input',function(){hpI.value=(+this.value/0.7457).toFixed(0);});
 })();
 
-/* ── Live API lookup ── */
 async function lookupPW() {
-  var make      = document.getElementById('api-make-pw').value.trim();
-  var model     = document.getElementById('api-model-pw').value.trim();
-  var weightUnit= document.getElementById('api-weight-unit').value;
-  var container = document.getElementById('api-lookup-pw');
-
-  if (!make || !model) {
-    showLookupStatus(container, 'Please enter both a make and model.', 'warn');
-    return;
-  }
-
-  hideLookupStatus(container);
-  showLookupLoading(container);
-
+  var make=document.getElementById('api-make-pw').value.trim();
+  var model=document.getElementById('api-model-pw').value.trim();
+  var weightUnit=document.getElementById('api-weight-unit').value;
+  var container=document.getElementById('api-lookup-pw');
+  if(!make||!model){showLookupStatus(container,'Please enter both a make and model.','warn');return;}
+  hideLookupStatus(container);showLookupLoading(container);
   try {
-    var spec = await fetchBikeSpecs(make, model);
+    var spec=await fetchBikeSpecs(make,model);
     hideLookupLoading(container);
-
-    if (!spec) {
-      showLookupStatus(container, 'No results found. Check the make/model spelling and try again.', 'warn');
-      return;
-    }
-
-    var notes = [];
-    var hpVal = null, kwVal = null, kgVal = null;
-
-    /* ── Power: "52.3 HP (38.2 kW)" or "38.2 kW (52.3 HP)" ── */
-    var powerStr = spec.power;
-    if (powerStr) {
-      var hpMatch  = powerStr.match(/([\d.]+)\s*HP/i);
-      var kwMatch  = powerStr.match(/([\d.]+)\s*kW/i);
-      if (hpMatch) hpVal = parseFloat(hpMatch[1]);
-      if (kwMatch) kwVal = parseFloat(kwMatch[1]);
-
-      /* Derive missing value */
-      if (hpVal && !kwVal) kwVal = hpVal * 0.7457;
-      if (kwVal && !hpVal) hpVal = kwVal / 0.7457;
-
-      if (hpVal) {
-        document.getElementById('hp').value = hpVal.toFixed(1);
-        document.getElementById('kw').value = kwVal.toFixed(1);
-        notes.push('Power: ' + hpVal.toFixed(1) + ' HP (' + kwVal.toFixed(1) + ' kW) applied.');
-      } else {
-        notes.push('Technical specifications incomplete — power data missing or unrecognised format. Please input manually.');
-      }
+    if(!spec){showLookupStatus(container,'No results found. Check the make/model spelling.','warn');return;}
+    var notes=[],hpVal=null,kwVal=null,kgVal=null;
+    if(spec.power){
+      var hpM=spec.power.match(/([\d.]+)\s*HP/i);
+      var kwM=spec.power.match(/([\d.]+)\s*kW/i);
+      if(hpM)hpVal=parseFloat(hpM[1]);
+      if(kwM)kwVal=parseFloat(kwM[1]);
+      if(hpVal&&!kwVal)kwVal=hpVal*0.7457;
+      if(kwVal&&!hpVal)hpVal=kwVal/0.7457;
+      if(hpVal){document.getElementById('hp').value=hpVal.toFixed(1);document.getElementById('kw').value=kwVal.toFixed(1);notes.push('Power: '+hpVal.toFixed(1)+' HP applied.');}
+      else notes.push('Technical specifications incomplete — power data missing. Please input manually.');
     } else {
-      notes.push('Technical specifications incomplete — power data missing. Please input custom metrics manually.');
+      notes.push('Technical specifications incomplete — power data missing. Please input manually.');
     }
-
-    /* ── Weight: "192.1 kg (423.4 lbs)" or total_weight field ── */
-    var weightStr = spec.total_weight || spec.dry_weight || spec.wet_weight;
-    if (weightStr) {
-      var kgMatch  = weightStr.match(/([\d.]+)\s*kg/i);
-      var lbMatch  = weightStr.match(/([\d.]+)\s*(?:lbs?|pounds?)/i);
-
-      if (weightUnit === 'kg' && kgMatch) {
-        kgVal = parseFloat(kgMatch[1]);
-      } else if (weightUnit === 'lbs' && lbMatch) {
-        kgVal = parseFloat(lbMatch[1]) * 0.453592;
-      } else if (kgMatch) {
-        kgVal = parseFloat(kgMatch[1]);
-      } else if (lbMatch) {
-        kgVal = parseFloat(lbMatch[1]) * 0.453592;
-      }
-
-      if (kgVal) {
-        document.getElementById('kg').value = kgVal.toFixed(1);
-        notes.push('Weight: ' + kgVal.toFixed(1) + ' kg applied.');
-      } else {
-        notes.push('Technical specifications incomplete — weight data missing or unrecognised format. Please input manually.');
-      }
+    var weightStr=spec.total_weight||spec.dry_weight||spec.wet_weight;
+    if(weightStr){
+      var kgM=weightStr.match(/([\d.]+)\s*kg/i);
+      var lbM=weightStr.match(/([\d.]+)\s*(?:lbs?|pounds?)/i);
+      if(weightUnit==='kg'&&kgM)kgVal=parseFloat(kgM[1]);
+      else if(weightUnit==='lbs'&&lbM)kgVal=parseFloat(lbM[1])*0.453592;
+      else if(kgM)kgVal=parseFloat(kgM[1]);
+      else if(lbM)kgVal=parseFloat(lbM[1])*0.453592;
+      if(kgVal){document.getElementById('kg').value=kgVal.toFixed(1);notes.push('Weight: '+kgVal.toFixed(1)+' kg applied.');}
+      else notes.push('Technical specifications incomplete — weight data missing. Please input manually.');
     } else {
-      notes.push('Technical specifications incomplete — weight data missing. Please input custom metrics manually.');
+      notes.push('Technical specifications incomplete — weight data missing. Please input manually.');
     }
-
-    /* Auto-run the calculation if both values resolved */
-    if (hpVal && kgVal) {
-      calcPW();
-      notes.push('Power-to-weight ratio calculated automatically below.');
-    }
-
-    showLookupStatus(container,
-      (spec.make||make) + ' ' + (spec.model||model) + ' ' + (spec.year||'') + ' — ' + notes.join(' '),
-      hpVal && kgVal ? 'success' : 'warn');
-
+    if(hpVal&&kgVal){calcPW();notes.push('Ratio calculated automatically.');}
+    showLookupStatus(container,(spec.make||make)+' '+(spec.model||model)+' '+(spec.year||'')+' — '+notes.join(' '),hpVal&&kgVal?'success':'warn');
   } catch(err) {
     hideLookupLoading(container);
-    showLookupStatus(container,
-      API_KEY === 'YOUR_API_KEY_HERE'
-        ? 'API key not set. Add your API Ninjas key to /js/bike-lookup.js to enable live lookup.'
-        : 'Lookup failed: ' + err.message + '. You can still enter values manually.',
-      'error');
+    showLookupStatus(container,'Lookup failed: '+err.message+'. Enter values manually.','error');
   }
 }
 
-/* ── Main calculation ── */
 function calcPW(){
-  var bikes=window.BIKES||[];
   var hp=+document.getElementById('hp').value;
   var kw=+document.getElementById('kw').value;
   var kg=+document.getElementById('kg').value;
-  var hpkg=(hp/kg).toFixed(3);
-  var kwkg=(kw/kg).toFixed(3);
-  document.getElementById('pw-hp-kg').textContent=hpkg;
-  document.getElementById('pw-kw-kg').textContent=kwkg;
-  var n=+kwkg,cat,badge;
+  document.getElementById('pw-hp-kg').textContent=(hp/kg).toFixed(3);
+  document.getElementById('pw-kw-kg').textContent=(kw/kg).toFixed(3);
+  var n=kw/kg,cat,badge;
   if(n<0.10){cat='b-learner';badge='Learner';}
   else if(n<0.20){cat='b-everyday';badge='Everyday Sports';}
   else if(n<0.30){cat='b-performance';badge='Performance';}
@@ -236,8 +154,6 @@ function calcPW(){
   document.querySelectorAll('.bench-table tr').forEach(r=>r.classList.remove('active'));
   document.getElementById(cat).classList.add('active');
   document.getElementById('pw-badge').textContent=badge;
-  var sorted=bikes.map(b=>({name:b.make+' '+b.model,ratio:b.power_kw/b.weight_kg})).sort((a,b)=>Math.abs(a.ratio-n)-Math.abs(b.ratio-n)).slice(0,5);
-  document.getElementById('similar').innerHTML=sorted.map(b=>'<div class="sim-card"><div class="sim-name">'+b.name+'</div><div class="sim-ratio">'+b.ratio.toFixed(3)+' kW/kg</div></div>').join('');
   document.getElementById('results').style.display='block';
 }
 </script>

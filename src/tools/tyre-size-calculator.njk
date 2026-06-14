@@ -5,40 +5,29 @@ description: "Decode any motorcycle tyre size code. Get actual diameter, sidewal
 permalink: /tools/tyre-size-calculator/
 ---
 <script src="{{ '/js/bike-lookup.js' | url }}"></script>
-<script>window.BIKES = {{ bikes | dump | safe }};</script>
 
 <div class="tool-page">
   <div class="container">
     <h1>Motorcycle Tyre Size Calculator</h1>
-    <p class="tool-intro">Select your bike to auto-fill tyre codes, or enter any size manually. Compare two tyre sizes and see exactly how a swap affects your speedo reading.</p>
+    <p class="tool-intro">Look up your bike to auto-fill OEM tyre sizes, or enter any size manually. Compare two sizes and see exactly how a swap affects your speedo reading.</p>
 
     <div class="tool-card">
-      <!-- LOCAL DB SELECTOR -->
-      <h2>Select Your Bike (Local Database)</h2>
-      <div class="selector-row">
-        <div class="form-group"><label>Make</label><select id="make-select"><option value="">-- Select Make --</option></select></div>
-        <div class="form-group"><label>Model</label><select id="model-select" disabled><option value="">-- Select Model --</option></select></div>
-        <div class="form-group"><label>Position</label><select id="tyre-pos"><option value="front">Front</option><option value="rear">Rear</option></select></div>
-      </div>
-
       <!-- LIVE API LOOKUP -->
-      <h2>Or Search Live Factory Data</h2>
+      <h2>Find Your Bike</h2>
       <div id="api-lookup-tyre" class="api-lookup-block">
         <div class="selector-row">
           <div class="form-group"><label>Make</label><input type="text" id="api-make-tyre" placeholder="e.g. Kawasaki"></div>
           <div class="form-group"><label>Model</label><input type="text" id="api-model-tyre" placeholder="e.g. Z900"></div>
+          <div class="form-group">
+            <label>Position</label>
+            <select id="api-tyre-pos">
+              <option value="rear" selected>Rear → Current</option>
+              <option value="front">Front → Current</option>
+            </select>
+          </div>
           <div class="form-group" style="justify-content:flex-end;">
             <label>&nbsp;</label>
-            <button class="btn-calculate btn-secondary" onclick="lookupTyre()">Search API</button>
-          </div>
-        </div>
-        <div class="selector-row" style="margin-top:.75rem;">
-          <div class="form-group">
-            <label>Fill position</label>
-            <select id="api-tyre-pos">
-              <option value="front">Front (into Current)</option>
-              <option value="rear" selected>Rear (into Current)</option>
-            </select>
+            <button class="btn-lookup" onclick="lookupTyre()">Load Specs</button>
           </div>
         </div>
       </div>
@@ -85,7 +74,7 @@ permalink: /tools/tyre-size-calculator/
 
     <div class="tool-seo">
       <h2>How to Read a Motorcycle Tyre Size Code</h2>
-      <p>A tyre code like <strong>160/60/17</strong> breaks down simply. The first number (160) is the tyre width in millimetres. The second (60) is the aspect ratio — the sidewall height as a percentage of the width. The third (17) is the rim diameter in inches. Use this motorcycle tyre size calculator to convert these numbers into real dimensions and compare sizes before buying.</p>
+      <p>A tyre code like <strong>160/60/17</strong> breaks down simply. The first number (160) is the tyre width in millimetres. The second (60) is the aspect ratio — the sidewall height as a percentage of the width. The third (17) is the rim diameter in inches.</p>
       <h2>Does Tyre Size Affect Speedo Reading?</h2>
       <p>Yes. A larger overall diameter means the wheel covers more ground per revolution, so your speedo reads lower than your actual speed. A smaller diameter makes the speedo over-read. This tool shows the exact percentage difference so you know what to expect after a tyre swap.</p>
     </div>
@@ -93,9 +82,12 @@ permalink: /tools/tyre-size-calculator/
 </div>
 
 <style>
-.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin-bottom:.75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}.btn-secondary{background:#2a2a2a;border:1px solid #3a3a3a;width:auto;margin-top:0;padding:.6rem 1.2rem;font-size:.9rem}.btn-secondary:hover{background:#3a3a3a}.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.results-table{width:100%;border-collapse:collapse}.results-table tr{border-bottom:1px solid #2a2a2a}.results-table td{padding:.5rem 0;color:#f0f0f0}.results-table td:last-child{text-align:right;color:#FF6B00;font-weight:600}.result-highlight{background:#2a2a2a;border-radius:4px;padding:1rem 1.2rem;margin-top:1rem;color:#f0f0f0}.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-/* Shared API lookup */
-.api-lookup-block{background:#161616;border:1px dashed #3a3a3a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.tool-page{padding:3rem 0}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px}.tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin-bottom:.75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
+.btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
+.btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
+.results{margin-top:2rem;border-top:2px solid #FF6B00;padding-top:1.5rem}.results h2{color:#FF6B00;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:1rem}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.results-table{width:100%;border-collapse:collapse}.results-table tr{border-bottom:1px solid #2a2a2a}.results-table td{padding:.5rem 0;color:#f0f0f0}.results-table td:last-child{text-align:right;color:#FF6B00;font-weight:600}.result-highlight{background:#2a2a2a;border-radius:4px;padding:1rem 1.2rem;margin-top:1rem;color:#f0f0f0}
+.tool-seo{max-width:720px}.tool-seo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#FF6B00;margin:2rem 0 .75rem}.tool-seo p{color:#ccc;line-height:1.8;margin-bottom:1rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
 .bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
 .bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
 @keyframes bl-spin{to{transform:rotate(360deg)}}
@@ -107,95 +99,32 @@ permalink: /tools/tyre-size-calculator/
 </style>
 
 <script>
-/* ── Local DB selector ── */
-(function(){
-  var bikes=window.BIKES||[];
-  var makes=[...new Set(bikes.map(b=>b.make))].sort();
-  var ms=document.getElementById('make-select'),mo=document.getElementById('model-select');
-  makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;ms.appendChild(o);});
-  ms.addEventListener('change',function(){
-    mo.innerHTML='<option value="">-- Select Model --</option>';mo.disabled=true;
-    if(!this.value)return;
-    bikes.filter(b=>b.make===this.value).forEach(function(b){
-      var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';
-      o.dataset.f=b.front_tyre;o.dataset.r=b.rear_tyre;mo.appendChild(o);
-    });
-    mo.disabled=false;
-  });
-  function fillFromLocal(){
-    var sel=mo.options[mo.selectedIndex];if(!sel.dataset.f)return;
-    var pos=document.getElementById('tyre-pos').value;
-    var code=pos==='front'?sel.dataset.f:sel.dataset.r;
-    var p=code.split('/');
-    if(p.length===3){document.getElementById('w1').value=p[0];document.getElementById('a1').value=p[1];document.getElementById('r1').value=p[2];}
-  }
-  mo.addEventListener('change',fillFromLocal);
-  document.getElementById('tyre-pos').addEventListener('change',fillFromLocal);
-})();
-
-/* ── Live API lookup ── */
 async function lookupTyre() {
-  var make  = document.getElementById('api-make-tyre').value.trim();
-  var model = document.getElementById('api-model-tyre').value.trim();
-  var pos   = document.getElementById('api-tyre-pos').value;
-  var container = document.getElementById('api-lookup-tyre');
-
-  if (!make || !model) {
-    showLookupStatus(container, 'Please enter both a make and model.', 'warn');
-    return;
-  }
-
-  hideLookupStatus(container);
-  showLookupLoading(container);
-
+  var make=document.getElementById('api-make-tyre').value.trim();
+  var model=document.getElementById('api-model-tyre').value.trim();
+  var pos=document.getElementById('api-tyre-pos').value;
+  var container=document.getElementById('api-lookup-tyre');
+  if(!make||!model){showLookupStatus(container,'Please enter both a make and model.','warn');return;}
+  hideLookupStatus(container);showLookupLoading(container);
   try {
-    var spec = await fetchBikeSpecs(make, model);
+    var spec=await fetchBikeSpecs(make,model);
     hideLookupLoading(container);
-
-    if (!spec) {
-      showLookupStatus(container, 'No results found. Check the make/model spelling and try again.', 'warn');
-      return;
-    }
-
-    var tyreStr = pos === 'front' ? spec.front_tire : spec.rear_tire;
-    var label   = pos === 'front' ? 'Front' : 'Rear';
-
-    if (!tyreStr) {
-      showLookupStatus(container,
-        'Technical specifications incomplete — ' + label.toLowerCase() + ' tyre data missing. Please input custom metrics manually.',
-        'warn');
-      return;
-    }
-
-    /* Parse "120/70ZR17" or "160/60-17" etc. */
-    var t = parseTyreCode(tyreStr);
-    if (!t) {
-      showLookupStatus(container,
-        'Could not parse tyre code "' + tyreStr + '". Please input custom metrics manually.',
-        'warn');
-      return;
-    }
-
-    document.getElementById('w1').value = t.width;
-    document.getElementById('a1').value = t.aspect;
-    document.getElementById('r1').value = t.rim;
-
-    showLookupStatus(container,
-      (spec.make||make) + ' ' + (spec.model||model) + ' ' + (spec.year||'') +
-      ' — ' + label + ' tyre ' + tyreStr + ' applied to Current Tyre fields.',
-      'success');
-
+    if(!spec){showLookupStatus(container,'No results found. Check the make/model spelling.','warn');return;}
+    var tyreStr=pos==='front'?spec.front_tire:spec.rear_tire;
+    var label=pos==='front'?'Front':'Rear';
+    if(!tyreStr){showLookupStatus(container,'Technical specifications incomplete — '+label.toLowerCase()+' tyre data missing. Please input manually.','warn');return;}
+    var t=parseTyreCode(tyreStr);
+    if(!t){showLookupStatus(container,'Could not parse tyre code "'+tyreStr+'". Please input manually.','warn');return;}
+    document.getElementById('w1').value=t.width;
+    document.getElementById('a1').value=t.aspect;
+    document.getElementById('r1').value=t.rim;
+    showLookupStatus(container,(spec.make||make)+' '+(spec.model||model)+' '+(spec.year||'')+' — '+label+' tyre '+tyreStr+' loaded into Current Tyre fields.','success');
   } catch(err) {
     hideLookupLoading(container);
-    showLookupStatus(container,
-      API_KEY === 'YOUR_API_KEY_HERE'
-        ? 'API key not set. Add your API Ninjas key to /js/bike-lookup.js to enable live lookup.'
-        : 'Lookup failed: ' + err.message + '. You can still enter values manually.',
-      'error');
+    showLookupStatus(container,'Lookup failed: '+err.message+'. Enter values manually.','error');
   }
 }
 
-/* ── Calculation ── */
 function parseTyreCalc(w,a,r){var sw=w*a/100;var dia=sw*2+r*25.4;return{sw:sw,dia:dia,circ:Math.PI*dia};}
 function calcTyre(){
   var t1=parseTyreCalc(+document.getElementById('w1').value,+document.getElementById('a1').value,+document.getElementById('r1').value);

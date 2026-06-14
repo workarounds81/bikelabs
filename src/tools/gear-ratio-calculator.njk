@@ -5,7 +5,6 @@ description: "Calculate your motorcycle's gear ratios, estimated top speed per g
 permalink: /tools/gear-ratio-calculator/
 ---
 <script src="{{ '/js/bike-lookup.js' | url }}"></script>
-<script>window.BIKES = {{ bikes | dump | safe }};</script>
 
 <div class="page-hero">
   <div class="container">
@@ -27,23 +26,10 @@ permalink: /tools/gear-ratio-calculator/
 
       <div class="calc-card">
 
-        <!-- LOCAL DB SELECTOR -->
-        <h2 class="calc-card__title">Select Your Bike (Local Database)</h2>
-        <div class="calc-grid" style="margin-bottom:1.5rem;">
-          <div class="calc-field">
-            <label for="make-select">Make</label>
-            <select id="make-select"><option value="">-- Select Make --</option></select>
-          </div>
-          <div class="calc-field">
-            <label for="model-select">Model</label>
-            <select id="model-select" disabled><option value="">-- Select Model --</option></select>
-          </div>
-        </div>
-
         <!-- LIVE API LOOKUP -->
-        <h2 class="calc-card__title">Or Search Live Factory Data</h2>
+        <h2 class="calc-card__title">Find Your Bike</h2>
         <div id="api-lookup-gr" class="api-lookup-block">
-          <div class="calc-grid" style="margin-bottom:1rem;">
+          <div class="calc-grid" style="margin-bottom:0;">
             <div class="calc-field">
               <label for="api-make-gr">Make</label>
               <input type="text" id="api-make-gr" placeholder="e.g. Honda">
@@ -54,7 +40,7 @@ permalink: /tools/gear-ratio-calculator/
             </div>
             <div class="calc-field" style="justify-content:flex-end;">
               <label>&nbsp;</label>
-              <button class="calc-btn calc-btn--secondary" onclick="lookupGearRatio()">Search API</button>
+              <button class="calc-btn calc-btn--lookup" onclick="lookupGearRatio()">Load Specs</button>
             </div>
           </div>
         </div>
@@ -125,7 +111,7 @@ permalink: /tools/gear-ratio-calculator/
           <div class="calc-field gear-row" data-gear="6"><label>Gear 6</label><input type="number" id="gr-6" value="1.037" min="0.5" max="5" step="0.001"></div>
         </div>
 
-        <button class="calc-btn" id="calc-btn" onclick="calculate()">Calculate</button>
+        <button class="calc-btn" onclick="calculate()">Calculate</button>
       </div>
 
       <div class="calc-results" id="calc-results" style="display:none;">
@@ -133,7 +119,7 @@ permalink: /tools/gear-ratio-calculator/
         <div class="result-summary" id="result-summary"></div>
         <h3 class="results-subtitle">Speed Per Gear at Max RPM</h3>
         <div class="table-wrap">
-          <table class="results-table" id="results-table">
+          <table class="results-table">
             <thead><tr><th>Gear</th><th>Gear Ratio</th><th>Speed (km/h)</th><th>Speed (mph)</th></tr></thead>
             <tbody id="results-tbody"></tbody>
           </table>
@@ -141,7 +127,7 @@ permalink: /tools/gear-ratio-calculator/
         <h3 class="results-subtitle">Sprocket Swap Preview</h3>
         <p class="swap-note">Effect of changing one tooth on your current setup:</p>
         <div class="table-wrap">
-          <table class="results-table" id="swap-table">
+          <table class="results-table">
             <thead><tr><th>Change</th><th>Overall Ratio</th><th>Top Speed (km/h)</th><th>Top Speed (mph)</th><th>vs Stock</th></tr></thead>
             <tbody id="swap-tbody"></tbody>
           </table>
@@ -150,11 +136,11 @@ permalink: /tools/gear-ratio-calculator/
 
       <div class="seo-section">
         <h2>About This Motorcycle Gear Ratio Calculator</h2>
-        <p>This motorcycle gear ratio calculator helps riders understand how gearing changes translate to real-world speed. Enter your sprocket sizes, tyre profile, and gear ratios to instantly see your estimated top speed in every gear. Whether you're planning a sprocket swap or just curious about your bike's gearing, this tool gives you the numbers before you commit.</p>
+        <p>This motorcycle gear ratio calculator helps riders understand how gearing changes translate to real-world speed. Enter your sprocket sizes, tyre profile, and gear ratios to instantly see your estimated top speed in every gear.</p>
         <h2>What Is Gear Ratio?</h2>
-        <p>The overall gear ratio of a motorcycle is determined by dividing the rear sprocket teeth by the front sprocket teeth. A higher number means more torque multiplication and stronger acceleration; a lower number means higher top speed at the cost of low-end pull. The final-drive ratio combines with each gearbox ratio to give a unique drive ratio for every gear.</p>
+        <p>The overall gear ratio of a motorcycle is determined by dividing the rear sprocket teeth by the front sprocket teeth. A higher number means more torque multiplication and stronger acceleration; a lower number means higher top speed at the cost of low-end pull.</p>
         <h2>How Sprocket Changes Affect Speed</h2>
-        <p>Adding one tooth to the rear sprocket (or removing one from the front) lowers your overall ratio, increasing acceleration but reducing top speed by a small percentage. Removing a rear tooth does the opposite — top speed increases slightly but the bike feels lazier off the line. Small changes have a surprisingly noticeable effect, especially in lower gears.</p>
+        <p>Adding one tooth to the rear sprocket (or removing one from the front) lowers your overall ratio, increasing acceleration but reducing top speed. Removing a rear tooth does the opposite. Small changes have a surprisingly noticeable effect, especially in lower gears.</p>
       </div>
 
     </div>
@@ -176,8 +162,8 @@ permalink: /tools/gear-ratio-calculator/
 .calc-field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aaa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;padding-right:2rem}
 .calc-btn{display:block;width:100%;background:#FF6B00;color:#fff;border:none;border-radius:8px;padding:.9rem 2rem;font-size:1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:background .15s,transform .1s;margin-top:.5rem}
 .calc-btn:hover{background:#e05e00}.calc-btn:active{transform:scale(.98)}
-.calc-btn--secondary{background:#2a2a2a;border:1px solid #3a3a3a;margin-top:0;padding:.62rem 1.25rem;font-size:.95rem;width:auto}
-.calc-btn--secondary:hover{background:#3a3a3a}
+.calc-btn--lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;width:auto;margin-top:0;padding:.62rem 1.4rem;font-size:.95rem}
+.calc-btn--lookup:hover{background:#FF6B00;color:#fff}
 .calc-results{background:#1e1e1e;border:1px solid #2a2a2a;border-radius:10px;padding:2rem}
 .result-summary{background:#2a2a2a;border-left:4px solid #FF6B00;border-radius:4px;padding:1rem 1.25rem;margin-bottom:2rem;color:#f0f0f0;font-size:1rem;line-height:1.7}
 .results-subtitle{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;color:#FF6B00;text-transform:uppercase;letter-spacing:.04em;margin:1.75rem 0 .75rem}
@@ -194,8 +180,7 @@ permalink: /tools/gear-ratio-calculator/
 .seo-section h2{font-size:clamp(1.3rem,3vw,1.7rem);color:#FF6B00;margin:2.5rem 0 1rem;padding-top:2rem;border-top:1px solid #2a2a2a;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.03em}
 .seo-section h2:first-of-type{margin-top:0;padding-top:0;border-top:none}
 .seo-section p{color:#ccc;line-height:1.8;margin-bottom:1rem}
-/* Shared API lookup styles */
-.api-lookup-block{background:#161616;border:1px dashed #3a3a3a;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem}
+.api-lookup-block{background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem}
 .bl-loading{display:none;align-items:center;gap:.6rem;color:#aaa;font-size:.9rem;padding:.5rem 0}
 .bl-spinner{width:16px;height:16px;border:2px solid #3a3a3a;border-top-color:#FF6B00;border-radius:50%;animation:bl-spin .7s linear infinite;display:inline-block;flex-shrink:0}
 @keyframes bl-spin{to{transform:rotate(360deg)}}
@@ -208,195 +193,86 @@ permalink: /tools/gear-ratio-calculator/
 </style>
 
 <script>
-/* ── Local DB selector ── */
-(function(){
-  var bikes=window.BIKES||[];
-  var makes=[...new Set(bikes.map(b=>b.make))].sort();
-  var ms=document.getElementById('make-select'),mo=document.getElementById('model-select');
-  makes.forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;ms.appendChild(o);});
-  ms.addEventListener('change',function(){
-    mo.innerHTML='<option value="">-- Select Model --</option>';mo.disabled=true;
-    if(!this.value)return;
-    bikes.filter(b=>b.make===this.value).forEach(function(b){
-      var o=document.createElement('option');o.value=b.model;o.textContent=b.model+' ('+b.year+')';
-      o.dataset.front=b.front_sprocket;o.dataset.rear=b.rear_sprocket;o.dataset.tyre=b.rear_tyre||'';
-      mo.appendChild(o);
-    });
-    mo.disabled=false;
-  });
-  mo.addEventListener('change',function(){
-    var s=this.options[this.selectedIndex];
-    if(s.dataset.front) document.getElementById('front-sprocket').value=s.dataset.front;
-    if(s.dataset.rear)  document.getElementById('rear-sprocket').value=s.dataset.rear;
-    if(s.dataset.tyre){
-      var m=s.dataset.tyre.match(/^(\d+)\/(\d+)ZR(\d+)|^(\d+)\/(\d+)R(\d+)|^(\d+)\/(\d+)-(\d+)/);
-      if(m){
-        var w=m[1]||m[4]||m[7],a=m[2]||m[5]||m[8],r=m[3]||m[6]||m[9];
-        setSelectByValue('tire-width',w);setSelectByValue('aspect-ratio',a);setSelectByValue('wheel-size',r);
-      }
-    }
-  });
-})();
-
 function setSelectByValue(id,val){
   var el=document.getElementById(id);
   for(var i=0;i<el.options.length;i++){if(el.options[i].value==val){el.selectedIndex=i;return;}}
 }
 
-/* ── Live API lookup ── */
 async function lookupGearRatio() {
-  var make  = document.getElementById('api-make-gr').value.trim();
-  var model = document.getElementById('api-model-gr').value.trim();
-  var container = document.getElementById('api-lookup-gr');
-
-  if (!make || !model) {
-    showLookupStatus(container, 'Please enter both a make and model.', 'warn');
-    return;
-  }
-
-  hideLookupStatus(container);
-  showLookupLoading(container);
-
+  var make=document.getElementById('api-make-gr').value.trim();
+  var model=document.getElementById('api-model-gr').value.trim();
+  var container=document.getElementById('api-lookup-gr');
+  if(!make||!model){showLookupStatus(container,'Please enter both a make and model.','warn');return;}
+  hideLookupStatus(container);showLookupLoading(container);
   try {
-    var spec = await fetchBikeSpecs(make, model);
+    var spec=await fetchBikeSpecs(make,model);
     hideLookupLoading(container);
-
-    if (!spec) {
-      showLookupStatus(container, 'No results found. Check the make/model spelling and try again.', 'warn');
-      return;
-    }
-
-    var notes = [];
-
-    /* ── Transmission: extract gear count and drive type ── */
-    if (spec.transmission) {
-      var tx = spec.transmission;
-      /* e.g. "6-Speed, Chain Drive" or "5 Speed Manual Chain" */
-      var gearMatch = tx.match(/(\d)\s*[-\s]?\s*[Ss]peed/);
-      if (gearMatch) {
-        var gearCount = parseInt(gearMatch[1]);
-        var gcSel = document.getElementById('gear-count');
-        for (var i=0;i<gcSel.options.length;i++){
-          if(parseInt(gcSel.options[i].value)===gearCount){gcSel.selectedIndex=i;break;}
-        }
-        /* Trigger the display update */
+    if(!spec){showLookupStatus(container,'No results found. Check the make/model spelling.','warn');return;}
+    var notes=[];
+    if(spec.transmission){
+      var tx=spec.transmission;
+      var gearMatch=tx.match(/(\d)\s*[-\s]?\s*[Ss]peed/);
+      if(gearMatch){
+        var gc=parseInt(gearMatch[1]);
+        var gcSel=document.getElementById('gear-count');
+        for(var i=0;i<gcSel.options.length;i++){if(parseInt(gcSel.options[i].value)===gc){gcSel.selectedIndex=i;break;}}
         gcSel.dispatchEvent(new Event('change'));
-        notes.push(gearCount + '-speed gearbox detected — gear count updated.');
+        notes.push(gc+'-speed gearbox detected.');
       }
-      var driveType = tx.match(/chain|belt|shaft/i);
-      if (driveType) {
-        notes.push('Drive type: ' + driveType[0].charAt(0).toUpperCase() + driveType[0].slice(1).toLowerCase() + ' drive confirmed.');
-      } else {
-        notes.push('Technical specifications incomplete — drive type not listed. Please verify manually.');
-      }
+      var drive=tx.match(/chain|belt|shaft/i);
+      notes.push(drive?'Drive: '+drive[0]+'.':'Drive type not listed — verify manually.');
     } else {
-      notes.push('Technical specifications incomplete — transmission data missing. Please input custom metrics manually.');
+      notes.push('Transmission data missing — enter gear count manually.');
     }
-
-    /* ── Rear tyre → pre-fill tyre fields ── */
-    if (spec.rear_tire) {
-      var t = parseTyreCode(spec.rear_tire);
-      if (t) {
-        setSelectByValue('tire-width', t.width);
-        setSelectByValue('aspect-ratio', t.aspect);
-        setSelectByValue('wheel-size', t.rim);
-        notes.push('Rear tyre ' + spec.rear_tire + ' applied.');
-      }
+    if(spec.rear_tire){
+      var t=parseTyreCode(spec.rear_tire);
+      if(t){setSelectByValue('tire-width',t.width);setSelectByValue('aspect-ratio',t.aspect);setSelectByValue('wheel-size',t.rim);notes.push('Rear tyre '+spec.rear_tire+' applied.');}
     }
-
-    /* ── Sprocket data not in API — note it ── */
-    notes.push('Note: API Ninjas does not provide sprocket tooth counts. Enter your OEM figures manually.');
-
-    showLookupStatus(container,
-      (spec.make||make) + ' ' + (spec.model||model) + ' ' + (spec.year||'') + ' found. ' + notes.join(' '),
-      'success'
-    );
-
+    notes.push('Sprocket counts not in API — enter manually.');
+    showLookupStatus(container,(spec.make||make)+' '+(spec.model||model)+' '+(spec.year||'')+' — '+notes.join(' '),'success');
   } catch(err) {
     hideLookupLoading(container);
-    showLookupStatus(container,
-      API_KEY === 'YOUR_API_KEY_HERE'
-        ? 'API key not set. Add your API Ninjas key to /js/bike-lookup.js to enable live lookup.'
-        : 'Lookup failed: ' + err.message + '. You can still enter values manually.',
-      'error'
-    );
+    showLookupStatus(container,'Lookup failed: '+err.message+'. Enter values manually.','error');
   }
 }
 
-/* ── Gear row visibility ── */
-(function() {
-  var gearCountEl = document.getElementById('gear-count');
-  function updateGearRows() {
-    var count = parseInt(gearCountEl.value, 10);
-    document.querySelectorAll('.gear-row').forEach(function(row) {
-      row.style.display = parseInt(row.getAttribute('data-gear'), 10) <= count ? '' : 'none';
-    });
-  }
-  gearCountEl.addEventListener('change', updateGearRows);
-  updateGearRows();
+(function(){
+  var gc=document.getElementById('gear-count');
+  function update(){var c=parseInt(gc.value);document.querySelectorAll('.gear-row').forEach(function(r){r.style.display=parseInt(r.getAttribute('data-gear'))<=c?'':'none';});}
+  gc.addEventListener('change',update);update();
 })();
 
-/* ── Main calculation ── */
-window.calculate = function() {
-  var frontTeeth  = parseFloat(document.getElementById('front-sprocket').value);
-  var rearTeeth   = parseFloat(document.getElementById('rear-sprocket').value);
-  var tireWidth   = parseFloat(document.getElementById('tire-width').value);
-  var aspectRatio = parseFloat(document.getElementById('aspect-ratio').value);
-  var wheelSizeIn = parseFloat(document.getElementById('wheel-size').value);
-  var maxRPM      = parseFloat(document.getElementById('max-rpm').value);
-  var gearCount   = parseInt(document.getElementById('gear-count').value, 10);
-
-  if (!frontTeeth||!rearTeeth||!tireWidth||!aspectRatio||!wheelSizeIn||!maxRPM) {
-    alert('Please fill in all fields.'); return;
-  }
-
-  var tireDiameterMm    = (tireWidth * aspectRatio / 100 * 2) + (wheelSizeIn * 25.4);
-  var tireCircumferenceM = Math.PI * tireDiameterMm / 1000;
-  var overallRatio = rearTeeth / frontTeeth;
-
-  function calcSpeed(rpm, gearRatio, overall) {
-    return (rpm * tireCircumferenceM * 60) / (gearRatio * overall * 1000);
-  }
-
-  var tbody = document.getElementById('results-tbody');
-  tbody.innerHTML = '';
-  for (var g = 1; g <= gearCount; g++) {
-    var gr = parseFloat(document.getElementById('gr-'+g).value);
-    var skph = calcSpeed(maxRPM, gr, overallRatio);
-    var smph = skph * 0.621371;
-    var tr = document.createElement('tr');
-    tr.innerHTML='<td>Gear '+g+'</td><td>'+gr.toFixed(3)+'</td><td>'+skph.toFixed(1)+'</td><td>'+smph.toFixed(1)+'</td>';
+window.calculate=function(){
+  var f=parseFloat(document.getElementById('front-sprocket').value);
+  var r=parseFloat(document.getElementById('rear-sprocket').value);
+  var tw=parseFloat(document.getElementById('tire-width').value);
+  var ar=parseFloat(document.getElementById('aspect-ratio').value);
+  var ws=parseFloat(document.getElementById('wheel-size').value);
+  var rpm=parseFloat(document.getElementById('max-rpm').value);
+  var gc=parseInt(document.getElementById('gear-count').value);
+  if(!f||!r||!tw||!ar||!ws||!rpm){alert('Please fill in all fields.');return;}
+  var circ=Math.PI*((tw*ar/100*2)+(ws*25.4))/1000;
+  var overall=r/f;
+  function spd(rpm,gr,ov){return rpm*circ*60/(gr*ov*1000);}
+  var tbody=document.getElementById('results-tbody');tbody.innerHTML='';
+  for(var g=1;g<=gc;g++){
+    var gr=parseFloat(document.getElementById('gr-'+g).value);
+    var k=spd(rpm,gr,overall);
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>Gear '+g+'</td><td>'+gr.toFixed(3)+'</td><td>'+k.toFixed(1)+'</td><td>'+(k*.621371).toFixed(1)+'</td>';
     tbody.appendChild(tr);
   }
-
-  var topGR = parseFloat(document.getElementById('gr-'+gearCount).value);
-  var topKmh = calcSpeed(maxRPM, topGR, overallRatio);
-  var topMph = topKmh * 0.621371;
-
-  document.getElementById('result-summary').innerHTML =
-    '<strong>Overall Drive Ratio:</strong> '+overallRatio.toFixed(3)+
-    ' &nbsp;|&nbsp; <strong>Estimated Top Speed:</strong> '+
-    topKmh.toFixed(1)+' km/h ('+topMph.toFixed(1)+' mph) at '+maxRPM.toLocaleString()+' RPM in top gear';
-
-  var swapTbody = document.getElementById('swap-tbody');
-  swapTbody.innerHTML='';
-  [
-    {label:'Front +1 ('+(frontTeeth+1)+'T)',front:frontTeeth+1,rear:rearTeeth},
-    {label:'Front -1 ('+(frontTeeth-1)+'T)',front:frontTeeth-1,rear:rearTeeth},
-    {label:'Rear +1 ('+(rearTeeth+1)+'T)',front:frontTeeth,rear:rearTeeth+1},
-    {label:'Rear -1 ('+(rearTeeth-1)+'T)',front:frontTeeth,rear:rearTeeth-1}
-  ].forEach(function(s){
+  var topGR=parseFloat(document.getElementById('gr-'+gc).value);
+  var topK=spd(rpm,topGR,overall);
+  document.getElementById('result-summary').innerHTML='<strong>Overall Drive Ratio:</strong> '+overall.toFixed(3)+' &nbsp;|&nbsp; <strong>Estimated Top Speed:</strong> '+topK.toFixed(1)+' km/h ('+(topK*.621371).toFixed(1)+' mph) at '+rpm.toLocaleString()+' RPM in top gear';
+  var sb=document.getElementById('swap-tbody');sb.innerHTML='';
+  [{label:'Front +1 ('+(f+1)+'T)',front:f+1,rear:r},{label:'Front -1 ('+(f-1)+'T)',front:f-1,rear:r},{label:'Rear +1 ('+(r+1)+'T)',front:f,rear:r+1},{label:'Rear -1 ('+(r-1)+'T)',front:f,rear:r-1}].forEach(function(s){
     if(s.front<1||s.rear<1)return;
-    var so=s.rear/s.front;
-    var sk=calcSpeed(maxRPM,topGR,so);
-    var sm=sk*0.621371;
-    var diff=sk-topKmh;
-    var cls=diff>=0?'delta-pos':'delta-neg';
+    var so=s.rear/s.front,sk=spd(rpm,topGR,so),diff=sk-topK;
     var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+s.label+'</td><td>'+so.toFixed(3)+'</td><td>'+sk.toFixed(1)+'</td><td>'+sm.toFixed(1)+'</td><td class="'+cls+'">'+(diff>=0?'+':'')+diff.toFixed(1)+' km/h</td>';
-    swapTbody.appendChild(tr);
+    tr.innerHTML='<td>'+s.label+'</td><td>'+so.toFixed(3)+'</td><td>'+sk.toFixed(1)+'</td><td>'+(sk*.621371).toFixed(1)+'</td><td class="'+(diff>=0?'delta-pos':'delta-neg')+'">'+(diff>=0?'+':'')+diff.toFixed(1)+' km/h</td>';
+    sb.appendChild(tr);
   });
-
   document.getElementById('calc-results').style.display='';
   document.getElementById('calc-results').scrollIntoView({behavior:'smooth',block:'start'});
 };
