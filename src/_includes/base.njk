@@ -3,25 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#FF6B00">
 
   <title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }} — Ride More. Know More.{% endif %}</title>
   <meta name="description" content="{{ description or site.description }}">
+  <meta name="author" content="{{ site.author }}">
   <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
 
   <!-- Open Graph -->
   <meta property="og:title" content="{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
   <meta property="og:description" content="{{ description or site.description }}">
   <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
-  <meta property="og:image" content="{{ ogImage or site.defaultOgImage | absoluteUrl(site.url) }}">
+  <meta property="og:image" content="{{ (ogImage or image or site.defaultOgImage) | absoluteUrl(site.url) }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:type" content="{{ ogType or 'website' }}">
   <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="{{ site.twitter }}">
   <meta name="twitter:title" content="{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
   <meta name="twitter:description" content="{{ description or site.description }}">
-  <meta name="twitter:image" content="{{ ogImage or site.defaultOgImage | absoluteUrl(site.url) }}">
+  <meta name="twitter:image" content="{{ (ogImage or image or site.defaultOgImage) | absoluteUrl(site.url) }}">
+
+  <!-- Favicon & manifest -->
+  <link rel="icon" type="image/png" href="{{ '/img/favicon.png' | url }}">
+  <link rel="apple-touch-icon" href="{{ '/img/apple-touch-icon.png' | url }}">
+  <link rel="manifest" href="{{ '/manifest.json' | url }}">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +44,40 @@
 
   <!-- PASTE ADSENSE AUTO-ADS SCRIPT HERE -->
 
-  <link rel="stylesheet" href="{{ '/css/style.css' | url }}?v=3">
+  <link rel="stylesheet" href="{{ '/css/style.css' | url }}?v=4">
+
+  <!-- WebSite schema (sitelinks search box eligible) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}",
+    "description": "{{ site.description }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "{{ site.url }}/search/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Organization schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}",
+    "logo": "{{ '/img/bikelabs-logo.png' | absoluteUrl(site.url) }}",
+    "sameAs": [
+      "https://twitter.com/bikelabscom"
+    ]
+  }
+  </script>
 
   {% block head %}{% endblock %}
 </head>

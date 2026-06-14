@@ -65,6 +65,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/manifest.json");
 
   // Collections
   eleventyConfig.addCollection("reviews", (collectionApi) =>
