@@ -7,7 +7,7 @@ permalink: /tools/power-weight-calculator/
 <script src="{{ '/js/bike-lookup.js' | url }}"></script>
 
 <div class="tool-page">
-  <div class="container">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem">
     <h1>Motorcycle Power-to-Weight Ratio Calculator</h1>
     <p class="tool-intro">Power-to-weight ratio is the single best measure of a motorcycle's real-world performance. Look up your bike or enter your numbers to see exactly where you stand.</p>
 
@@ -71,12 +71,12 @@ permalink: /tools/power-weight-calculator/
 </div>
 
 <style>
-.tool-page{padding:3rem 0;text-align:center}.tool-page h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto}
-.tool-layout{display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:start}
+.tool-page{padding:3rem 0}.tool-page h1{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.5rem}.tool-intro{color:#aaa;margin-bottom:2rem;max-width:700px;margin:0 auto 2rem}
+.tool-layout{display:grid;grid-template-columns:160px 1fr 160px;gap:1.5rem;align-items:start}
 .tool-main{}
 .tool-sidebar{position:sticky;top:1rem}
 .ad-slot{background:#1a1a1a;border:1px dashed #2a2a2a;border-radius:8px;min-height:600px;display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;text-align:center}
-@media(max-width:900px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{display:none}}
+@media(max-width:1000px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{display:none}}
 .tool-card{background:#1e1e1e;border-radius:8px;padding:2rem;margin-bottom:2rem}.tool-card h2{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:#FF6B00;margin:1.5rem 0 1rem;border-top:1px solid #2a2a2a;padding-top:1.5rem}.tool-card h2:first-of-type{margin-top:0;border-top:none;padding-top:0}.tool-card h3{font-family:'Barlow Condensed',sans-serif;color:#ccc;margin:1.5rem 0 .75rem}.selector-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1rem}.form-group{display:flex;flex-direction:column;gap:.4rem}.form-group label{font-size:.85rem;color:#aaa;font-weight:500}.form-group input,.form-group select{background:#2a2a2a;border:1px solid #3a3a3a;color:#f0f0f0;padding:.6rem .8rem;border-radius:4px;font-size:1rem;font-family:inherit;box-sizing:border-box;width:100%;-webkit-appearance:none;appearance:none}.form-group input:focus,.form-group select:focus{outline:none;border-color:#FF6B00}
 .btn-calculate{background:#FF6B00;color:#fff;border:none;padding:.9rem 2rem;font-size:1rem;font-weight:700;border-radius:4px;cursor:pointer;width:100%;margin-top:1.5rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px;text-transform:uppercase}.btn-calculate:hover{background:#e55a00}
 .btn-lookup{background:#2a2a2a;border:1px solid #FF6B00;color:#FF6B00;padding:.62rem 1.4rem;font-size:.95rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer;width:100%;margin-top:auto}.btn-lookup:hover{background:#FF6B00;color:#fff}
