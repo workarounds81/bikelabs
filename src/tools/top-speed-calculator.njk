@@ -223,6 +223,30 @@ permalink: /tools/top-speed-calculator/
   gearCountSel.addEventListener('change', updateGearRows);
   updateGearRows();
 
+  // CC → estimated top speed lookup tables
+  var CVT_SPEED = [
+    [50,  47],  [125, 98],  [150, 112], [250, 142],
+    [300, 155], [400, 167], [500, 175], [650, 188]
+  ];
+  var MANUAL_SPEED = [
+    [125, 100], [250, 170], [400, 200], [600, 222],
+    [750, 215], [1000, 265], [1200, 270]
+  ];
+
+  function estimateTopSpeed(cc, table) {
+    if (!cc || cc <= 0) return null;
+    for (var i = table.length - 1; i >= 0; i--) {
+      if (cc >= table[i][0]) return table[i][1];
+    }
+    return table[0][1];
+  }
+
+  function getCCFromSpec(spec) {
+    var dispStr = String(spec.displacement || '');
+    var m = dispStr.match(/([\d,]+)\s*cc/i) || dispStr.match(/^([\d,]+)$/);
+    return m ? parseInt(m[1].replace(/,/g, '')) : null;
+  }
+
   BikeFinder.init('bike-finder-ts', function (spec) {
     var container = document.getElementById('bike-finder-ts');
     var filled = [];
@@ -233,13 +257,22 @@ permalink: /tools/top-speed-calculator/
       setSelectByValue('gear-count', 'cvt');
       updateGearRows();
       var tsVal = spec.top_speed || null;
+      var cc = getCCFromSpec(spec);
       if (tsVal) {
         document.getElementById('cvt-notice').innerHTML =
           'ℹ️ <strong>Automatic / CVT transmission</strong> — gear ratio calculation does not apply.'
           + '<br><span style="color:#86efac;font-size:1.05em;font-weight:700;">Manufacturer top speed: ' + tsVal + '</span>';
-        showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — CVT detected. Manufacturer top speed: ' + tsVal, 'success');
+        showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — CVT. Manufacturer top speed: ' + tsVal, 'success');
       } else {
-        showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — Automatic/CVT detected. No top speed data available in the spec database for this model.', 'warn');
+        var est = cc ? estimateTopSpeed(cc, CVT_SPEED) : null;
+        var estMph = est ? Math.round(est * 0.621) : null;
+        document.getElementById('cvt-notice').innerHTML =
+          'ℹ️ <strong>Automatic / CVT transmission</strong> — gear ratio calculation does not apply.'
+          + (est
+            ? '<br><span style="color:#fdba74;font-size:1.05em;font-weight:700;">Estimated top speed: ~' + est + ' km/h (~' + estMph + ' mph)</span>'
+            + '<br><span style="color:#666;font-size:.8em;">Based on average ' + (cc||'?') + 'cc scooter/CVT performance. Not a manufacturer figure.</span>'
+            : '<br><span style="color:#666">No top speed data or displacement available for this model.</span>');
+        showLookupStatus(container, (spec.make||'')+' '+(spec.model||'')+' — CVT. '+(est?'Estimated ~'+est+' km/h based on '+cc+'cc average.':'No speed data available.'), est?'warn':'warn');
       }
       return;
     }
@@ -265,10 +298,15 @@ permalink: /tools/top-speed-calculator/
       }
     }
 
+    // Show estimated top speed from CC if API has no top_speed
+    var manualCC = getCCFromSpec(spec);
+    var manualEst = manualCC ? estimateTopSpeed(manualCC, MANUAL_SPEED) : null;
+    var tsNote = spec.top_speed
+      ? ' Manufacturer top speed: ' + spec.top_speed + '.'
+      : (manualEst ? ' Estimated top speed: ~' + manualEst + ' km/h (~' + Math.round(manualEst*0.621) + ' mph) based on average ' + manualCC + 'cc performance — adjust gear ratios to refine.' : '');
+
     showLookupStatus(container,
-      filled.length
-        ? 'Pre-filled: ' + filled.join(', ') + '. Adjust values as needed.'
-        : 'Spec found but no tyre or transmission data available.',
+      (filled.length ? 'Pre-filled: ' + filled.join(', ') + '.' : 'Spec found but no tyre or transmission data.') + tsNote,
       filled.length ? 'success' : 'warn');
   });
 
