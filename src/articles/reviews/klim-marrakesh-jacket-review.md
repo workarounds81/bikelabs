@@ -5,7 +5,6 @@ section: reviews
 category: gear
 tags: [jacket, klim, airflow, D3O, review, CE Level 2, summer riding]
 description: "The Klim Marrakesh dissected — Karbonite Micromesh airflow, D3O Level 2 armour, civilian-cut styling, and whether it lives up to its maximum-ventilation reputation."
-affiliate: true
 image: /img/articles/klimmarrakesh.webp
 layout: article.njk
 permalink: /reviews/klim-marrakesh-jacket-review/

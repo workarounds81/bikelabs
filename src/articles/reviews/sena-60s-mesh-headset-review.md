@@ -5,7 +5,6 @@ section: reviews
 category: electronics
 tags: [intercom, sena, bluetooth, mesh, review, communication, harman kardon]
 description: "Testing Sena's flagship 60S — its WAVE cellular-to-mesh technology, Harman Kardon audio, and whether unlimited-range intercom actually works in the real world."
-affiliate: true
 image: /img/articles/sena60s.webp
 layout: article.njk
 permalink: /reviews/sena-60s-mesh-headset-review/

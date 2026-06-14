@@ -5,7 +5,6 @@ section: reviews
 category: helmets
 tags: [helmet, shoei, full-face, review, safety, commuting]
 description: "An in-depth review of the Shoei RF-1400 — its aerodynamics, ventilation, noise isolation, and whether it still justifies its premium price tag."
-affiliate: true
 image: /img/articles/ShoeiRF1400.webp
 layout: article.njk
 permalink: /reviews/shoei-rf1400-helmet-review/

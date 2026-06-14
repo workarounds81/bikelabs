@@ -5,7 +5,6 @@ section: reviews
 category: gloves
 tags: [gloves, gear, safety]
 description: "The best motorcycle gloves in 2026 — from summer commuting to winter touring. Tested across riding styles and climates."
-affiliate: true
 image: /img/articles/Best motorcycle Gloves.jpg
 layout: article.njk
 permalink: /reviews/best-motorcycle-gloves/

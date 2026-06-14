@@ -5,7 +5,6 @@ section: reviews
 category: electronics
 tags: [carplay, android auto, dashcam, navigation, TPMS, review, motorcycle tech]
 description: "Testing the Aoocci C6 Pro — sunlight readability, gloved CarPlay touch response, dual 1080p camera quality, and whether the TPMS sensors are actually useful."
-affiliate: true
 image: /img/articles/aoocci-c6-vs-c9-build-quality-comparison.webp
 layout: article.njk
 permalink: /reviews/aoocci-c6pro-carplay-dashcam-review/

@@ -5,7 +5,6 @@ section: reviews
 category: helmets
 tags: [helmets, safety, buying-guide]
 description: "We tested 12 motorcycle helmets across every price point. Here's what's actually worth buying in 2026."
-affiliate: true
 featured: true
 image: /img/articles/tested12helmets.webp
 layout: article.njk

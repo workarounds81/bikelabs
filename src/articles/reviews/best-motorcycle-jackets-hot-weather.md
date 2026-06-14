@@ -5,7 +5,6 @@ section: reviews
 category: jackets
 tags: [jackets, gear, hot-weather]
 description: "Riding in heat doesn't mean giving up protection. These are the best motorcycle jackets for hot weather — tested in 35°C+ conditions."
-affiliate: true
 image: /img/articles/Best motorcycle Jackets.jpg
 layout: article.njk
 permalink: /reviews/best-motorcycle-jackets-hot-weather/

@@ -5,7 +5,6 @@ section: how-to
 category: maintenance
 tags: [maintenance, beginner, how-to]
 description: "A complete beginner's guide to motorcycle maintenance — what to check, when to do it, and what you can do yourself vs. what needs a mechanic."
-affiliate: true
 image: /img/articles/motorcyclemaintenance.jpg
 layout: article.njk
 permalink: /how-to/motorcycle-maintenance-guide/

@@ -5,7 +5,6 @@ section: reviews
 category: gear
 tags: [jacket, revit, adventure, waterproof, review, CE Level 2, touring]
 description: "A thorough real-world evaluation of the REV'IT! Tornado 4 H2O — airflow in summer heat, CE Level 2 protection, and how well the Hydratex liner actually manages rain."
-affiliate: true
 image: /img/articles/tornadoh4.jpg
 layout: article.njk
 permalink: /reviews/revit-tornado-4-h2o-jacket-review/
