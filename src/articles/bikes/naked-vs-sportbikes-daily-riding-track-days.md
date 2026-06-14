@@ -93,7 +93,7 @@ This makes naked bikes feel faster in real-world use despite sometimes having lo
 
 | Cost Factor | Sportbike | Naked Bike |
 |---|---|---|
-| Minor crash damage | High (fairing replacement: £200–£2,000+) | Low (levers, pegs, bar ends: £50–£200) |
+| Minor crash damage | High (fairing replacement: $200–$2,000+) | Low (levers, pegs, bar ends: $50–$200) |
 | Tyre wear | High (rear tyre: 5,000–8,000 km) | Moderate (7,000–10,000 km typical) |
 | Maintenance access | Moderate (partial fairing removal often needed) | Easy (all components accessible) |
 | Insurance | Higher (sportbike category) | Moderate |

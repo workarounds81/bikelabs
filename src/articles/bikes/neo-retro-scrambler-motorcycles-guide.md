@@ -85,7 +85,7 @@ For riders who want the scrambler aesthetic without sacrificing street performan
 
 ### Royal Enfield Himalayan and Scram 411
 
-Royal Enfield has repositioned its product range around accessible adventure and scrambler platforms. The Scram 411 is an honest, relatively lightweight (185 kg) scrambler aimed at riders who want functional off-road capability without flagship-level price. Its 411cc single-cylinder engine prioritises usability over performance, and the price point (approximately £5,500) significantly undercuts European competition.
+Royal Enfield has repositioned its product range around accessible adventure and scrambler platforms. The Scram 411 is an honest, relatively lightweight (185 kg) scrambler aimed at riders who want functional off-road capability without flagship-level price. Its 411cc single-cylinder engine prioritises usability over performance, and the price point (approximately $5,500) significantly undercuts European competition.
 
 ---
 

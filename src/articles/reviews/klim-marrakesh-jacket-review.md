@@ -89,7 +89,7 @@ Riders who require a single all-weather jacket should look at the REV'IT! Tornad
 
 **Cons:**
 - No waterproof capability — requires a separate rain layer
-- Price (£480–£550) is at the top of the hot-weather jacket segment
+- Price ($480–$550) is at the top of the hot-weather jacket segment
 - Limited to warm-weather use — the mesh provides no wind protection below approximately 12°C
 - Limited colour options compared to some competitors
 

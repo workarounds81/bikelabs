@@ -41,7 +41,7 @@ Most brake calipers have an inspection window — a gap between the caliper body
 
 ### What to Look For:
 - **Friction material** — the dark, textured compound bonded to the metal backing plate
-- If the friction material is less than the width of a £1 coin, replace immediately
+- If the friction material is less than the width of a $1 coin, replace immediately
 - If you can see or hear metal-on-metal contact — the pad is already destroyed and the rotor is likely damaged
 
 ### Spongy Lever Feel — The Hidden Warning

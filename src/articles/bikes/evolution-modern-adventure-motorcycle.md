@@ -87,7 +87,7 @@ Modern ADV traction control systems offer multiple modes with different interven
 | **Off-road capability** | Genuinely capable, manageable when dropped | Capable electronically, physically demanding when dropped |
 | **Touring range** | Good (standard: 250–350 km) | Excellent (standard: 350–450 km) |
 | **Motorway cruising** | Comfortable to 130 km/h; vibration present above 150 km/h | Effortless at sustained high speeds |
-| **Price** | £9,000–£13,000 | £16,000–£25,000+ |
+| **Price** | $9,000–$13,000 | $16,000–$25,000+ |
 | **Electronics suite** | Traction control, ABS, riding modes (standard or minimal electronic suspension) | Full IMU-based suite, active suspension, adaptive cruise, connectivity |
 
 **For genuine off-road use**, the middleweight platforms are the honest choice. At sub-200 kg, they can be extracted from difficult situations by a solo rider. Above 230 kg, the electronics are doing the work — and if they can't, neither can you.

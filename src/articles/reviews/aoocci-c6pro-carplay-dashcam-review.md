@@ -15,7 +15,7 @@ permalink: /reviews/aoocci-c6pro-carplay-dashcam-review/
 
 The category of all-in-one motorcycle dashboards is recent and growing rapidly. The value proposition is straightforward: instead of a separate sat-nav, separate dashcam, and separate TPMS monitor, a single unit handles all three — one mount, one power cable, one interface.
 
-The Aoocci C6 Pro is the most ambitious attempt at this consolidation currently available. At approximately £200–£250 (significantly less than equivalent dedicated devices for each function), it is either excellent value or a compromised jack-of-all-trades. After 8 weeks of daily use across commuting, weekend rides, and one touring trip, the answer is nuanced.
+The Aoocci C6 Pro is the most ambitious attempt at this consolidation currently available. At approximately $200–$250 (significantly less than equivalent dedicated devices for each function), it is either excellent value or a compromised jack-of-all-trades. After 8 weeks of daily use across commuting, weekend rides, and one touring trip, the answer is nuanced.
 
 ---
 
@@ -65,7 +65,7 @@ The included TPMS sensor caps replace standard valve stem caps. They wirelessly 
 
 **Real-world utility:** Higher than expected. The ability to see tyre temperature warming through a ride provides useful context — when both tyres are still cold early in a ride, it's a visual reminder that grip is reduced. Pressure monitoring catches slow leaks before they become emergencies.
 
-**Battery life:** The TPMS caps use CR1632 batteries. Claimed life is 12 months. At 5 months of testing, the caps still show full battery status. Replacement batteries cost approximately £2 each.
+**Battery life:** The TPMS caps use CR1632 batteries. Claimed life is 12 months. At 5 months of testing, the caps still show full battery status. Replacement batteries cost approximately $2 each.
 
 ---
 

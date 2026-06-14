@@ -40,7 +40,7 @@ A battery reading below 12.4V after sitting overnight indicates it's not holding
 
 
 ### What You Need:
-- Digital multimeter (any basic model works — no need to spend more than £15)
+- Digital multimeter (any basic model works — no need to spend more than $15)
 - Safety glasses
 
 ### Testing Resting Voltage:

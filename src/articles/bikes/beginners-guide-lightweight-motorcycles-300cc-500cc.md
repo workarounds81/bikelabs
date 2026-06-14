@@ -43,8 +43,8 @@ The economic case for small-displacement machines is substantial — not as a bu
 
 | Cost Factor | 300–500cc | 600–1000cc |
 |---|---|---|
-| **New purchase price** | £4,500–£7,500 | £9,000–£20,000+ |
-| **Insurance (new rider, UK)** | £800–£1,500/yr | £2,500–£5,000+/yr |
+| **New purchase price** | $4,500–$7,500 | $9,000–$20,000+ |
+| **Insurance (new rider, UK)** | $800–$1,500/yr | $2,500–$5,000+/yr |
 | **Fuel consumption** | 25–35 km/L | 15–22 km/L |
 | **Tyre wear (rear)** | 10,000–15,000 km | 5,000–8,000 km |
 | **Service intervals** | 6,000–10,000 km | 6,000–10,000 km |

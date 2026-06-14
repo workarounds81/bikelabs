@@ -31,7 +31,7 @@ Every motorcycle has a Vehicle Identification Number (VIN) stamped on the frame 
 - Recorded write-off status (Category A/B: structural damage that makes the bike unsafe to ride; Category C/D/S/N: repairable write-offs that may have been repaired)
 - Mileage discrepancy (if the database shows a higher mileage from a previous MOT/inspection than the current odometer, the clock has been wound back)
 
-A VIN check costs approximately £20–£30 and is worth every penny.
+A VIN check costs approximately $20–$30 and is worth every penny.
 
 ### Service History
 
@@ -59,7 +59,7 @@ This is non-negotiable. A warm engine can mask problems that only appear when st
 
 ### Fork Seals
 
-Slide your finger around the lower edge of the fork tube where it meets the fork leg. **Any oiliness here indicates a leaking fork seal.** Leaking seals are a service item (£100–£250 at a shop), but they also indicate the bike has been running in this condition — which means uneven damping and contaminated brake components if left long enough.
+Slide your finger around the lower edge of the fork tube where it meets the fork leg. **Any oiliness here indicates a leaking fork seal.** Leaking seals are a service item ($100–$250 at a shop), but they also indicate the bike has been running in this condition — which means uneven damping and contaminated brake components if left long enough.
 
 ### Steering Head Bearings
 
@@ -79,11 +79,11 @@ Remove the fuel cap and look inside with a flashlight. **Orange or brown contami
 
 **Sprocket wear:** Front and rear sprocket teeth should have a slight hook shape on the drive side but should not be sharply pointed, undercut, or showing shark-fin wear. A worn sprocket needs replacement with the chain — fitting a new chain on old sprockets accelerates wear on both.
 
-**The cost:** Front sprocket (£15–£30), rear sprocket (£40–£80), chain (£40–£120). Total: £100–£230. Budget this if any doubt exists.
+**The cost:** Front sprocket ($15–$30), rear sprocket ($40–$80), chain ($40–$120). Total: $100–$230. Budget this if any doubt exists.
 
 ### Brake Rotors
 
-Front and rear brake discs have a minimum thickness stamped on them. Measure with a calliper or look for visible scoring — parallel grooves running around the disc surface indicate pad debris embedding. Light surface rust (present on any unused disc) is normal and clears within a few brake applications. Deep grooves or a disc below minimum thickness requires replacement (£60–£200 per disc plus labour).
+Front and rear brake discs have a minimum thickness stamped on them. Measure with a calliper or look for visible scoring — parallel grooves running around the disc surface indicate pad debris embedding. Light surface rust (present on any unused disc) is normal and clears within a few brake applications. Deep grooves or a disc below minimum thickness requires replacement ($60–$200 per disc plus labour).
 
 ### Tyres: Date Codes and Wear
 
@@ -113,6 +113,6 @@ Before riding, clarify your insurance position. In most jurisdictions, you need 
 
 ## The Negotiation
 
-Every item identified above is negotiating leverage. A worn chain and sprocket set is £150–£230 plus your time. Fork seals are £150–£250 at a workshop. A set of tyres is £150–£300 fitted.
+Every item identified above is negotiating leverage. A worn chain and sprocket set is $150–$230 plus your time. Fork seals are $150–$250 at a workshop. A set of tyres is $150–$300 fitted.
 
 Itemise what needs doing. Subtract from asking price. This is not aggressive negotiation — it is accurate pricing of the machine's actual condition. A seller who refuses reasonable adjustment for documented needs is telling you the price matters more than the relationship. That information has value too.

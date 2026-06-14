@@ -115,7 +115,7 @@ Before installing the new filter, apply a thin smear of **fresh engine oil** to 
 2. Thread in by hand — full thread engagement before applying any tool
 3. Torque to specification: **typically 20–30 Nm** (check your service manual — this varies significantly between engines)
 
-> **Torque is not optional.** Under-torquing leads to leaks. Over-torquing strips the sump threads — a repair that can cost hundreds. A basic torque wrench costs £20 and pays for itself on the first use.
+> **Torque is not optional.** Under-torquing leads to leaks. Over-torquing strips the sump threads — a repair that can cost hundreds. A basic torque wrench costs $20 and pays for itself on the first use.
 
 ---
 

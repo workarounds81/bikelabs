@@ -44,7 +44,7 @@ Paper filters use a pleated, resin-treated cellulose or synthetic fibre element.
 
 **Key characteristics:**
 - Disposable — not designed to be washed
-- Cheap to replace (£5–£25 for most OEM filters)
+- Cheap to replace ($5–$25 for most OEM filters)
 - Excellent fine-particle filtration when new
 - Efficiency degrades as they load with dust — paradoxically, a slightly used paper filter actually filters better than a brand new one, up to a point
 

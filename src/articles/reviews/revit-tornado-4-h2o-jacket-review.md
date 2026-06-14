@@ -37,7 +37,7 @@ The Tornado 4 H2O ships with CE Level 2 armour in the **shoulders and elbows** �
 
 The difference is significant. Level 2 armour in the shoulders and elbows means meaningfully more protection at the high-consequence impact zones than the Level 1 armour many competing jackets at this price point use.
 
-**Back protector:** A pocket for a back protector is included; a CE Level 1 protector is supplied. An upgrade to a Level 2 back protector (REV'IT's Seesoft RV, approximately £60) is strongly recommended. The pocket fits the upgrade, and for a jacket at this price point used in ADV touring, the back protector quality should match the shoulder and elbow armour standard.
+**Back protector:** A pocket for a back protector is included; a CE Level 1 protector is supplied. An upgrade to a Level 2 back protector (REV'IT's Seesoft RV, approximately $60) is strongly recommended. The pocket fits the upgrade, and for a jacket at this price point used in ADV touring, the back protector quality should match the shoulder and elbow armour standard.
 
 **Armour comfort:** The Level 2 inserts are slightly bulkier than Level 1 alternatives. In the shoulders, this is unnoticeable once riding. At the elbows, longer-armed riders may find the insert positioning requires adjustment — the strap-and-pocket retention system allows repositioning, and a 5-minute fit session on first wear resolves this.
 
@@ -80,7 +80,7 @@ The Tornado 4 H2O is designed for extended riding, and its adjustment system ref
 **Cons:**
 - Back protector upgrade required to match the armour quality standard of the rest of the jacket
 - Liner reduces breathability significantly — warm above 18°C with it installed
-- Price (£380–£430) is at the top of the non-laminated adventure jacket segment
+- Price ($380–$430) is at the top of the non-laminated adventure jacket segment
 - The liner/shell system requires a stop to transition — not ideal when weather changes rapidly
 
 ---
