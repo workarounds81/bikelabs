@@ -48,6 +48,26 @@ permalink: /tools/commuter-ownership-calculator/
             </div>
           </div>
 
+          <h2>Running Costs <span style="font-size:.85rem;color:#888;font-weight:400;font-family:inherit">(adjust to match your bike)</span></h2>
+          <div class="selector-row">
+            <div class="form-group">
+              <label for="tyre-cost">Tyre Set Cost ($)</label>
+              <input type="number" id="tyre-cost" value="150" min="50" max="1000" step="10">
+            </div>
+            <div class="form-group">
+              <label for="tyre-interval">Tyre Interval (km)</label>
+              <input type="number" id="tyre-interval" value="10000" min="2000" max="30000" step="500">
+            </div>
+            <div class="form-group">
+              <label for="oil-cost">Oil Change Cost ($)</label>
+              <input type="number" id="oil-cost" value="40" min="10" max="200" step="5">
+            </div>
+            <div class="form-group">
+              <label for="oil-interval">Oil Interval (km)</label>
+              <input type="number" id="oil-interval" value="7500" min="1000" max="20000" step="500">
+            </div>
+          </div>
+
           <h2>Optional: Purchase Price</h2>
           <div class="selector-row">
             <div class="form-group">
@@ -68,7 +88,7 @@ permalink: /tools/commuter-ownership-calculator/
           <h2>Is Commuting by Motorcycle Really Cheaper?</h2>
           <p>In most cases, yes — significantly so. A 650cc commuter bike typically costs 40–60% less to fuel annually than a family car. Add in lower tyre costs (motorcycles need two smaller tyres rather than four large ones) and less frequent servicing, and the annual saving can be substantial for typical commuting distances.</p>
           <h2>What This Calculator Includes</h2>
-          <p>Fuel cost is calculated from your consumption estimate and annual mileage. Tyre replacement frequency is estimated by engine size as a proxy for tyre wear rate. Oil change intervals are set at every 5,000 km at $40 per service, reflecting typical semi-synthetic or full-synthetic oil change pricing. Fuel consumption is estimated by engine displacement and should be adjusted to your real-world figure.</p>
+          <p>Fuel cost is calculated from your consumption figure and annual mileage. Tyre cost, tyre interval, oil cost, and oil interval are all editable — defaults are set automatically when you look up your bike by engine size, but you should adjust them to match your actual bike and riding style. A commuter on a small bike with long oil intervals will see very different numbers to a sportbike rider.</p>
           <h2>What Is Not Included</h2>
           <p>Insurance, registration, chain and sprocket wear, brake pads, and depreciation are not factored in. These vary enormously by rider profile, location, and model. As a rough guide, budget an additional $400–$800 per year for these items on a mid-size bike — still well below the equivalent car costs.</p>
           <h2>Car Comparison Assumptions</h2>
@@ -130,13 +150,22 @@ permalink: /tools/commuter-ownership-calculator/
 
         // Tiered fuel consumption estimate
         var fc;
-        if (cc < 250) fc = 3.5;
-        else if (cc < 500) fc = 4.5;
-        else if (cc < 750) fc = 5.5;
-        else if (cc <= 1000) fc = 6.5;
-        else fc = 7.5;
+        if (cc < 250) fc = 3.0;
+        else if (cc < 500) fc = 4.0;
+        else if (cc < 750) fc = 5.0;
+        else if (cc <= 1000) fc = 6.0;
+        else fc = 7.0;
         document.getElementById('fuel-consumption').value = fc;
-        filled.push('engine size', 'estimated fuel consumption');
+
+        // Tiered tyre defaults
+        var tyreCost, tyreInterval;
+        if (cc < 500) { tyreCost = 100; tyreInterval = 12000; }
+        else if (cc <= 1000) { tyreCost = 150; tyreInterval = 10000; }
+        else { tyreCost = 220; tyreInterval = 7000; }
+        document.getElementById('tyre-cost').value = tyreCost;
+        document.getElementById('tyre-interval').value = tyreInterval;
+
+        filled.push('engine size', 'fuel consumption estimate', 'tyre defaults');
       }
     }
 
@@ -155,21 +184,17 @@ permalink: /tools/commuter-ownership-calculator/
     var fuelPrice = parseFloat(document.getElementById('fuel-price').value);
     var purchasePrice = parseFloat(document.getElementById('purchase-price').value);
 
+    var tyreCost = parseFloat(document.getElementById('tyre-cost').value);
+    var tyreInterval = parseFloat(document.getElementById('tyre-interval').value);
+    var oilCost = parseFloat(document.getElementById('oil-cost').value);
+    var oilInterval = parseFloat(document.getElementById('oil-interval').value);
+
     var annualKm = weeklyKm * weeksRidden;
 
     // --- Bike costs ---
-    // Fuel
     var bikeFuel = (annualKm / 100) * fuelL100 * fuelPrice;
-
-    // Tyres: cost per set and interval by cc
-    var tyreCost, tyreInterval;
-    if (cc < 500) { tyreCost = 120; tyreInterval = 8000; }
-    else if (cc <= 1000) { tyreCost = 180; tyreInterval = 6000; }
-    else { tyreCost = 240; tyreInterval = 5000; }
     var bikeTyres = (annualKm / tyreInterval) * tyreCost;
-
-    // Oil: every 5000km, £35
-    var bikeOil = (annualKm / 5000) * 40;
+    var bikeOil = (annualKm / oilInterval) * oilCost;
 
     var bikeTotal = bikeFuel + bikeTyres + bikeOil;
 
@@ -196,7 +221,7 @@ permalink: /tools/commuter-ownership-calculator/
       + '<h3>Motorcycle — Annual</h3>'
       + '<div class="cost-line"><span>Fuel (' + annualKm.toFixed(0) + ' km)</span><span>' + fmt(bikeFuel) + '</span></div>'
       + '<div class="cost-line"><span>Tyres (per ' + tyreInterval.toLocaleString() + ' km)</span><span>' + fmt(bikeTyres) + '</span></div>'
-      + '<div class="cost-line"><span>Oil &amp; Service (per 5,000 km)</span><span>' + fmt(bikeOil) + '</span></div>'
+      + '<div class="cost-line"><span>Oil &amp; Service (per ' + oilInterval.toLocaleString() + ' km)</span><span>' + fmt(bikeOil) + '</span></div>'
       + '<div class="cost-line cost-total-line"><span>Total</span><span>' + fmt(bikeTotal) + '</span></div>'
       + '</div>'
       + '<div class="cost-card">'
