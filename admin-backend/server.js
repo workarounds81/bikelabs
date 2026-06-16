@@ -42,18 +42,33 @@ app.post('/admin/sync', auth, async (req, res) => {
   res.redirect('/admin/dashboard');
 });
 
-// Debug — shows what paths Railway sees
-app.get('/admin/debug-paths', auth, (req, res) => {
-  const fs = require('fs');
-  const articlesRoot = path.join(__dirname, '../src/articles');
-  let info = { __dirname, articlesRoot, exists: fs.existsSync(articlesRoot), sections: {} };
-  if (info.exists) {
-    for (const s of ['reviews','bikes','culture','how-to']) {
-      const d = path.join(articlesRoot, s);
-      info.sections[s] = fs.existsSync(d) ? fs.readdirSync(d).length + ' files' : 'missing';
-    }
-  }
+// Debug — confirms seed file presence and DB state (auth-protected)
+app.get('/admin/debug-seed', auth, (req, res) => {
+  const seedFile = path.join(__dirname, 'articles-seed.json');
+  const info = {
+    __dirname,
+    seedFile,
+    seedExists: fs.existsSync(seedFile),
+    seedCount: null,
+    dbCount: null,
+    error: null,
+  };
+  try {
+    if (info.seedExists) info.seedCount = JSON.parse(fs.readFileSync(seedFile, 'utf8')).length;
+    info.dbCount = db.prepare('SELECT COUNT(*) as n FROM articles').get().n;
+  } catch (e) { info.error = e.message; }
   res.json(info);
+});
+
+// Debug — force a sync via GET (easier to hit in browser) and report result
+app.get('/admin/debug-sync', auth, async (req, res) => {
+  try {
+    const result = await importArticles();
+    const dbCount = db.prepare('SELECT COUNT(*) as n FROM articles').get().n;
+    res.json({ ok: true, result, dbCount });
+  } catch (e) {
+    res.json({ ok: false, error: e.message, stack: e.stack });
+  }
 });
 
 // Protected routes
