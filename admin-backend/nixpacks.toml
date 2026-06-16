@@ -1,0 +1,5 @@
+# Pin Node 20 so better-sqlite3's prebuilt binary downloads (no compilation).
+# build-essential + python3 are a safety net so node-gyp can compile from
+# source if a matching prebuild is ever unavailable.
+[phases.setup]
+aptPkgs = ["build-essential", "python3"]
