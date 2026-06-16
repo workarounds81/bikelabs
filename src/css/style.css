@@ -725,12 +725,57 @@ a:hover { color: var(--accent-hover); }
 }
 
 /* ============================================================
-   AD SLOT
+   AD SLOTS
    ============================================================ */
-.ad-slot {
-  margin: 2rem auto;
+
+/* Inline / in-content ad (mid-article) — shows on all screens */
+.ad-slot--inline {
+  margin: 2.5rem auto;
   text-align: center;
   min-height: 1px;
+  width: 100%;
+  max-width: 728px;
+}
+
+/* Desktop sidebar ad columns */
+.ad-column {
+  position: sticky;
+  top: 180px;
+  padding-top: 1rem;
+  text-align: center;
+  min-height: 600px;
+}
+/* Hide sidebar ad placeholders visually until AdSense fills them */
+.ad-column--left,
+.ad-column--right {
+  min-height: 0;
+}
+
+/* Mobile sticky bottom banner */
+.ad-sticky-mobile {
+  display: none; /* hidden until AdSense anchor ad is configured */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  background: #111;
+  text-align: center;
+  min-height: 50px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.5);
+}
+
+/* Show sticky mobile ad only on mobile, hide on desktop (sidebar handles desktop) */
+@media (max-width: 1100px) {
+  .ad-sticky-mobile {
+    display: block;
+  }
+  /* Add padding to body so sticky bar doesn't cover footer */
+  body { padding-bottom: 60px; }
+}
+@media (min-width: 1101px) {
+  .ad-sticky-mobile { display: none !important; }
+  body { padding-bottom: 0; }
 }
 
 /* ============================================================
