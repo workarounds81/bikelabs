@@ -38,8 +38,22 @@ app.get('/admin/dashboard', auth, (req, res) => {
 
 // Manual sync trigger — re-runs importer to pull MD files into DB
 app.post('/admin/sync', auth, (req, res) => {
-  importArticles();
+  const result = importArticles();
   res.redirect('/admin/dashboard');
+});
+
+// Debug — shows what paths Railway sees
+app.get('/admin/debug-paths', auth, (req, res) => {
+  const fs = require('fs');
+  const articlesRoot = path.join(__dirname, '../src/articles');
+  let info = { __dirname, articlesRoot, exists: fs.existsSync(articlesRoot), sections: {} };
+  if (info.exists) {
+    for (const s of ['reviews','bikes','culture','how-to']) {
+      const d = path.join(articlesRoot, s);
+      info.sections[s] = fs.existsSync(d) ? fs.readdirSync(d).length + ' files' : 'missing';
+    }
+  }
+  res.json(info);
 });
 
 // Protected routes

@@ -79,8 +79,7 @@ function importArticles() {
     }
   }
 
-  if (imported > 0) console.log(`[importer] Imported ${imported} articles from disk.`);
-  if (skipped > 0)  console.log(`[importer] Skipped ${skipped} (already in DB or unparseable).`);
+  console.log(`[importer] Done — imported: ${imported}, skipped: ${skipped}, articles root: ${ARTICLES_ROOT}, exists: ${require('fs').existsSync(ARTICLES_ROOT)}`);
 }
 
 module.exports = { importArticles };
