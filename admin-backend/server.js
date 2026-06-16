@@ -6,6 +6,10 @@ const path = require('path');
 const fs = require('fs');
 const auth = require('./auth');
 const db = require('./db');
+const { importArticles } = require('./importer');
+
+// Import existing MD articles into DB on startup (safe to repeat — skips duplicates)
+importArticles();
 
 const app = express();
 

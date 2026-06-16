@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const multer = require('multer');
 const db = require('../db');
 
@@ -15,24 +16,28 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } });
 
-const SITE_ROOT = path.join(__dirname, '../../src');
-const SECTION_DIRS = { reviews: 'reviews', bikes: 'bikes', culture: 'culture', 'how-to': 'how-to' };
+const REPO_ROOT = path.join(__dirname, '../..');
+const ARTICLES_ROOT = path.join(REPO_ROOT, 'src/articles');
 
 function slugify(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
 function readTpl(name) { return fs.readFileSync(path.join(__dirname, '../views', name), 'utf8'); }
 
 function writeMarkdown(a) {
-  const dir = path.join(SITE_ROOT, SECTION_DIRS[a.section] || a.section);
+  const dir = path.join(ARTICLES_ROOT, a.section);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   const tags = a.tags ? a.tags.split(',').map(t => t.trim()).filter(Boolean) : [a.section];
   const date = (a.created_at || new Date().toISOString()).split('T')[0];
+  const layout = a.section === 'culture' ? 'culture.njk' : 'article.njk';
+  const permalink = `/${a.section}/${a.slug}/`;
   const md = `---
-layout: article.njk
+layout: ${layout}
 title: "${a.title.replace(/"/g, '\\"')}"
 description: "${(a.description || '').replace(/"/g, '\\"')}"
 image: ${a.image || ''}
 date: ${date}
 section: ${a.section}
+permalink: ${permalink}
+affiliate: false
 tags:
 ${tags.map(t => '  - ' + t).join('\n')}
 ---
@@ -42,8 +47,20 @@ ${a.body || ''}`;
 }
 
 function deleteMarkdown(a) {
-  const fp = path.join(SITE_ROOT, SECTION_DIRS[a.section] || a.section, a.slug + '.md');
+  const fp = path.join(ARTICLES_ROOT, a.section, a.slug + '.md');
   if (fs.existsSync(fp)) fs.unlinkSync(fp);
+}
+
+function gitPush(message) {
+  try {
+    execSync(`git -C "${REPO_ROOT}" add src/articles`, { stdio: 'pipe' });
+    execSync(`git -C "${REPO_ROOT}" commit -m "${message.replace(/"/g, "'")}" --allow-empty`, { stdio: 'pipe' });
+    execSync(`git -C "${REPO_ROOT}" push`, { stdio: 'pipe' });
+    return true;
+  } catch (e) {
+    console.error('Git push failed:', e.message);
+    return false;
+  }
 }
 
 // GET /admin/articles
@@ -89,7 +106,10 @@ router.post('/', upload.single('imageFile'), (req, res) => {
   db.prepare('INSERT OR REPLACE INTO articles (title,slug,section,description,image,body,tags,status,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)')
     .run(title, slug, section, description, image, body, tags, status || 'draft', now, now);
   const a = db.prepare('SELECT * FROM articles WHERE slug=?').get(slug);
-  if (status === 'published') writeMarkdown(a);
+  if (status === 'published') {
+    writeMarkdown(a);
+    gitPush(`Publish article: ${title}`);
+  }
   res.redirect('/admin/articles');
 });
 
@@ -122,14 +142,22 @@ router.post('/:id/edit', upload.single('imageFile'), (req, res) => {
   db.prepare('UPDATE articles SET title=?,section=?,description=?,image=?,body=?,tags=?,status=?,updated_at=? WHERE id=?')
     .run(title, section, description, image, body, tags, status || 'draft', now, a.id);
   deleteMarkdown(a);
-  if (status === 'published') writeMarkdown({ ...a, title, section, description, image, body, tags, status });
+  const updated = { ...a, title, section, description, image, body, tags, status };
+  if (status === 'published') {
+    writeMarkdown(updated);
+    gitPush(`Update article: ${title}`);
+  }
   res.redirect('/admin/articles');
 });
 
 // POST /admin/articles/:id/delete
 router.post('/:id/delete', (req, res) => {
   const a = db.prepare('SELECT * FROM articles WHERE id=?').get(req.params.id);
-  if (a) { deleteMarkdown(a); db.prepare('DELETE FROM articles WHERE id=?').run(a.id); }
+  if (a) {
+    deleteMarkdown(a);
+    db.prepare('DELETE FROM articles WHERE id=?').run(a.id);
+    gitPush(`Delete article: ${a.title}`);
+  }
   res.redirect('/admin/articles');
 });
 
