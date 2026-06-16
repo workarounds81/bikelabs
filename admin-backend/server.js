@@ -9,7 +9,7 @@ const db = require('./db');
 const { importArticles } = require('./importer');
 
 // Import existing MD articles into DB on startup (safe to repeat — skips duplicates)
-importArticles();
+importArticles().catch(e => console.error('[importer] startup failed:', e.message));
 
 const app = express();
 
@@ -36,9 +36,9 @@ app.get('/admin/dashboard', auth, (req, res) => {
     .replace('{{COUNT_SHOP}}', shopCount));
 });
 
-// Manual sync trigger — re-runs importer to pull MD files into DB
-app.post('/admin/sync', auth, (req, res) => {
-  const result = importArticles();
+// Manual sync trigger — re-runs importer to pull articles into DB
+app.post('/admin/sync', auth, async (req, res) => {
+  try { await importArticles(); } catch (e) { console.error('[sync] failed:', e.message); }
   res.redirect('/admin/dashboard');
 });
 

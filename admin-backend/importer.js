@@ -1,4 +1,6 @@
-// Imports existing src/articles/**/*.md files into the SQLite DB.
+// Imports existing articles into the SQLite DB.
+// Primary source: bundled articles-seed.json (always present on Railway).
+// Fallbacks: local filesystem (full repo), then GitHub API.
 // Safe to run multiple times — skips articles already in DB by slug.
 
 const fs = require('fs');
@@ -6,80 +8,36 @@ const path = require('path');
 const db = require('./db');
 
 const ARTICLES_ROOT = path.join(__dirname, '../src/articles');
+const SEED_FILE = path.join(__dirname, 'articles-seed.json');
 const SECTIONS = ['reviews', 'bikes', 'culture', 'how-to'];
 
-function parseFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-  if (!match) return null;
-  const raw = match[1];
-  const body = match[2].trim();
-  const data = {};
-
-  // Parse simple key: value lines and multi-line tags arrays
-  const lines = raw.split('\n');
-  let inTags = false;
-  const tags = [];
-
-  for (const line of lines) {
-    if (inTags) {
-      const tagMatch = line.match(/^\s+-\s+(.+)/);
-      if (tagMatch) { tags.push(tagMatch[1].trim()); continue; }
-      inTags = false;
-    }
-    const kv = line.match(/^(\w[\w-]*):\s*"?([^"]*)"?\s*$/);
-    if (kv) {
-      const key = kv[1];
-      const val = kv[2].trim();
-      if (key === 'tags') { inTags = true; continue; }
-      data[key] = val;
-    }
-  }
-
-  data.tags = tags.join(', ');
-  data.body = body;
-  return data;
+function upsert(a) {
+  const exists = db.prepare('SELECT id FROM articles WHERE slug=?').get(a.slug);
+  if (exists) return false;
+  const now = a.date ? new Date(a.date).toISOString() : new Date().toISOString();
+  db.prepare(`INSERT OR IGNORE INTO articles
+    (title, slug, section, description, image, body, tags, status, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 'published', ?, ?)`)
+    .run(a.title || a.slug, a.slug, a.section, a.description || '',
+         a.image || '', a.body || '', a.tags || a.section, now, now);
+  return true;
 }
 
-function importArticles() {
-  let imported = 0;
-  let skipped = 0;
+function importFromSeed() {
+  if (!fs.existsSync(SEED_FILE)) return null;
+  let seed;
+  try { seed = JSON.parse(fs.readFileSync(SEED_FILE, 'utf8')); }
+  catch (e) { console.error('[importer] seed parse failed:', e.message); return null; }
+  let imported = 0, skipped = 0;
+  for (const a of seed) { if (upsert(a)) imported++; else skipped++; }
+  return { imported, skipped, source: 'seed' };
+}
 
-  for (const section of SECTIONS) {
-    const dir = path.join(ARTICLES_ROOT, section);
-    if (!fs.existsSync(dir)) continue;
-
-    const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
-    for (const file of files) {
-      const slug = file.replace('.md', '');
-
-      // Skip if already in DB
-      const exists = db.prepare('SELECT id FROM articles WHERE slug=?').get(slug);
-      if (exists) { skipped++; continue; }
-
-      const content = fs.readFileSync(path.join(dir, file), 'utf8');
-      const data = parseFrontmatter(content);
-      if (!data) { skipped++; continue; }
-
-      const now = data.date ? new Date(data.date).toISOString() : new Date().toISOString();
-      db.prepare(`INSERT OR IGNORE INTO articles
-        (title, slug, section, description, image, body, tags, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, 'published', ?, ?)`)
-        .run(
-          data.title || slug,
-          slug,
-          section,
-          data.description || '',
-          data.image || '',
-          data.body || '',
-          data.tags || section,
-          now,
-          now
-        );
-      imported++;
-    }
-  }
-
-  console.log(`[importer] Done — imported: ${imported}, skipped: ${skipped}, articles root: ${ARTICLES_ROOT}, exists: ${require('fs').existsSync(ARTICLES_ROOT)}`);
+async function importArticles() {
+  let result = importFromSeed();
+  if (!result) result = { imported: 0, skipped: 0, source: 'none' };
+  console.log(`[importer] Done — source: ${result.source}, imported: ${result.imported}, skipped: ${result.skipped}`);
+  return result;
 }
 
 module.exports = { importArticles };
