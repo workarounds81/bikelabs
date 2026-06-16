@@ -36,6 +36,12 @@ app.get('/admin/dashboard', auth, (req, res) => {
     .replace('{{COUNT_SHOP}}', shopCount));
 });
 
+// Manual sync trigger — re-runs importer to pull MD files into DB
+app.post('/admin/sync', auth, (req, res) => {
+  importArticles();
+  res.redirect('/admin/dashboard');
+});
+
 // Protected routes
 app.use('/admin/articles', auth, require('./routes/articles'));
 app.use('/admin/shop', auth, require('./routes/shop'));
