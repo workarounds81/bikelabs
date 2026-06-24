@@ -593,8 +593,7 @@ a:hover { color: var(--accent-hover); }
    SECTION INDEX PAGES
    ============================================================ */
 .section-index {
-  max-width: var(--max-site);
-  margin: 0 auto;
+  min-width: 0;
   padding: 2.5rem 1rem;
 }
 .section-index-header {
