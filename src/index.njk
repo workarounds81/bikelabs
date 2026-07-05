@@ -1,44 +1,86 @@
 ---
 layout: base.njk
 title: "DATA DRIVEN. RIDER PROVEN."
-description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos and moto culture. Built for riders."
+description: "BikeLabs — honest motorcycle gear reviews, bike comparisons, how-to guides, moto culture and free rider calculators. Built for riders."
 ---
+
+<!-- Ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Data Driven. Rider Proven.</span><span>Gear Reviews</span><span>Bike Comparisons</span><span>How-To Guides</span><span>Moto Culture</span><span>Free Rider Calculators</span><span>Independent. No Sponsored Verdicts.</span>
+    <span>Data Driven. Rider Proven.</span><span>Gear Reviews</span><span>Bike Comparisons</span><span>How-To Guides</span><span>Moto Culture</span><span>Free Rider Calculators</span><span>Independent. No Sponsored Verdicts.</span>
+  </div>
+</div>
 
 {% set featured = collections.allArticles | first %}
 
-<!-- Hero -->
+<!-- Featured hero -->
 {% if featured %}
-<div class="hero-wrap">
-<section class="hero">
-  {% if featured.data.image %}
-  <img class="hero-img" src="{{ featured.data.image | url }}" alt="{{ featured.data.title }}" fetchpriority="high" decoding="async">
-  {% else %}
-  <div style="background:#1e1e1e;aspect-ratio:16/9;width:100%;display:flex;align-items:center;justify-content:center;">
-    <span style="font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:700;color:#FF6B00;opacity:0.2;text-transform:uppercase;">BikeLabs</span>
-  </div>
-  {% endif %}
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <span class="hero-tag">{{ featured.data.section or "Latest" }}</span>
-    <h2 class="hero-title">{{ featured.data.title }}</h2>
-    <p class="hero-excerpt">{{ featured.data.description }}</p>
-    <a href="{{ featured.url | url }}" class="btn-primary">Read More &rarr;</a>
+<section class="feature-hero">
+  <div class="feature-hero-inner">
+    <div class="feature-media">
+      {% if featured.data.image %}
+      <img src="{{ featured.data.image | url }}" alt="{{ featured.data.title }}" fetchpriority="high" decoding="async">
+      {% else %}
+      <div class="card-img-placeholder" style="aspect-ratio:16/9;"><span>BikeLabs</span></div>
+      {% endif %}
+      <span class="frame-tag">Latest</span>
+    </div>
+    <div class="feature-copy">
+      <span class="kicker">{{ featured.data.section or "featured" }} / {{ featured.data.category or "latest" }}</span>
+      <h1 class="feature-title display"><a href="{{ featured.url | url }}">{{ featured.data.title }}</a></h1>
+      <p class="feature-excerpt">{{ featured.data.description }}</p>
+      <div class="data-strip">
+        <span><b>{{ featured.date | dateDisplay }}</b></span>
+        <span>{{ featured.data.section }}</span>
+        <span>BikeLabs Editorial</span>
+      </div>
+      <a href="{{ featured.url | url }}" class="btn">Read the story →</a>
+    </div>
   </div>
 </section>
-</div>
 {% endif %}
 
-<!-- Tagline -->
-<div class="tagline-strip">
-  <p>DATA DRIVEN. RIDER PROVEN.</p>
-</div>
+<!-- Latest drops — bento -->
+{% set latest = collections.allArticles.slice(1, 6) %}
+{% if latest | length %}
+<section class="section">
+  <div class="section-header">
+    <span class="section-index">01</span>
+    <h2 class="section-title">Latest Drops</h2>
+    <a href="{{ '/reviews/' | url }}" class="section-link">Browse all →</a>
+  </div>
+  <div class="card-grid card-grid--bento">
+    {% for article in latest %}
+    <article class="article-card">
+      <a href="{{ article.url | url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>{{ article.data.section }}</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">{{ article.data.section }}{% if article.data.category %} / {{ article.data.category }}{% endif %}</span>
+        <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
+        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 
-<!-- Latest Reviews -->
+<!-- Gear Reviews -->
 {% if collections.reviews | length %}
 <section class="section">
   <div class="section-header">
-    <h2 class="section-title">Latest Reviews</h2>
-    <a href="{{ '/reviews/' | url }}" class="section-link">All Reviews &rarr;</a>
+    <span class="section-index">02</span>
+    <h2 class="section-title">Gear Reviews</h2>
+    <a href="{{ '/reviews/' | url }}" class="section-link">All reviews →</a>
   </div>
   <div class="card-grid">
     {% for article in collections.reviews | limit(3) %}
@@ -53,7 +95,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
         {% endif %}
       </a>
       <div class="card-body">
-        <span class="card-tag">{{ article.data.category or article.data.section }}</span>
+        <span class="card-tag">{{ article.data.category or "review" }}</span>
         <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
         <p class="card-excerpt">{{ article.data.description }}</p>
         <p class="card-meta">{{ article.date | dateDisplay }}</p>
@@ -64,17 +106,16 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
 </section>
 {% endif %}
 
-{% include "partials/ad-slot.njk" %}
-
-<!-- Latest Bikes -->
+<!-- Bikes -->
 {% if collections.bikes | length %}
-<section class="section" style="padding-top:0;">
+<section class="section">
   <div class="section-header">
+    <span class="section-index">03</span>
     <h2 class="section-title">Bikes</h2>
-    <a href="{{ '/bikes/' | url }}" class="section-link">All Bikes &rarr;</a>
+    <a href="{{ '/bikes/' | url }}" class="section-link">All bikes →</a>
   </div>
-  <div class="card-grid-2">
-    {% for article in collections.bikes | limit(2) %}
+  <div class="card-grid">
+    {% for article in collections.bikes | limit(3) %}
     <article class="article-card">
       <a href="{{ article.url | url }}">
         {% if article.data.image %}
@@ -86,7 +127,7 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
         {% endif %}
       </a>
       <div class="card-body">
-        <span class="card-tag">Bikes</span>
+        <span class="card-tag">bikes{% if article.data.category %} / {{ article.data.category }}{% endif %}</span>
         <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
         <p class="card-excerpt">{{ article.data.description }}</p>
         <p class="card-meta">{{ article.date | dateDisplay }}</p>
@@ -97,14 +138,14 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
 </section>
 {% endif %}
 
-<!-- Culture & Routes -->
-{% if collections.culture | length %}
-<section class="section" style="padding-top:0;">
+<!-- Culture & How-To mixed row -->
+<section class="section">
   <div class="section-header">
-    <h2 class="section-title">Culture &amp; Routes</h2>
-    <a href="{{ '/culture/' | url }}" class="section-link">All Culture &rarr;</a>
+    <span class="section-index">04</span>
+    <h2 class="section-title">Culture &amp; Workshop</h2>
+    <a href="{{ '/culture/' | url }}" class="section-link">More →</a>
   </div>
-  <div class="card-grid-2">
+  <div class="card-grid-4">
     {% for article in collections.culture | limit(2) %}
     <article class="article-card">
       <a href="{{ article.url | url }}">
@@ -117,55 +158,81 @@ description: "BikeLabs — honest motorcycle gear reviews, bike reviews, how-tos
         {% endif %}
       </a>
       <div class="card-body">
-        <span class="card-tag">Culture</span>
+        <span class="card-tag">culture</span>
         <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
-        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+    {% for article in collections.howto | limit(2) %}
+    <article class="article-card">
+      <a href="{{ article.url | url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>How-To</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">how-to</span>
+        <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
         <p class="card-meta">{{ article.date | dateDisplay }}</p>
       </div>
     </article>
     {% endfor %}
   </div>
 </section>
-{% endif %}
 
-<!-- Tools Section -->
-<section class="section tools-section">
-  <div style="max-width:var(--max-site);margin:0 auto;padding:0 1rem;">
-    <div class="section-header">
-      <h2 class="section-title">Online Tools</h2>
+<!-- The Lab — tools -->
+<section class="lab-section">
+  <div class="lab-inner">
+    <div class="section-header" style="margin-bottom:0;">
+      <span class="section-index">05</span>
+      <h2 class="section-title">The Lab — Rider Calculators</h2>
+      <a href="{{ '/tools/' | url }}" class="section-link">All tools →</a>
     </div>
-    <div class="card-grid-2x2">
-      <a href="{{ '/tools/gear-ratio-calculator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">⚙️</div>
-        <h3>Gear Ratio &amp; Sprocket Calculator</h3>
+    <div class="lab-grid">
+      <a href="{{ '/tools/gear-ratio-calculator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-01</span>
+        <h3>Gear Ratio &amp; Sprocket</h3>
+        <p>Model sprocket swaps and top speed per gear before you spend.</p>
       </a>
-      <a href="{{ '/tools/tyre-size-calculator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">🛞</div>
-        <h3>Tyre Size Calculator</h3>
+      <a href="{{ '/tools/tyre-size-calculator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-02</span>
+        <h3>Tyre Size</h3>
+        <p>Decode tyre codes and see the real speedo impact of a size change.</p>
       </a>
-      <a href="{{ '/tools/fuel-range-calculator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">⛽</div>
-        <h3>Fuel Range Calculator</h3>
+      <a href="{{ '/tools/fuel-range-calculator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-03</span>
+        <h3>Fuel Range</h3>
+        <p>Know exactly how far you can ride before reserve.</p>
       </a>
-      <a href="{{ '/tools/power-weight-calculator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">⚡</div>
-        <h3>Power-to-Weight Calculator</h3>
+      <a href="{{ '/tools/power-weight-calculator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-04</span>
+        <h3>Power-to-Weight</h3>
+        <p>See where your bike sits, from learner to hyperbike.</p>
       </a>
-      <a href="{{ '/tools/top-speed-calculator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">🏁</div>
-        <h3>Top Speed Calculator</h3>
+      <a href="{{ '/tools/top-speed-calculator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-05</span>
+        <h3>Top Speed</h3>
+        <p>Theoretical top speed at redline for every gear and setup.</p>
       </a>
-      <a href="{{ '/tools/ergonomics-fitment-simulator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">🧍</div>
-        <h3>Ergonomics &amp; Seat Height Simulator</h3>
+      <a href="{{ '/tools/ergonomics-fitment-simulator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-06</span>
+        <h3>Ergonomics &amp; Fitment</h3>
+        <p>Will that bike fit you? Check seat height against your inseam.</p>
       </a>
-      <a href="{{ '/tools/commuter-ownership-calculator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">💰</div>
-        <h3>Commuter Cost Calculator</h3>
+      <a href="{{ '/tools/commuter-ownership-calculator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-07</span>
+        <h3>Commuter Cost</h3>
+        <p>Real annual running costs — and what you save versus a car.</p>
       </a>
-      <a href="{{ '/tools/suspension-geometry-calculator/' | url }}" class="tool-card-home tool-card-link">
-        <div class="tool-icon">📐</div>
-        <h3>Suspension Geometry Calculator</h3>
+      <a href="{{ '/tools/suspension-geometry-calculator/' | url }}" class="lab-cell">
+        <span class="lab-cell-num">T-08</span>
+        <h3>Suspension Geometry</h3>
+        <p>Rake, trail and offset — is your setup agile or stable?</p>
       </a>
     </div>
   </div>

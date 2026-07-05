@@ -1,25 +1,42 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="{{ '/' | url }}" class="footer-logo">BikeLabs</a>
+      <a href="{{ '/' | url }}" class="wordmark">BIKE<em>LABS</em></a>
       <p class="footer-tagline">DATA DRIVEN. RIDER PROVEN.</p>
     </div>
 
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="{{ '/reviews/' | url }}">Reviews</a>
-      <a href="{{ '/bikes/' | url }}">Bikes</a>
-      <a href="{{ '/culture/' | url }}">Culture</a>
-      <a href="{{ '/how-to/' | url }}">How-To</a>
-      <a href="{{ '/shop/' | url }}">Shop</a>
-      <a href="{{ '/tools/' | url }}">Tools</a>
-      <a href="{{ '/about/' | url }}">About</a>
-      <a href="{{ '/privacy-policy/' | url }}">Privacy Policy</a>
-    </nav>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <nav aria-label="Content sections">
+        <a href="{{ '/reviews/' | url }}">Gear Reviews</a>
+        <a href="{{ '/bikes/' | url }}">Bikes</a>
+        <a href="{{ '/culture/' | url }}">Culture &amp; Routes</a>
+        <a href="{{ '/how-to/' | url }}">How-To Guides</a>
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <h4>Use</h4>
+      <nav aria-label="Tools">
+        <a href="{{ '/tools/' | url }}">The Lab — Calculators</a>
+        <a href="{{ '/shop/' | url }}">Recommended Gear</a>
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <h4>BikeLabs</h4>
+      <nav aria-label="Company">
+        <a href="{{ '/about/' | url }}">About Us</a>
+        <a href="{{ '/how-we-test/' | url }}">How We Test</a>
+        <a href="{{ '/privacy-policy/' | url }}">Privacy Policy</a>
+        <a href="mailto:info@bikelabs.com">Contact</a>
+      </nav>
+    </div>
 
     <div class="footer-legal">
-      <p>BikeLabs participates in the Amazon Associates Programme and other affiliate programmes. We earn from qualifying purchases at no extra cost to you.</p>
-      <p>BikeLabs is an independent publication. All reviews reflect our honest opinion.</p>
-      <p class="footer-copy">&copy; {{ site.title }} {{ page.date | dateDisplay if page.date else "2026" }}. All rights reserved.</p>
+      <p>BikeLabs is an independent motorcycle publication. Every review reflects our honest assessment — we do not accept payment for coverage or verdicts. Read our <a href="{{ '/how-we-test/' | url }}">testing methodology</a>.</p>
+      <p>BikeLabs participates in the Amazon Associates Programme and other affiliate programmes. We may earn from qualifying purchases at no extra cost to you.</p>
+      <p class="footer-copy">&copy; 2026 BikeLabs · bikelabs.com · All rights reserved</p>
     </div>
   </div>
 </footer>

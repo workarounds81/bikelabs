@@ -1,5 +1,13 @@
 # BikeLabs Project Status & Summary
 
+> **UPDATE — July 2026:** AdSense review returned **"Low value content"**. In response, the site received a full UI/UX revamp (v5 "Telemetry Editorial") plus AdSense-alignment fixes:
+> - All manual/empty ad units, ad rails and dashed placeholders removed site-wide (Auto Ads script in `base.njk` head retained for verification). To restore manual units after approval, see `src/_includes/partials/ad-slot.njk`.
+> - `/shop/` rebuilt: fake `B09example` Amazon links and mismatched Unsplash photos removed; now links to internal reviews.
+> - New `/how-we-test/` editorial-policy page; About page expanded (E-E-A-T).
+> - New design: slim sticky header w/ text wordmark, ticker, bento homepage, single-column articles w/ byline box + reading progress, unified listing heroes, "The Lab" tools grid. Fonts: Archivo / Inter / JetBrains Mono.
+> - Fixed broken schema logo path, missing apple-touch-icon (generated), default OG image now the logo.
+> - After deploy: re-request AdSense review ("I confirm I have fixed the issues" → Request review).
+
 **Date:** June 2026  
 **Domain:** bikelabs.com (17-year-old .com)  
 **Stack:** 11ty v2.0.1 (Nunjucks), GitHub Pages (deployed), Railway (admin backend), SQLite DB  

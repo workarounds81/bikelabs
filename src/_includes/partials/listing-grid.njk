@@ -1,0 +1,27 @@
+<div class="listing">
+  {% if listItems | length %}
+  <div class="card-grid card-grid--bento">
+    {% for article in listItems %}
+    <article class="article-card">
+      <a href="{{ article.url | url }}">
+        {% if article.data.image %}
+        <div class="card-img-wrap">
+          <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
+        </div>
+        {% else %}
+        <div class="card-img-placeholder"><span>{{ article.data.category or article.data.section }}</span></div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <span class="card-tag">{{ article.data.category or article.data.section }}</span>
+        <h2 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h2>
+        <p class="card-excerpt">{{ article.data.description }}</p>
+        <p class="card-meta">{{ article.date | dateDisplay }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p style="color:var(--text-muted);">New articles coming soon.</p>
+  {% endif %}
+</div>

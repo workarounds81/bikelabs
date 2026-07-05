@@ -11,15 +11,16 @@ ogType: article
   "headline": "{{ title }}",
   "description": "{{ description }}",
   "url": "{{ page.url | absoluteUrl(site.url) }}",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page.url | absoluteUrl(site.url) }}" },
   "datePublished": "{{ page.date | dateISO }}",
   "dateModified": "{{ dateModified or page.date | dateISO }}",
   "inLanguage": "en-US",
-  "author": { "@type": "Organization", "name": "BikeLabs Team", "url": "{{ site.url }}" },
+  "author": { "@type": "Organization", "name": "BikeLabs Editorial Team", "url": "{{ '/about/' | absoluteUrl(site.url) }}" },
   "publisher": {
     "@type": "Organization",
     "name": "BikeLabs",
     "url": "{{ site.url }}",
-    "logo": { "@type": "ImageObject", "url": "{{ '/img/bikelabs-logo.png' | absoluteUrl(site.url) }}" }
+    "logo": { "@type": "ImageObject", "url": "{{ '/img/bikelabs-logo-new.png' | absoluteUrl(site.url) }}" }
   }{% if image %},
   "image": {
     "@type": "ImageObject",
@@ -44,76 +45,84 @@ ogType: article
 {% endblock %}
 
 {% block content %}
-<div class="culture-page">
-  <div class="ad-column ad-column--left">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
-  <div class="culture-layout">
+<article class="post">
 
-    {% if image %}
-    <img class="article-hero" src="{{ image | url }}" alt="{{ title }}" fetchpriority="high" decoding="async" style="margin-bottom:2rem;">
-    {% endif %}
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/' | url }}">Home</a>
+    <span class="sep">/</span>
+    <a href="{{ '/culture/' | url }}">Culture</a>
+    <span class="sep">/</span>
+    <span>{{ category or "Feature" }}</span>
+  </nav>
 
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="{{ '/' | url }}">Home</a>
-      <span>&rsaquo;</span>
-      <a href="{{ '/culture/' | url }}">Culture</a>
-      <span>&rsaquo;</span>
-      <span>{{ title }}</span>
-    </nav>
-
-    <header class="article-header">
-      <span class="article-category">{{ category or "Culture" }}</span>
-      <h1 class="article-title">{{ title }}</h1>
-      <div class="article-meta">
-        <span>{{ page.date | dateDisplay }}</span>
-        <span>By BikeLabs Team</span>
-        <span>{{ content | readingTime }}</span>
-      </div>
-    </header>
-
-    <div class="article-body">
-      {{ content | safe }}
+  <header class="post-header">
+    <span class="kicker">culture{% if category %} / {{ category }}{% endif %}</span>
+    <h1 class="post-title">{{ title }}</h1>
+    <div class="data-strip">
+      <span>Published <b>{{ page.date | dateDisplay }}</b></span>
+      <span>{{ content | readingTime }}</span>
+      <span>By <b>BikeLabs Editorial Team</b></span>
     </div>
+  </header>
 
-    {% include "partials/ad-slot.njk" %}
+  {% if image %}
+  <img class="post-hero" src="{{ image | url }}" alt="{{ title }}" fetchpriority="high" decoding="async">
+  {% endif %}
 
-    {% set related = collections.culture | default([]) %}
-    {% if related | length > 1 %}
-    <aside class="related-articles">
-      <h2>More Culture</h2>
-      <div class="card-grid-2">
-        {% for article in related | limit(2) %}
-          {% if article.url !== page.url %}
-          <article class="article-card">
-            <a href="{{ article.url | url }}">
-              {% if article.data.image %}
-              <div class="card-img-wrap">
-                <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
-              </div>
-              {% else %}
-              <div class="card-img-placeholder"><span>Culture</span></div>
-              {% endif %}
-            </a>
-            <div class="card-body">
-              <span class="card-tag">Culture</span>
-              <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
-              <p class="card-meta">{{ article.date | dateDisplay }}</p>
+  <div class="article-body">
+    {{ content | safe }}
+  </div>
+
+  <aside class="byline-box">
+    <span class="byline-mark">BL</span>
+    <div>
+      <h4>BikeLabs Editorial Team</h4>
+      <p>Written and fact-checked by riders. We cover the roads, builds and communities that make motorcycling worth it — honestly, from the saddle. Read <a href="{{ '/how-we-test/' | url }}">how we work</a> or <a href="{{ '/about/' | url }}">more about us</a>.</p>
+    </div>
+  </aside>
+
+  {% set related = collections.culture | default([]) %}
+  {% if related | length > 1 %}
+  <aside class="related-articles">
+    <h2>More Culture</h2>
+    <div class="card-grid">
+      {% for article in related | excludeUrl(page.url) | limit(3) %}
+        <article class="article-card">
+          <a href="{{ article.url | url }}">
+            {% if article.data.image %}
+            <div class="card-img-wrap">
+              <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
             </div>
-          </article>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </aside>
-    {% endif %}
+            {% else %}
+            <div class="card-img-placeholder"><span>Culture</span></div>
+            {% endif %}
+          </a>
+          <div class="card-body">
+            <span class="card-tag">culture</span>
+            <h3 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h3>
+            <p class="card-meta">{{ article.date | dateDisplay }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </aside>
+  {% endif %}
 
-  </div>
+</article>
 
-  <div class="ad-column ad-column--right">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-</div>
+<script>
+(function () {
+  var bar = document.getElementById('progressBar');
+  if (!bar) return;
+  function update() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 {% endblock %}

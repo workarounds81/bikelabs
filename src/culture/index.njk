@@ -1,51 +1,21 @@
 ---
 layout: base.njk
 title: "Culture & Routes"
-description: "Motorcycle culture, riding routes, moto travel, and rider stories from around the world."
+description: "Moto culture, riding routes, touring guides and the communities that make motorcycling worth it."
 permalink: /culture/
 ---
 
-<div class="article-page">
-  <div class="ad-column ad-column--left">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <div class="section-index">
-    <header class="section-index-header">
-      <h1 class="section-index-title">Culture &amp; Routes</h1>
-      <p class="section-index-desc">Routes, travel stories, lifestyle and moto culture from riders worldwide.</p>
-    </header>
-
-    {% if collections.culture | length %}
-    <div class="card-grid">
-      {% for article in collections.culture %}
-      <article class="article-card">
-        <a href="{{ article.url | url }}">
-          {% if article.data.image %}
-          <div class="card-img-wrap">
-            <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
-          </div>
-          {% else %}
-          <div class="card-img-placeholder"><span>Culture</span></div>
-          {% endif %}
-        </a>
-        <div class="card-body">
-          <span class="card-tag">{{ article.data.category or "Culture" }}</span>
-          <h2 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h2>
-          <p class="card-excerpt">{{ article.data.description }}</p>
-          <p class="card-meta">{{ article.date | dateDisplay }}</p>
-        </div>
-      </article>
-      {% endfor %}
+<div class="listing-hero">
+  <div class="listing-hero-inner">
+    <span class="kicker">section / 03</span>
+    <h1 class="listing-title">Culture &amp; Routes</h1>
+    <p class="listing-desc">The roads, builds, rituals and communities that make riding more than transport — written from the saddle, not the press launch.</p>
+    <div class="data-strip">
+      <span><b>{{ collections.culture | length }}</b> features</span>
+      <span>Routes · builds · community</span>
     </div>
-    {% else %}
-    <p style="color:var(--text-muted);">Culture articles coming soon.</p>
-    {% endif %}
-  </div>
-
-  <div class="ad-column ad-column--right">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 </div>
+
+{% set listItems = collections.culture %}
+{% include "partials/listing-grid.njk" %}

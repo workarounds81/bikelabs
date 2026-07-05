@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="header-inner">
-    <a href="{{ '/' | url }}" class="logo">
-      <img src="{{ '/img/bikelabs-logo-new.png' | url }}" alt="BikeLabs" class="logo-img">
+    <a href="{{ '/' | url }}" class="wordmark" aria-label="BikeLabs — home">
+      BIKE<em>LABS</em><span class="wordmark-sub">DATA DRIVEN. RIDER PROVEN.</span>
     </a>
 
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
@@ -10,11 +10,12 @@
     </label>
 
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="{{ '/reviews/' | url }}">Reviews</a>
-      <a href="{{ '/bikes/' | url }}">Bikes</a>
-      <a href="{{ '/culture/' | url }}">Culture</a>
-      <a href="{{ '/how-to/' | url }}">How-To</a>
-      <a href="{{ '/tools/' | url }}">Online Tools</a>
+      <a href="{{ '/reviews/' | url }}"{% if '/reviews/' in page.url %} class="active"{% endif %}>Reviews</a>
+      <a href="{{ '/bikes/' | url }}"{% if '/bikes/' in page.url %} class="active"{% endif %}>Bikes</a>
+      <a href="{{ '/culture/' | url }}"{% if '/culture/' in page.url %} class="active"{% endif %}>Culture</a>
+      <a href="{{ '/how-to/' | url }}"{% if '/how-to/' in page.url %} class="active"{% endif %}>How-To</a>
+      <a href="{{ '/tools/' | url }}"{% if '/tools/' in page.url %} class="active"{% endif %}>The Lab</a>
+      <a href="{{ '/about/' | url }}"{% if '/about/' in page.url %} class="active"{% endif %}>About</a>
     </nav>
   </div>
 </header>

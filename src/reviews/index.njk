@@ -5,47 +5,18 @@ description: "Honest motorcycle gear reviews — helmets, jackets, gloves, boots
 permalink: /reviews/
 ---
 
-<div class="article-page">
-  <div class="ad-column ad-column--left">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <div class="section-index">
-    <header class="section-index-header">
-      <h1 class="section-index-title">Gear Reviews</h1>
-      <p class="section-index-desc">Honest reviews on helmets, jackets, gloves, boots, and riding tech. No sponsored opinions.</p>
-    </header>
-
-    {% if collections.reviews | length %}
-    <div class="card-grid">
-      {% for article in collections.reviews %}
-      <article class="article-card">
-        <a href="{{ article.url | url }}">
-          {% if article.data.image %}
-          <div class="card-img-wrap">
-            <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
-          </div>
-          {% else %}
-          <div class="card-img-placeholder"><span>{{ article.data.category or "Review" }}</span></div>
-          {% endif %}
-        </a>
-        <div class="card-body">
-          <span class="card-tag">{{ article.data.category or "Review" }}</span>
-          <h2 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h2>
-          <p class="card-excerpt">{{ article.data.description }}</p>
-          <p class="card-meta">{{ article.date | dateDisplay }}</p>
-        </div>
-      </article>
-      {% endfor %}
+<div class="listing-hero">
+  <div class="listing-hero-inner">
+    <span class="kicker">section / 01</span>
+    <h1 class="listing-title">Gear Reviews</h1>
+    <p class="listing-desc">Helmets, jackets, gloves, boots and riding tech — tested in real riding conditions, reviewed without sponsorship. If it isn't worth your money, we say so.</p>
+    <div class="data-strip">
+      <span><b>{{ collections.reviews | length }}</b> reviews</span>
+      <span>Independent verdicts</span>
+      <span><a href="{{ '/how-we-test/' | url }}">How we test →</a></span>
     </div>
-    {% else %}
-    <p style="color:var(--text-muted);">Reviews coming soon.</p>
-    {% endif %}
-  </div>
-
-  <div class="ad-column ad-column--right">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 </div>
+
+{% set listItems = collections.reviews %}
+{% include "partials/listing-grid.njk" %}

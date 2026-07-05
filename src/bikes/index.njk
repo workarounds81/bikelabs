@@ -1,51 +1,22 @@
 ---
 layout: base.njk
-title: "Bike Reviews"
-description: "Motorcycle reviews and comparisons — from budget commuters to premium adventure bikes."
+title: "Bikes"
+description: "Motorcycle comparisons, buying guides and model deep-dives — from lightweight commuters to adventure tourers."
 permalink: /bikes/
 ---
 
-<div class="article-page">
-  <div class="ad-column ad-column--left">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <div class="section-index">
-    <header class="section-index-header">
-      <h1 class="section-index-title">Bikes</h1>
-      <p class="section-index-desc">Motorcycle reviews and shootouts. Find your next ride.</p>
-    </header>
-
-    {% if collections.bikes | length %}
-    <div class="card-grid">
-      {% for article in collections.bikes %}
-      <article class="article-card">
-        <a href="{{ article.url | url }}">
-          {% if article.data.image %}
-          <div class="card-img-wrap">
-            <img src="{{ article.data.image | url }}" alt="{{ article.data.title }}" loading="lazy" decoding="async">
-          </div>
-          {% else %}
-          <div class="card-img-placeholder"><span>Bikes</span></div>
-          {% endif %}
-        </a>
-        <div class="card-body">
-          <span class="card-tag">{{ article.data.category or "Bikes" }}</span>
-          <h2 class="card-title"><a href="{{ article.url | url }}">{{ article.data.title }}</a></h2>
-          <p class="card-excerpt">{{ article.data.description }}</p>
-          <p class="card-meta">{{ article.date | dateDisplay }}</p>
-        </div>
-      </article>
-      {% endfor %}
+<div class="listing-hero">
+  <div class="listing-hero-inner">
+    <span class="kicker">section / 02</span>
+    <h1 class="listing-title">Bikes</h1>
+    <p class="listing-desc">Model comparisons, buying guides and deep-dives — from 300cc learners to full-size adventure tourers. Data first, hype never.</p>
+    <div class="data-strip">
+      <span><b>{{ collections.bikes | length }}</b> articles</span>
+      <span>Comparisons &amp; guides</span>
+      <span><a href="{{ '/tools/' | url }}">Try The Lab →</a></span>
     </div>
-    {% else %}
-    <p style="color:var(--text-muted);">Bike reviews coming soon.</p>
-    {% endif %}
-  </div>
-
-  <div class="ad-column ad-column--right">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7510624548793689" data-ad-slot="7885005664" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 </div>
+
+{% set listItems = collections.bikes %}
+{% include "partials/listing-grid.njk" %}

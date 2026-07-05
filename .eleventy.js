@@ -106,6 +106,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("limit", (arr, n) => arr ? arr.slice(0, n) : []);
 
+  eleventyConfig.addFilter("excludeUrl", (arr, url) =>
+    arr ? arr.filter((item) => item.url !== url) : []
+  );
+
   eleventyConfig.addFilter("dateISO", (date) => {
     return new Date(date).toISOString();
   });
