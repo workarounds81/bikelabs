@@ -80,4 +80,4 @@ The third trip is when you understand why people keep doing this.
 
 ---
 
-For where to go, start with our guide to [the best motorcycle roads in Southeast Asia](/culture/best-motorcycle-roads-southeast-asia/). Ready to think about the bike for the job? Read our [best middleweight adventure bikes 2026](/bikes/best-middleweight-adventure-bikes-2026/) breakdown.
+For where to go, start with our guide to [the best motorcycle roads in Southeast Asia](/culture/best-motorcycle-roads-southeast-asia/). Ready to think about the bike for the job? Read our breakdown of [the evolution of the modern adventure motorcycle](/bikes/evolution-modern-adventure-motorcycle/).

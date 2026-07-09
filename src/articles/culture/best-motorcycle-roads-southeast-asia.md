@@ -77,4 +77,4 @@ For Singapore-based riders, the weekend ride circuit typically involves crossing
 
 ---
 
-Planning a longer trip? Read our guide to [motorcycle travel on a budget](/culture/motorcycle-travel-budget-guide/) for more on costs and logistics. Vietnam riding in depth: [what it's really like riding in Vietnam](/culture/motorcycle-riding-vietnam-guide/).
+Planning a longer trip? Read our guide to [long-distance moto touring](/culture/guide-long-distance-moto-touring-adventure/) for more on costs and logistics. Crossing borders on two wheels? Start with [riding etiquette for the cross-border nomad](/culture/motorcycle-riding-etiquette-cross-border-nomad/).

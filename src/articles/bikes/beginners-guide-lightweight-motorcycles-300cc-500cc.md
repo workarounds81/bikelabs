@@ -1,6 +1,6 @@
 ---
 title: "The Beginner's Guide to Lightweight Motorcycles (300cc–500cc)"
-date: 2026-06-13
+date: 2026-04-20
 section: bikes
 category: beginner
 tags: [beginner, 300cc, 400cc, 500cc, lightweight, A2, starter]

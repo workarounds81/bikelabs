@@ -84,4 +84,4 @@ Both are excellent choices. You won't regret either.
 
 ---
 
-Looking for something with more adventure capability? Read our [best middleweight adventure bikes 2026](/bikes/best-middleweight-adventure-bikes-2026/) roundup. New to motorcycles entirely? Start with [best beginner motorcycles 2026](/bikes/best-beginner-motorcycles-2026/).
+Looking for something with more adventure capability? Read our deep-dive on [the evolution of the modern adventure motorcycle](/bikes/evolution-modern-adventure-motorcycle/). New to motorcycles entirely? Start with [best beginner motorcycles 2026](/bikes/best-beginner-motorcycles-2026/).

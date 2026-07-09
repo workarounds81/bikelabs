@@ -1,6 +1,6 @@
 ---
 title: "Klim Marrakesh Jacket Review: Maximum Airflow, No Bulk, Zero Compromise on Protection"
-date: 2026-06-13
+date: 2026-06-11
 section: reviews
 category: gear
 tags: [jacket, klim, airflow, D3O, review, CE Level 2, summer riding]

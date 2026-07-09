@@ -1,6 +1,6 @@
 ---
 title: "Understanding Engine Configurations: Singles, Twins, Triples, and Inline-Fours"
-date: 2026-06-13
+date: 2026-04-26
 section: bikes
 category: technical
 tags: [engine, configuration, singles, twins, inline-four, triple, technical]

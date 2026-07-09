@@ -4,7 +4,7 @@ permalink: /how-to/service-motorcycle-air-filter-types/
 title: "How to Service Your Motorcycle Air Filter (Paper, Foam, and Cotton)"
 description: "Improve engine efficiency, restore throttle response, and maximise fuel economy by correctly cleaning and oiling every type of motorcycle air filter."
 image: /img/articles/airfilter.jpg
-date: 2026-06-13
+date: 2026-05-24
 section: how-to
 tags:
   - how-to

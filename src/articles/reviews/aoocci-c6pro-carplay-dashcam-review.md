@@ -1,6 +1,6 @@
 ---
 title: "Aoocci C6 Pro Review: The All-in-One Motorcycle Dashboard That Almost Does Everything"
-date: 2026-06-13
+date: 2026-05-26
 section: reviews
 category: electronics
 tags: [carplay, android auto, dashcam, navigation, TPMS, review, motorcycle tech]

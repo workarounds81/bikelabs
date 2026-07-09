@@ -1,6 +1,6 @@
 ---
 title: "How to Inspect a Used Motorcycle: The Ultimate Buyer's Checklist"
-date: 2026-06-13
+date: 2026-04-24
 section: bikes
 category: buying guide
 tags: [buying guide, used, inspection, checklist, secondhand, beginner]

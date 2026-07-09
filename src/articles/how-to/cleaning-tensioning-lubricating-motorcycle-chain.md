@@ -4,7 +4,7 @@ permalink: /how-to/cleaning-tensioning-lubricating-motorcycle-chain/
 title: "How to Clean, Tension, and Lubricate Your Motorcycle Chain"
 description: "A step-by-step master guide to chain maintenance — stopping power loss, preventing dangerous snaps, and extending chain life to its full potential."
 image: /img/articles/motorcyclechain.jpg
-date: 2026-06-13
+date: 2026-05-14
 section: how-to
 tags:
   - how-to

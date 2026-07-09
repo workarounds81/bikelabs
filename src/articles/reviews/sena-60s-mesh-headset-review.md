@@ -1,6 +1,6 @@
 ---
 title: "Sena 60S Mesh Headset Review: Unlimited Range Intercom Is a Real Thing Now"
-date: 2026-06-13
+date: 2026-06-15
 section: reviews
 category: electronics
 tags: [intercom, sena, bluetooth, mesh, review, communication, harman kardon]

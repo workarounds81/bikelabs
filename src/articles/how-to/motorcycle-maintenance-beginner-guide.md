@@ -106,4 +106,4 @@ Check your tyre pressures. Change your oil. Lube your chain. The rest follows.
 
 ---
 
-For more on what tools to keep with you on a ride, read our guide to [what tools every motorcyclist should own](/how-to/motorcycle-tools-every-rider-needs/). Choosing the right tyres for your riding conditions? See our [best motorcycle tyres for wet roads](/how-to/best-motorcycle-tyres-wet-roads/) breakdown.
+For the single most regular job on that list, read our guide to [cleaning, tensioning and lubricating your chain](/how-to/cleaning-tensioning-lubricating-motorcycle-chain/). Wondering when your tyres need attention? See our [tyre wear and pressure guide](/how-to/motorcycle-tire-wear-psi-guide/).

@@ -1,6 +1,6 @@
 ---
 title: "Shoei RF-1400 Full-Face Helmet Review: Still the Benchmark?"
-date: 2026-06-13
+date: 2026-06-17
 section: reviews
 category: helmets
 tags: [helmet, shoei, full-face, review, safety, commuting]

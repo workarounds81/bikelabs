@@ -66,7 +66,7 @@ It costs what it costs. On a three-week ride across Southeast Asia where you're 
 
 Both make excellent hot weather jackets. Alpinestars tends to fit slightly slimmer and runs more sporty. Dainese fits broader across the chest and runs more touring-oriented. Try both if you can — fit determines which brand works for your body.
 
-For a full comparison, read our [Alpinestars vs Dainese breakdown](/reviews/alpinestars-vs-dainese/).
+For a closer look at a do-everything hot-weather favourite, read our [Klim Marrakesh jacket review](/reviews/klim-marrakesh-jacket-review/).
 
 ## The Gear Layering System
 

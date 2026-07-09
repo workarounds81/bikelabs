@@ -1,6 +1,6 @@
 ---
 title: "Cardo Packtalk Edge Review: The Best Motorcycle Intercom Gets Better"
-date: 2026-06-13
+date: 2026-06-09
 section: reviews
 category: electronics
 tags: [intercom, bluetooth, cardo, packtalk, communication, review]
