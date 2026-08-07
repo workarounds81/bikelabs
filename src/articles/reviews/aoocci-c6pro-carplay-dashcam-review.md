@@ -1,6 +1,6 @@
 ---
 title: "Aoocci C6 Pro Review: The All-in-One Motorcycle Dashboard That Almost Does Everything"
-date: 2026-05-26
+date: 2026-06-13
 section: reviews
 category: electronics
 tags: [carplay, android auto, dashcam, navigation, TPMS, review, motorcycle tech]
@@ -14,7 +14,7 @@ permalink: /reviews/aoocci-c6pro-carplay-dashcam-review/
 
 The category of all-in-one motorcycle dashboards is recent and growing rapidly. The value proposition is straightforward: instead of a separate sat-nav, separate dashcam, and separate TPMS monitor, a single unit handles all three — one mount, one power cable, one interface.
 
-The Aoocci C6 Pro is the most ambitious attempt at this consolidation currently available. At approximately $200–$250 (significantly less than equivalent dedicated devices for each function), it is either excellent value or a compromised jack-of-all-trades. After 8 weeks of daily use across commuting, weekend rides, and one touring trip, the answer is nuanced.
+The Aoocci C6 Pro is the most ambitious attempt at this consolidation currently available. At approximately $200–$250 (significantly less than equivalent dedicated devices for each function), it is either excellent value or a compromised jack-of-all-trades. Weighing the manufacturer's specifications against what long-term owners consistently report, the answer is nuanced.
 
 ---
 
@@ -89,6 +89,8 @@ The included TPMS sensor caps replace standard valve stem caps. They wirelessly 
 ---
 
 ## Final Verdict
+
+*Scores below are editorial assessments based on certification data, published specifications and owner consensus — not our own physical measurements. See [how we research](/how-we-research/).*
 
 | Category | Score |
 |---|---|

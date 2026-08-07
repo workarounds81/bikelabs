@@ -1,6 +1,6 @@
 ---
 title: "Klim Marrakesh Jacket Review: Maximum Airflow, No Bulk, Zero Compromise on Protection"
-date: 2026-06-11
+date: 2026-06-13
 section: reviews
 category: gear
 tags: [jacket, klim, airflow, D3O, review, CE Level 2, summer riding]
@@ -95,6 +95,8 @@ Riders who require a single all-weather jacket should look at the REV'IT! Tornad
 ---
 
 ## Final Verdict
+
+*Scores below are editorial assessments based on certification data, published specifications and owner consensus — not our own physical measurements. See [how we research](/how-we-research/).*
 
 | Category | Score |
 |---|---|

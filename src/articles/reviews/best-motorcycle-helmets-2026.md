@@ -1,10 +1,10 @@
 ---
-title: "Best Motorcycle Helmets 2026: Every Budget Tested"
-date: 2026-06-08
+title: "Best Motorcycle Helmets 2026: Every Budget Compared"
+date: 2026-06-10
 section: reviews
 category: helmets
 tags: [helmets, safety, buying-guide]
-description: "We tested 12 motorcycle helmets across every price point. Here's what's actually worth buying in 2026."
+description: "We compared 12 motorcycle helmets across every price point using certification data, published lab results and owner reports. Here's what's actually worth buying in 2026."
 featured: true
 image: /img/articles/tested12helmets.webp
 layout: article.njk
@@ -13,7 +13,7 @@ permalink: /reviews/best-motorcycle-helmets-2026/
 
 The best motorcycle helmet in 2026 is the one that fits your head, meets modern safety standards, and doesn't cook you alive at traffic lights. That's a harder combination to find than it sounds.
 
-We tested 12 helmets across three price tiers — budget under $150, mid-range $150–$400, and premium above $400. Every helmet was worn for at least 500km of mixed riding before we formed an opinion. Here's what's actually worth your money.
+We compared 12 helmets across three price tiers — budget under $150, mid-range $150–$400, and premium above $400. Each one was assessed against the same criteria: safety certification (DOT, ECE 22.06, Snell M2020), published independent lab results where available, manufacturer specifications for weight and shell construction, and the weight of long-term owner reports. This is a research-led comparison rather than a hands-on test — see [how we research](/how-we-research/). Here's what's actually worth your money.
 
 ## What Makes a Good Helmet in 2026
 
@@ -87,7 +87,7 @@ If you drop your helmet on a hard floor from head height, replace it. The impact
 
 Don't buy secondhand helmets unless you can verify the history. You have no way to know if it's been dropped.
 
-## Internal Links
+## Related Gear Guides
 
 Looking for gear to go with your new helmet? Read our guide to the [best motorcycle jackets for hot weather riding](/reviews/best-motorcycle-jackets-hot-weather/) or check what [motorcycle gloves are worth buying](/reviews/best-motorcycle-gloves/) in 2026.
 

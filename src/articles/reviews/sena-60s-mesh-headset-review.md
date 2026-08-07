@@ -1,6 +1,6 @@
 ---
 title: "Sena 60S Mesh Headset Review: Unlimited Range Intercom Is a Real Thing Now"
-date: 2026-06-15
+date: 2026-06-13
 section: reviews
 category: electronics
 tags: [intercom, sena, bluetooth, mesh, review, communication, harman kardon]
@@ -88,6 +88,8 @@ The unit charges through a rubber-sealed port rather than a magnetic connector. 
 ---
 
 ## Final Verdict
+
+*Scores below are editorial assessments based on certification data, published specifications and owner consensus — not our own physical measurements. See [how we research](/how-we-research/).*
 
 | Category | Score |
 |---|---|

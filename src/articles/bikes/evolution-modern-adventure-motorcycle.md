@@ -1,6 +1,6 @@
 ---
 title: "The Evolution of the Modern Adventure Motorcycle (ADV)"
-date: 2026-04-22
+date: 2026-06-13
 section: bikes
 category: history
 tags: [ADV, adventure, history, dual-sport, BMW, KTM, touring]

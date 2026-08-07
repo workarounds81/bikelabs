@@ -1,6 +1,6 @@
 ---
 title: "How to Clean Your Helmet Properly"
-date: 2026-06-02
+date: 2026-06-10
 section: how-to
 category: maintenance
 tags: [helmet, cleaning, maintenance, how-to]

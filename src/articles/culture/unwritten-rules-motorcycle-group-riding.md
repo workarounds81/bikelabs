@@ -1,6 +1,6 @@
 ---
 title: "Why Every Rider Needs a Group Ride (And the Unwritten Rules of the Pack)"
-date: 2026-05-12
+date: 2026-06-13
 section: culture
 category: community
 tags: [group riding, safety, community, formation, culture]

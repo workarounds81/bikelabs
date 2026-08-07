@@ -4,7 +4,7 @@ permalink: /how-to/motorcycle-tire-wear-psi-guide/
 title: "How to Read Motorcycle Tire Wear and Maintain Proper PSI"
 description: "Maximise tyre lifespan, decode sidewall codes, spot alignment issues, and track the DOT date code — before a blowout forces the lesson on you."
 image: /img/articles/motorcycletyrewear.jpg
-date: 2026-05-22
+date: 2026-06-13
 section: how-to
 tags:
   - how-to

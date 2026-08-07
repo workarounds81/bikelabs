@@ -4,7 +4,7 @@ permalink: /how-to/motorcycle-battery-diagnostics-storage/
 title: "Motorcycle Battery Diagnostics and Winter Storage Guide"
 description: "How to use a multimeter to diagnose battery health, prevent parasitic draws, safely remove terminals, and maintain your battery through months of winter storage."
 image: /img/articles/Motorcylebattery.jpg
-date: 2026-05-20
+date: 2026-06-13
 section: how-to
 tags:
   - how-to

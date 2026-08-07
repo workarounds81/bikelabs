@@ -1,10 +1,10 @@
 ---
 title: "Best Motorcycle Jackets for Hot Weather Riding"
-date: 2026-06-07
+date: 2026-06-10
 section: reviews
 category: jackets
 tags: [jackets, gear, hot-weather]
-description: "Riding in heat doesn't mean giving up protection. These are the best motorcycle jackets for hot weather — tested in 35°C+ conditions."
+description: "Riding in heat doesn't mean giving up protection. These are the best motorcycle jackets for hot weather, compared on airflow construction, CE armour rating and abrasion resistance."
 image: /img/articles/Best motorcycle Jackets.jpg
 layout: article.njk
 permalink: /reviews/best-motorcycle-jackets-hot-weather/
@@ -12,7 +12,7 @@ permalink: /reviews/best-motorcycle-jackets-hot-weather/
 
 The best motorcycle jacket for hot weather riding has to solve an impossible problem: protect you in a crash while letting enough air through that you don't pass out at traffic lights. In 35°C heat, a closed textile jacket becomes unbearable within minutes. The wrong choice means you stop wearing it — which defeats the entire point.
 
-We tested eight hot-weather jackets across Southeast Asia and Southern Europe. Here's what works.
+We compared eight hot-weather jackets on the things that decide the question: mesh panel coverage and airflow construction, CE armour rating (EN 1621-1 and 1621-2), shell abrasion resistance, and what long-term owners report about durability in sustained heat. This is a research-led comparison rather than a hands-on test — see [how we research](/how-we-research/). Here's what works.
 
 ## What to Look For in a Hot Weather Jacket
 
@@ -38,7 +38,7 @@ One complaint: the cuffs are fiddly. Five minutes to put on your gloves properly
 
 ### Best Mesh: Rev'It! Eclipse 2 (~$180)
 
-If you're riding in genuinely tropical conditions — Singapore, Vietnam, coastal Southeast Asia — mesh is the only honest answer. The Eclipse 2 is the best pure-mesh jacket we've tested.
+If you're riding in genuinely tropical conditions — Singapore, Vietnam, coastal Southeast Asia — mesh is the only honest answer. The Eclipse 2 is the strongest pure-mesh option in this comparison.
 
 The CE Level 2 shoulder and elbow protection is included (not common at this price). The fit is trim without being constricting. The waterproof inner jacket is useless for serious rain but handles light showers adequately.
 

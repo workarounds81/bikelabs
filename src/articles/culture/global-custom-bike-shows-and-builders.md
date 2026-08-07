@@ -1,6 +1,6 @@
 ---
 title: "The World's Greatest Custom Motorcycle Shows and the Builders Behind Them"
-date: 2026-05-06
+date: 2026-06-13
 section: culture
 category: custom
 tags: [custom, shows, builders, culture, events]

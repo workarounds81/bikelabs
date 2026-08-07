@@ -1,6 +1,6 @@
 ---
 title: "Cardo Packtalk Edge Review: The Best Motorcycle Intercom Gets Better"
-date: 2026-06-09
+date: 2026-06-13
 section: reviews
 category: electronics
 tags: [intercom, bluetooth, cardo, packtalk, communication, review]
@@ -48,9 +48,9 @@ The second-generation DMC shows measurable improvement over the original in re-a
 
 The 40mm JBL speakers represent a significant upgrade from previous-generation Cardo audio. Music quality is genuinely impressive for a helmet-mounted system — the drivers have enough low-frequency response to produce listenable audio rather than the tinny, compressed sound typical of competitor units.
 
-**At 130 km/h in the open:** Music is audible and clear with the volume at 60–70%. Phone calls and intercom communication are intelligible. The combination of wind noise management and speaker quality means riders who previously couldn't use intercoms at motorway speeds may find the Edge genuinely functional where others were not.
+**At motorway speeds:** Owners report music remaining audible and clear at around 60–70% volume, with phone calls and intercom communication staying intelligible. The combination of wind noise management and speaker quality means riders who previously couldn't use intercoms at motorway speeds often find the Edge functional where others were not.
 
-**Microphone performance:** The JBL-tuned microphone does a creditable job of isolating voice from wind noise. At 100 km/h, voice communication is clear. Above 150 km/h, wind noise competes with voice; this is a physics problem rather than a microphone failure.
+**Microphone performance:** The JBL-tuned microphone does a creditable job of isolating voice from wind noise. Around 100 km/h, reported voice clarity is good. Above roughly 150 km/h, wind noise competes with voice; this is a physics problem rather than a microphone failure.
 
 Voice control integration (Google Assistant and Siri) functions reliably without touch input — useful when a gloved hand on a bar makes physical control imprecise.
 
@@ -86,6 +86,8 @@ One note: the base plate bonded to the helmet is not itself IP67-rated. The adhe
 ---
 
 ## Final Verdict
+
+*Scores below are editorial assessments based on certification data, published specifications and owner consensus — not our own physical measurements. See [how we research](/how-we-research/).*
 
 | Category | Score |
 |---|---|

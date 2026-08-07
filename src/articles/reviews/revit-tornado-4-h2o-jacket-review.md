@@ -86,6 +86,8 @@ The Tornado 4 H2O is designed for extended riding, and its adjustment system ref
 
 ## Final Verdict
 
+*Scores below are editorial assessments based on certification data, published specifications and owner consensus — not our own physical measurements. See [how we research](/how-we-research/).*
+
 | Category | Score |
 |---|---|
 | Ventilation (without liner) | 9/10 |

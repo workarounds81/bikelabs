@@ -1,6 +1,6 @@
 ---
 title: "Shoei RF-1400 Full-Face Helmet Review: Still the Benchmark?"
-date: 2026-06-17
+date: 2026-06-13
 section: reviews
 category: helmets
 tags: [helmet, shoei, full-face, review, safety, commuting]
@@ -24,7 +24,7 @@ The RF-1400's shell geometry is the result of Shoei's proprietary wind-tunnel te
 
 Four shell sizes accommodate different head sizes with geometry optimised for each — rather than stretching a single shell shape with additional liner, each shell is designed to produce the correct external aerodynamic profile for its interior volume. This is relevant to both aerodynamic performance and impact management.
 
-**At 130 km/h on the motorway,** the RF-1400 produces minimal buffeting. Riders with an upright riding position will notice more wind noise than those tucked behind a fairing — that is a function of airflow meeting the helmet without a windscreen to redirect it, not a flaw in the shell design.
+**At sustained motorway speeds,** owner and press reports consistently describe minimal buffeting. Riders with an upright riding position report more wind noise than those tucked behind a fairing — that is a function of airflow meeting the helmet without a windscreen to redirect it, not a flaw in the shell design.
 
 The chin bar shape has been refined from the RF-SR to address a long-standing criticism: the older model created a slight downforce effect at speed. The RF-1400's revised chin bar geometry reduces this, though the effect is still perceptible at sustained high speeds compared to race-focused alternatives like the Shoei NXR2.
 
@@ -48,9 +48,9 @@ The RF-1400's ventilation system uses five intake points and two exhaust channel
 
 This is where the RF-1400 particularly distinguishes itself. Shoei's internal geometry — the combination of neck roll profile, cheek pad density, and the interaction between the face shield seal and the chin bar aperture — produces a notably quiet interior compared to most competitors at this price point.
 
-**At 100 km/h:** Very low wind noise with the visor sealed. The dominant sound is mechanical — road noise conducted through the rider's body rather than airborne wind entering the helmet.
+**Around 100 km/h:** Owners consistently describe very low wind noise with the visor sealed, with the dominant sound being mechanical — road noise conducted through the rider's body rather than airborne wind entering the helmet.
 
-**At 130 km/h:** Wind noise becomes more present but remains manageable. Riders who do not use earplugs will notice it; riders who do (and all riders at sustained motorway speeds should) will barely register it.
+**At 130 km/h and above:** Reports agree that wind noise becomes more present but remains manageable. Riders who do not use earplugs will notice it; riders who do (and all riders at sustained motorway speeds should) report barely registering it.
 
 The premium 3D Max-Dry interior liner uses a moisture-wicking fabric that outperforms standard foam-backed materials in sweat management and maintains comfort on rides over three hours.
 
@@ -85,6 +85,8 @@ Four shell sizes. Multiple EPS density zones provide softer outer impact absorpt
 ---
 
 ## Final Verdict
+
+*Scores below are editorial assessments based on certification data, published specifications and owner consensus — not our own physical measurements. See [how we research](/how-we-research/).*
 
 | Category | Score |
 |---|---|

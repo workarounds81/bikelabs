@@ -1,6 +1,6 @@
 ---
 title: "Honda CB650R vs Yamaha MT-07: Which Should You Buy?"
-date: 2026-06-04
+date: 2026-06-10
 section: bikes
 category: middleweight
 tags: [middleweight, naked, comparison, honda, yamaha]

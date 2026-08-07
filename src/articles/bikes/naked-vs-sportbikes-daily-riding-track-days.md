@@ -1,6 +1,6 @@
 ---
 title: "Naked vs. Sportbikes: The Ultimate Breakdown for Daily Riding and Track Days"
-date: 2026-04-28
+date: 2026-06-13
 section: bikes
 category: comparison
 tags: [naked, sportbike, comparison, ergonomics, track, daily]
