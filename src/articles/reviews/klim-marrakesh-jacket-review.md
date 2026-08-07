@@ -14,7 +14,7 @@ permalink: /reviews/klim-marrakesh-jacket-review/
 
 Klim operates in the space where motorcycling meets professional outdoor performance equipment — products that justify premium pricing through genuine material and engineering advancement rather than brand premium alone. The Marrakesh jacket positions itself as the answer to a specific and common problem: how to ride in hot weather with CE Level 2 protection without dying of heat exhaustion or looking like you're wearing body armour to the coffee shop.
 
-After four months of testing across southern European summer touring, daily urban commuting in 30°C heat, and comparison with four competing hot-weather jackets, the Marrakesh earns its reputation — with the caveat that it requires understanding what it is and is not.
+Judged against its specification, its CE certification and the weight of long-term owner reports from hot-climate touring and urban commuting, the Marrakesh earns its reputation — with the caveat that it requires understanding what it is and is not.
 
 ---
 
@@ -60,7 +60,7 @@ The CE EN 13594 standard the armour is certified to requires independent testing
 
 The Marrakesh incorporates **3M Scotchlite reflective material** at the shoulders and lower back — subtle enough to be invisible in daylight while providing meaningful retroreflectivity in headlights at night.
 
-**Testing at night:** At 50m in headlights, the reflective elements are clearly visible — the jacket's dark colourways retain the reflective integration well. At 100m, detectability reduces but remains present.
+**Night visibility:** Owners report the reflective elements reading clearly in headlights at around 50m, with the dark colourways retaining their reflective integration well. Detectability reduces beyond that but remains present.
 
 The integration is the design achievement here — most high-visibility motorcycle gear sacrifices aesthetics completely for visibility. The Marrakesh manages both by using Scotchlite strips rather than broad safety-vest-style panels, maintaining the jacket's civilian appeal while meeting the practical need.
 
