@@ -149,6 +149,22 @@ permalink: /tools/top-speed-calculator/
           <p>This calculator shows the theoretical maximum if the engine reaches redline in every gear simultaneously. Real-world speed is limited by aerodynamic drag (which increases with the square of velocity), available power at the wheel, and rider position. Most bikes hit their aerodynamic ceiling in 5th or 6th gear well before redline.</p>
           <h2>Using the BikeFinder Lookup</h2>
           <p>When you search for a bike, the tool pre-fills gear count, rear tyre dimensions, and primary drive ratio where available from the manufacturer specification database. You can then fine-tune any value before calculating.</p>
+
+          <h2>How the Calculation Works</h2>
+          <p>Theoretical speed is a chain of ratios. Engine rpm is divided down by the primary drive, then the gearbox ratio for the selected gear, then the final drive (rear sprocket teeth ÷ front sprocket teeth). What remains is wheel rpm, which becomes road speed once multiplied by the rolling circumference of the rear tyre:</p>
+          <p><strong>Speed (km/h) = (rpm ÷ (primary × gear × final)) × circumference (m) × 60 ÷ 1000</strong></p>
+          <p>Every term matters, which is why a sprocket change alters the answer as much as a gearbox difference does. It also explains why tyre size belongs in a top-speed calculation at all: a taller rear tyre covers more ground per revolution and raises theoretical speed without a single engine change.</p>
+
+          <h2>Why Drag Sets the Real Limit</h2>
+          <p>Aerodynamic drag rises with the square of speed, but the <em>power</em> needed to overcome it rises with the cube. Doubling speed therefore demands roughly eight times the power. This is the single reason theoretical gearing figures and real top speeds diverge so sharply at the top of the range, and why the last 10&nbsp;km/h of a bike's speed is so much harder won than the first hundred.</p>
+          <p>It also explains a familiar showroom puzzle: two bikes with similar power can post very different top speeds if one has a fairing and the other does not. On a naked machine the rider is most of the frontal area, and tucking in can be worth a genuine and immediately noticeable margin.</p>
+
+          <h2>Geared For Speed vs Geared For Acceleration</h2>
+          <p>A bike is described as "undergeared" when it reaches redline in top gear before running out of power against drag — the engine is the limit, and taller gearing would raise top speed. It is "overgeared" when drag stops it accelerating before top gear reaches redline, in which case taller gearing achieves nothing and shorter gearing would improve acceleration at no real cost to maximum speed.</p>
+          <p>Most road bikes are deliberately geared so that peak speed arrives somewhat below redline in top, which keeps cruising rpm and noise down and puts useful acceleration where riders actually use it. If this calculator returns a top-gear figure far higher than the manufacturer's quoted top speed, that gap is usually drag rather than an error — the bike simply cannot reach redline in top.</p>
+
+          <h2>Reading the Results Sensibly</h2>
+          <p>Treat the per-gear figures as a map of where your gearing places each ratio, not as speeds to go looking for. The genuinely useful output is comparative: what happens to every gear if you add a tooth at the rear, or fit a taller tyre. Those relative shifts are accurate even though the absolute top-gear number is optimistic, because drag affects the comparison far less than it affects the maximum.</p>
         </div>
       </div>
 
