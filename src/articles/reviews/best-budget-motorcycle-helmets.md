@@ -88,3 +88,17 @@ For full coverage at every price point, read our [best motorcycle helmets 2026](
 **Best budget modular:** Triangle TSH-001 — flip-front under $150  
 
 Buy a certified helmet. Wear it every ride. When your budget improves, upgrade. That's the correct sequence.
+
+---
+
+## Standards & Sources
+
+Budget helmets are exactly where certification matters most, because price cannot be used as a proxy for protection. These are the primary sources behind the standards referenced above:
+
+- **[SHARP — UK Department for Transport helmet safety ratings](https://www.sharp.dft.gov.uk/)** — independently crash-tests retail-bought helmets and publishes star ratings. SHARP's archive is the strongest available evidence that inexpensive helmets can and do outperform expensive ones, and it is worth searching before any budget purchase.
+- **[UNECE](https://unece.org/)** — publisher of UN Regulation No. 22, behind the ECE 22.05 and ECE 22.06 marks. The move to 22.06 added rotational-acceleration testing, more impact points and a wider range of test speeds, which is why a 22.06 helmet has cleared a materially harder bar than a 22.05 one.
+- **[NHTSA](https://www.nhtsa.gov/)** — administers FMVSS 218, the US "DOT" standard. DOT compliance is self-certified by the manufacturer, which is why a DOT sticker alone is a weaker signal than an ECE approval label.
+
+Prices are recommended retail at the time of writing and move frequently at this end of the market. Specifications come from current manufacturer documentation.
+
+**On our ratings:** BikeLabs does not conduct impact testing. Our assessments weigh published certification results, manufacturer specifications and documented independent testing against price and intended use — see [how we research](/how-we-research/).

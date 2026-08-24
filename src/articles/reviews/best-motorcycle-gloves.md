@@ -95,3 +95,16 @@ Your hands need gloves. Your head needs a helmet — read our [best motorcycle h
 **Best budget:** Icon Pursuit Classic — better than nothing, significantly better  
 
 Buy gloves. Wear them every ride. Your future hands will thank your current self.
+
+---
+
+## Standards & Sources
+
+Motorcycle gloves sold in Europe are certified as personal protective equipment, which means the marking on the cuff carries specific, testable meaning:
+
+- **[CEN — European Committee for Standardization](https://www.cencenelec.eu/)** — publisher of EN 13594, the standard for motorcycle gloves. It defines the Level 1 and Level 2 classifications referenced above, covering impact abrasion, cut resistance, tear strength and seam strength. Level 2 requires higher performance across those tests than Level 1; it is not a marketing tier.
+- Gloves meeting EN 13594 carry a CE mark with the standard number and level printed on the product or its label. A glove described as "CE approved" without a visible standard reference and level is not telling you anything verifiable.
+
+Materials, armour specifications and construction details are taken from current manufacturer documentation for each model. Prices are recommended retail at the time of writing.
+
+**On our ratings:** BikeLabs does not conduct abrasion or impact testing. Our assessments weigh published certification levels, manufacturer specifications and documented independent testing against price and intended use — see [how we research](/how-we-research/).

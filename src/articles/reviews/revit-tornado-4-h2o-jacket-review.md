@@ -99,3 +99,14 @@ The Tornado 4 H2O is designed for extended riding, and its adjustment system ref
 | **Overall** | **8.8/10** |
 
 The REV'IT! Tornado 4 H2O is the best non-laminated adventure textile jacket currently available. Its combination of genuine CE Level 2 shoulder and elbow armour, excellent mesh ventilation, and reliable waterproof liner sets a standard that most competitors don't meet. The back protector upgrade cost and the breathability reduction with the liner in are real considerations — factor both into the total ownership cost. For riders who spend meaningful time in mixed conditions across seasons, the Tornado 4 delivers on its multi-season promise more convincingly than any alternative at this price.
+
+---
+
+## Standards & Sources
+
+- **[CEN — European Committee for Standardization](https://www.cencenelec.eu/)** — publisher of EN 1621-1 and EN 1621-2, the standards behind the CE Level 1 and Level 2 armour classifications referenced above, and of EN 17092, which grades complete motorcycle garments for abrasion resistance from Class AAA to Class C.
+- Mesh summer jackets commonly ship with Level 1 armour and sit at the lower end of the garment classification scale. Upgrading the armour is inexpensive and worthwhile; upgrading the shell is not possible, so the garment class is the figure to check before buying.
+
+Fabric composition, armour specification, waterproof membrane details and sizing are taken from current REV'IT! documentation for this model. Price is recommended retail at the time of writing.
+
+**On our assessment:** BikeLabs does not conduct abrasion, impact or waterproof testing and has not destructively tested this jacket. Our conclusions weigh published certification data, manufacturer specifications and documented independent testing — see [how we research](/how-we-research/).

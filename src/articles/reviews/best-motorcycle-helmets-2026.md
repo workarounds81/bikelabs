@@ -100,3 +100,18 @@ Looking for gear to go with your new helmet? Read our guide to the [best motorcy
 **Best integrated Bluetooth:** Sena Momentum Evo — audio that's actually usable  
 
 Whatever you buy: check the fit, check the certification, and check when it was made. A helmet is the one piece of gear that doesn't get a second chance.
+
+---
+
+## Standards & Sources
+
+The certification references in this guide are drawn from the bodies that publish and administer them. If you are comparing helmets, these are the primary sources worth consulting directly rather than relying on any retailer's summary:
+
+- **[SHARP — UK Department for Transport helmet safety ratings](https://www.sharp.dft.gov.uk/)** — the UK government programme that buys helmets at retail and crash-tests them independently, publishing a one-to-five-star rating. It is the closest thing to impartial comparative helmet data available to consumers, and it frequently disagrees with price.
+- **[UNECE](https://unece.org/)** — publisher of UN Regulation No. 22, the standard behind the ECE 22.05 and ECE 22.06 approval marks. ECE 22.06 introduced rotational-acceleration testing and a wider range of impact points and speeds than 22.05.
+- **[Snell Memorial Foundation](https://smf.org/)** — an independent, voluntary certification body. Snell M2020 is stricter than ECE in some impact criteria and is not a legal requirement anywhere; manufacturers submit helmets by choice.
+- **[NHTSA](https://www.nhtsa.gov/)** — administers FMVSS 218, the US "DOT" standard. Note that DOT certification is self-declared by the manufacturer, with NHTSA conducting audit testing after the fact.
+
+Specifications, weights and shell-size counts are taken from current manufacturer documentation for each model. Where a figure varies by shell size or market, we have noted it in the relevant section.
+
+**On our ratings:** BikeLabs does not conduct impact testing. Our assessments weigh published certification results, manufacturer specifications and documented independent testing against price and intended use. They are editorial judgements, not measurements — see [how we research](/how-we-research/).

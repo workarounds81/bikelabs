@@ -109,3 +109,14 @@ Riders who require a single all-weather jacket should look at the REV'IT! Tornad
 | **Overall** | **9.2/10** |
 
 The Klim Marrakesh is the best hot-weather motorcycle jacket currently available. Its combination of maximum airflow, full D3O CE Level 2 protection across all zones, civilian-cut styling, and four-way stretch mobility puts it in a category of its own — there is no jacket that does all four as well simultaneously. The price is high and the weather range is limited by design. For riders who prioritise warm-weather riding and want the best available combination of protection and comfort, the Marrakesh is an unambiguous recommendation.
+
+---
+
+## Standards & Sources
+
+- **[CEN — European Committee for Standardization](https://www.cencenelec.eu/)** — publisher of EN 1621-1 and EN 1621-2, the impact-protector standards behind the CE Level 1 and Level 2 armour ratings referenced in this review, and of EN 17092, which classifies complete motorcycle garments by abrasion performance (Class AAA through Class C).
+- Armour rating and garment rating are certified separately. A jacket supplied with Level 2 protectors may still be a lower-class garment in terms of abrasion resistance, which is a distinction worth checking on any mesh or lightweight touring shell.
+
+Fabric composition, armour specification, pocket layout and sizing details are taken from current Klim documentation for this model. Price is recommended retail at the time of writing.
+
+**On our assessment:** BikeLabs does not conduct abrasion or impact testing and has not destructively tested this jacket. Our conclusions weigh published certification data, manufacturer specifications and documented independent testing — see [how we research](/how-we-research/).

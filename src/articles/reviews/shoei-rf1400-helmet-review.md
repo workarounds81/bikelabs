@@ -99,3 +99,16 @@ Four shell sizes. Multiple EPS density zones provide softer outer impact absorpt
 | **Overall** | **8.6/10** |
 
 The Shoei RF-1400 remains one of the best full-face street helmets available for riders who prioritise comfort on long rides, noise management, and build quality. It is not the most ventilated helmet in its price range, and the value equation requires you to genuinely use the premium it delivers. For riders who spend hours at a time on the road and notice the quality difference, the RF-1400 continues to justify its position.
+
+---
+
+## Standards & Sources
+
+- **[Snell Memorial Foundation](https://smf.org/)** — publisher of the Snell M2020 standard referenced in this review. Snell certification is voluntary and manufacturer-funded; the foundation tests submitted helmets against criteria that exceed ECE requirements in several impact scenarios.
+- **[UNECE](https://unece.org/)** — publisher of UN Regulation No. 22, behind the ECE 22.06 approval. ECE 22.06 introduced rotational-acceleration testing alongside a broader set of impact points and speeds.
+- **[NHTSA](https://www.nhtsa.gov/)** — administers FMVSS 218, the US "DOT" standard.
+- **[SHARP — UK Department for Transport](https://www.sharp.dft.gov.uk/)** — independent crash-test ratings for helmets sold in the UK, useful for comparing this helmet against alternatives at similar and lower prices.
+
+Weights, shell-size counts, liner specifications and ventilation details are taken from current Shoei documentation for this model. Figures vary by shell size and market.
+
+**On our ratings:** BikeLabs does not conduct impact testing and has not destructively tested this helmet. Our assessment weighs published certification results, manufacturer specifications and documented independent testing — see [how we research](/how-we-research/).

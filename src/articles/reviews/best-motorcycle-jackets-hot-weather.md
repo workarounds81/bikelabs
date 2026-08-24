@@ -90,3 +90,18 @@ Airbag technology adds cost and requires annual servicing, but the protection le
 The most important thing: wear it every ride. An expensive jacket in your bag protects nobody. Buy the best you can afford, make sure it fits, and put it on every time.
 
 Complete your kit with our picks for [best motorcycle gloves](/reviews/best-motorcycle-gloves/) and the [best motorcycle helmets for 2026](/reviews/best-motorcycle-helmets-2026/).
+
+---
+
+## Standards & Sources
+
+Hot-weather jackets involve a direct trade-off between airflow and protection, which is why the certification detail matters more here than in any other category:
+
+- **[CEN — European Committee for Standardization](https://www.cencenelec.eu/)** — publisher of EN 1621-1 (limb impact protectors) and EN 1621-2 (back protectors), the standards behind the Level 1 and Level 2 armour ratings referenced above. Level 2 armour transmits less force under the same test impact than Level 1, generally at the cost of thickness and flexibility.
+- **EN 17092** is the current standard for motorcycle protective garments, classifying whole jackets from Class AAA (highest abrasion protection) down to Class C (garments that hold armour but offer limited abrasion resistance in themselves). Many mesh summer jackets are Class C or Class B — worth knowing before buying, because the armour rating and the garment rating are separate things.
+
+A jacket fitted with Level 2 armour is not automatically a highly protective jacket: the shell material and construction determine abrasion resistance, and the two ratings are certified independently.
+
+Materials, armour specifications and ventilation details come from current manufacturer documentation. Prices are recommended retail at the time of writing.
+
+**On our ratings:** BikeLabs does not conduct abrasion or impact testing. Our assessments weigh published certification levels, manufacturer specifications and documented independent testing — see [how we research](/how-we-research/).
